@@ -76,8 +76,8 @@ export default function ApplovinPage() {
       >
         <Shader className="h-full w-full">
           <Swirl
-            colorA="#f97316"
-            colorB="#ec4899"
+            colorA="#71b6ee"
+            colorB="#ee6464"
             speed={0.8}
             detail={0.8}
             blend={50}
