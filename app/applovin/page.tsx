@@ -105,6 +105,12 @@ export default function ApplovinPage() {
             <div className="mb-4 inline-block animate-in fade-in slide-in-from-bottom-4 rounded-full border border-foreground/20 bg-foreground/15 px-4 py-1.5 backdrop-blur-md duration-700">
               <p className="font-mono leading-7 text-xs text-card-foreground font-semibold">Official AppLovin Partner</p>
             </div>
+            <div className="mb-6 flex items-center gap-3 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-100">
+              <Zap className="h-5 w-5 text-foreground" />
+              <p className="text-base font-medium text-foreground md:text-lg">
+                First platform to offer official AppLovin integration for full creative analysis
+              </p>
+            </div>
             <h1 className="mb-6 animate-in fade-in slide-in-from-bottom-8 font-sans text-5xl font-light leading-[1.1] tracking-tight text-foreground duration-1000 md:text-7xl lg:text-8xl">
               <span className="text-balance font-medium">Upspring Now Integrates with AppLovin</span>
             </h1>
@@ -139,17 +145,7 @@ export default function ApplovinPage() {
           </div>
         </section>
 
-        {/* First Platform Badge */}
-        <section className="w-full px-6 py-12 md:px-12 lg:px-16">
-          <div className="mx-auto max-w-4xl text-center">
-            <div className="inline-flex items-center gap-3 rounded-2xl border border-foreground/20 bg-foreground/10 px-6 py-4 backdrop-blur-md">
-              <Zap className="h-6 w-6 text-foreground" />
-              <p className="text-lg font-medium text-foreground md:text-xl">
-                First platform to offer official AppLovin integration for full creative analysis
-              </p>
-            </div>
-          </div>
-        </section>
+        
 
         {/* Features Section */}
         <section className="w-full px-6 py-24 md:px-12 lg:px-16">
