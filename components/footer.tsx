@@ -122,7 +122,7 @@ export function Footer({ id = "contact" }: { id?: string }) {
                 style={{ transitionDelay: "450ms" }}
               >
                 <a
-                  href="/agencies"
+                  href="/for-agencies"
                   className="group flex items-center gap-2 text-base text-foreground transition-colors hover:text-foreground/70 md:text-xl"
                 >
                   <span>Upspring for Agencies</span>
