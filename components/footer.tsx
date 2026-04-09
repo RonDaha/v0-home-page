@@ -150,7 +150,6 @@ export function Footer({ id = "contact" }: { id?: string }) {
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </a>
               </div>
-              </div>
 
               <a
                 href="mailto:hello@upspring.ai"
