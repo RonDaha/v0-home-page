@@ -122,7 +122,7 @@ export function Footer({ id = "contact" }: { id?: string }) {
                 style={{ transitionDelay: "450ms" }}
               >
                 <a
-                  href="/for-agencies"
+                  href="/agencies"
                   className="group flex items-center gap-2 text-base text-foreground transition-colors hover:text-foreground/70 md:text-xl"
                 >
                   <span>Upspring for Agencies</span>
@@ -149,6 +149,7 @@ export function Footer({ id = "contact" }: { id?: string }) {
                   <span>Upspring for YouTube</span>
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </a>
+              </div>
               </div>
 
               <a
