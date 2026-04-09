@@ -37,7 +37,7 @@ export function WorkSection({ id }: { id?: string }) {
               sketchType: "research",
               direction: "left",
               description:
-                "Explore an endless ad library with AI that analyzes every creative for you. Quickly discover winners across any brand, category, or format — and turn insights into inspiration.",
+                "Explore an endless ad library with AI that analyzes every creative for you. Quickly discover winners across any brand, category, or format  - and turn insights into inspiration.",
             },
             {
               number: "03",

@@ -126,7 +126,7 @@ export default function ShopifyPage() {
             </h2>
             <p className="text-lg text-foreground/80 md:text-xl">
               Upspring gives Shopify merchants a smarter way to come up with high-performing ad ideas. Just connect your
-              store — and our AI turns your product catalog, competitor landscape, and brand voice into tailored
+              store  - and our AI turns your product catalog, competitor landscape, and brand voice into tailored
               creative insights.
             </p>
           </div>
@@ -139,7 +139,7 @@ export default function ShopifyPage() {
               },
               {
                 title: "Browse competitor ads",
-                description: "From across platforms — all in one place",
+                description: "From across platforms  - all in one place",
               },
               {
                 title: "Get automatic ad transcripts",
