@@ -15,19 +15,6 @@ import {
 } from "@/components/ui/accordion"
 import Link from "next/link"
 
-export const metadata = {
-  title: "YouTube Ads Creative Analytics Integration | Upspring.ai",
-  description:
-    "Upspring integrates directly with YouTube Ads (Google Ads) to analyze your video creatives — hooks, thumbnails, and formats — in one unified workflow. Already live. Connect now.",
-  canonical: "https://upspring.ai/youtube",
-  openGraph: {
-    title: "YouTube Ads Creative Analytics Integration | Upspring.ai",
-    description:
-      "Analyze your YouTube video creatives with AI-powered creative analytics. Understand hooks, thumbnails, and formats that drive results.",
-    url: "https://upspring.ai/youtube",
-  },
-}
-
 const faqs = [
   {
     question: "What is Upspring's YouTube Ads integration?",
