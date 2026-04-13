@@ -271,7 +271,7 @@ export default function YouTubePage() {
                 <div className="mb-6 animate-in fade-in slide-in-from-bottom-8 duration-1000">
                   <h1 className="font-sans text-4xl font-semibold leading-[1.1] tracking-tight text-foreground md:text-5xl lg:text-6xl">
                     <span className="text-balance block mb-2">Creative intelligence</span>
-                    <span className="block mb-2 font-light text-foreground/80">for your</span>
+                    <span className="block mb-2">for your</span>
                     <span className="flex items-center gap-4">
                       <Image
                         src="/images/youtube-logo.png"
