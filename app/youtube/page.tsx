@@ -274,9 +274,9 @@ export default function YouTubePage() {
                     <Image
                       src="/images/youtube-logo.png"
                       alt="YouTube"
-                      width={56}
-                      height={40}
-                      className="h-10 w-auto md:h-12"
+                      width={80}
+                      height={56}
+                      className="h-14 w-auto md:h-16 lg:h-20"
                     />
                     <span className="font-light text-foreground/80">teams</span>
                   </span>
