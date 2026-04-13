@@ -53,33 +53,26 @@ const features = [
 
 const testimonials = [
   {
-    name: "Ron Rotter",
-    title: "Ives Rocher",
+    name: "Andrew Watson",
+    title: "Co Founder at Igloo Media",
     image: "/images/andrew.jpg",
     quote:
-      "Upspring's AppLovin integration has completely transformed how we analyze creative performance. We're making decisions in hours, not days.",
+      "Upspring has become a core part of Igloo's creative workflow. We've already landed five new clients after showcasing Upspring in the pitch process, and internally we estimate it saves our team 30% of the time we used to spend on manual analysis and pulling insights. It helps us move faster, brief smarter, and make more confident creative decisions across accounts.",
   },
   {
-    name: "Tomar Arzoan",
-    title: "FansLegacy",
+    name: "Matt Lowenthal",
+    title: "Chief Strategy Officer at Brand.co",
     image: "/images/matt.png",
     quote:
-      "The creative-set analysis is a game changer. We can finally see patterns across our entire AppLovin portfolio and act on them fast.",
+      "Upspring's smart UI makes it easy to parse performance data in real time, understand why an ad is working, and get AI-powered suggestions on what to test next. Fantastic tool for any brand or team running performance marketing.",
   },
   {
-    name: "Rotem Avizohar",
-    title: "Interaction",
+    name: "Tomer Arzoan",
+    title: "Co-Founder at Maëlys",
     image:
       "https://cdn.prod.website-files.com/6767cd956661bd59e5a74391/67db09945cb20a822e894199_tomer-profile.jpeg?height=64&width=64",
     quote:
-      "Being able to analyze AppLovin alongside our other channels in one place has been incredibly valuable for our team.",
-  },
-  {
-    name: "Roni Trocky Polonio",
-    title: "Performance Team",
-    image: "/images/andrew.jpg",
-    quote:
-      "Upspring gave us the clarity we needed to scale our winning AppLovin creatives with confidence. The insights are immediate and actionable.",
+      "Being able to analyze AppLovin alongside our other channels in one place has been incredibly valuable for our team. Upspring gives us the clarity we needed to scale our winning creatives with confidence.",
   },
 ]
 
