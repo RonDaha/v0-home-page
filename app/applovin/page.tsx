@@ -516,7 +516,7 @@ export default function ApplovinPage() {
                 ].map((item, i) => (
                   <div
                     key={i}
-                    className="flex flex-col gap-4 rounded-2xl border border-foreground/10 bg-foreground/5 p-6 backdrop-blur-md transition-all hover:border-foreground/20 hover:bg-foreground/10"
+                    className="flex flex-col gap-4 rounded-2xl bg-foreground/5 p-6 backdrop-blur-md transition-all hover:bg-foreground/10"
                   >
                     <div className="flex gap-1">
                       {[...Array(5)].map((_, j) => (

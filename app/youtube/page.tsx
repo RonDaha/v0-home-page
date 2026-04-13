@@ -517,7 +517,7 @@ export default function YouTubePage() {
                 ].map((item, i) => (
                   <div
                     key={i}
-                    className="flex flex-col gap-4 rounded-2xl border border-foreground/10 bg-foreground/5 p-6 backdrop-blur-md transition-all hover:border-foreground/20 hover:bg-foreground/10"
+                    className="flex flex-col gap-4 rounded-2xl bg-foreground/5 p-6 backdrop-blur-md transition-all hover:bg-foreground/10"
                   >
                     <div className="flex gap-1">
                       {[...Array(5)].map((_, j) => (
@@ -570,26 +570,6 @@ export default function YouTubePage() {
                   </AccordionItem>
                 ))}
               </Accordion>
-            </div>
-          </section>
-
-          {/* Final CTA Section - centered and cleaner */}
-          <section className="w-full px-6 py-24 md:px-12 lg:px-16">
-            <div className="mx-auto max-w-3xl rounded-3xl border border-foreground/10 bg-foreground/5 p-12 text-center backdrop-blur-md">
-              <h2 className="mb-6 font-sans text-3xl font-semibold leading-tight text-foreground md:text-4xl">
-                Ready to understand your YouTube creative performance?
-              </h2>
-              <p className="mx-auto mb-8 max-w-xl text-base text-foreground/80">
-                Connect your Google Ads account and start analyzing your YouTube creatives today.
-              </p>
-              <div className="flex flex-col gap-4 justify-center sm:flex-row sm:items-center">
-                <MagneticButton size="lg" variant="primary" onClick={scrollToFooter}>
-                  Connect YouTube Ads
-                </MagneticButton>
-                <MagneticButton size="lg" variant="secondary" onClick={() => window.open("mailto:hello@upspring.ai", "_blank")}>
-                  Contact Sales
-                </MagneticButton>
-              </div>
             </div>
           </section>
 
