@@ -20,32 +20,32 @@ const features = [
   {
     icon: BarChart3,
     title: "Creative-Level Analysis",
-    description: "Understand performance at the individual creative level to identify what drives results",
+    description: "Understand the performance of each individual AppLovin creative to identify what drives results and which assets perform best",
   },
   {
     icon: Layers,
     title: "Creative-Set Analysis",
-    description: "Analyze performance across creative sets to uncover winning patterns and themes",
+    description: "Analyze performance patterns across creative sets to uncover winning themes and optimize your AppLovin campaign performance",
   },
   {
     icon: Sparkles,
     title: "Unified Workflow",
-    description: "Analyze AppLovin creatives inside the same workflow you use across all channels",
+    description: "Analyze AppLovin creatives inside the same workflow you use for Meta, TikTok, Google, and other channels",
   },
   {
     icon: TrendingUp,
     title: "Pattern Detection",
-    description: "Spot trends across creatives and creative sets to inform your next tests",
+    description: "Spot trends and patterns across creatives to inform your next AppLovin creative tests and optimization opportunities",
   },
   {
     icon: ArrowRight,
     title: "Signal-to-Decision",
-    description: "Transform raw performance data into clearer decisions and actionable next steps",
+    description: "Transform raw AppLovin performance data into clear, actionable insights and next steps for creative optimization",
   },
   {
     icon: Shield,
-    title: "Secure Integration",
-    description: "Official partnership with AppLovin ensures secure, reliable data access",
+    title: "Secure Official Partnership",
+    description: "Official AppLovin technology partner status ensures secure, reliable access to your AppLovin analytics data",
   },
 ]
 
@@ -365,10 +365,10 @@ export default function ApplovinPage() {
           <section className="w-full px-6 py-24 md:px-12 lg:px-16">
             <div className="mb-16 max-w-3xl">
               <h2 className="mb-6 font-sans text-4xl font-semibold leading-tight text-foreground md:text-5xl">
-                Creative-Level and Creative-Set Analysis
+                AppLovin Creative Analysis: Creative-Level and Creative-Set Insights
               </h2>
               <p className="text-lg text-foreground/80 md:text-xl">
-                With the new integration, teams can analyze performance at both the creative level and the creative-set level, making it easier to understand what is driving results, identify winning patterns, and uncover new creative directions to test.
+                Upspring is the first platform to offer official AppLovin integration for full creative analysis. With our AppLovin creative analytics platform, performance teams can analyze performance at both the creative level and creative-set level, making it easier to understand what drives AppLovin campaign success, identify winning patterns, and uncover new creative directions to test.
               </p>
             </div>
 
@@ -393,10 +393,10 @@ export default function ApplovinPage() {
             <div className="mx-auto max-w-4xl">
               <div className="mb-12 text-center">
                 <h2 className="mb-4 font-sans text-4xl font-semibold text-foreground md:text-5xl">
-                  How to Get Started
+                  How to Get Started with AppLovin Integration
                 </h2>
                 <p className="text-lg text-foreground/70">
-                  Connect your AppLovin account in just a few minutes
+                  Connect your AppLovin account and start analyzing creative performance in minutes
                 </p>
               </div>
               
@@ -408,18 +408,18 @@ export default function ApplovinPage() {
                   {[
                     {
                       step: 1,
-                      title: "Navigate to Settings",
-                      description: "Go to Settings → Space → Data Sources in your Upspring dashboard",
+                      title: "Navigate to Data Sources",
+                      description: "Go to Settings, select your Space, then Data Sources in your Upspring dashboard",
                     },
                     {
                       step: 2,
-                      title: "Connect AppLovin",
-                      description: "Select Axon (AppLovin) and authorize the connection with your account",
+                      title: "Connect AppLovin (Axon)",
+                      description: "Select the Axon (AppLovin) integration and authorize the connection with your AppLovin account",
                     },
                     {
                       step: 3,
-                      title: "Start Analyzing",
-                      description: "Begin analyzing your AppLovin creatives immediately with full creative-level insights",
+                      title: "Begin Creative Analysis",
+                      description: "Start analyzing your AppLovin creatives with full creative-level and creative-set analytics",
                     },
                   ].map((item) => (
                     <div key={item.step} className="flex gap-6">
