@@ -278,16 +278,18 @@ export default function ApplovinPage() {
                 {/* H1 with AppLovin logo on its own line */}
                 <div className="mb-6 animate-in fade-in slide-in-from-bottom-8 duration-1000">
                   <h1 className="font-sans text-4xl font-semibold leading-[1.1] tracking-tight text-foreground md:text-5xl lg:text-6xl">
-                    <span className="text-balance block mb-4">Creative Analytics for</span>
-                    <Image
-                      src="/images/applovin-logo.svg"
-                      alt="AppLovin"
-                      width={320}
-                      height={60}
-                      className="h-14 w-auto object-contain brightness-0 invert md:h-16 lg:h-20 mb-4"
-                      style={{ filter: "brightness(0) invert(1)" }}
-                    />
-                    <span className="block font-light text-foreground/80">teams</span>
+                    <span className="text-balance block mb-2">Creative intelligence for your</span>
+                    <span className="flex items-center gap-4 mb-2">
+                      <Image
+                        src="/images/applovin-logo.svg"
+                        alt="AppLovin"
+                        width={320}
+                        height={60}
+                        className="h-14 w-auto object-contain brightness-0 invert md:h-16 lg:h-20"
+                        style={{ filter: "brightness(0) invert(1)" }}
+                      />
+                      <span className="font-light text-foreground/80">Ads</span>
+                    </span>
                   </h1>
                 </div>
 
