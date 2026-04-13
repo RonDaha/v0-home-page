@@ -271,8 +271,8 @@ export default function YouTubePage() {
                 <div className="mb-6 animate-in fade-in slide-in-from-bottom-8 duration-1000">
                   <h1 className="font-sans text-4xl font-semibold leading-[1.1] tracking-tight text-foreground md:text-5xl lg:text-6xl">
                     <span className="block mb-2">Creative intelligence</span>
-                    <span className="block mb-2 font-semibold">for your</span>
                     <span className="flex items-center gap-4">
+                      <span>for</span>
                       <Image
                         src="/images/youtube-logo.png"
                         alt="YouTube"
@@ -280,7 +280,7 @@ export default function YouTubePage() {
                         height={56}
                         className="h-14 w-auto md:h-16 lg:h-20"
                       />
-                      <span className="text-foreground">YouTube Ads</span>
+                      <span>Ads</span>
                     </span>
                   </h1>
                 </div>
