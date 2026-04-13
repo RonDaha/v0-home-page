@@ -5,102 +5,87 @@ import { GrainOverlay } from "@/components/grain-overlay"
 import { Footer } from "@/components/footer"
 import { Header } from "@/components/header"
 import { MagneticButton } from "@/components/magnetic-button"
+import { LogoCarousel } from "@/components/logo-carousel"
 import { useRef, useEffect, useState } from "react"
-import { Check, Zap, BarChart3, Layers, ArrowRight, Shield, TrendingUp, Sparkles, Star, ChevronRight } from "lucide-react"
+import { Check, BarChart3, Layers, ArrowRight, Shield, TrendingUp, Sparkles } from "lucide-react"
 import Image from "next/image"
 import Head from "next/head"
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion"
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 
 const features = [
   {
     icon: BarChart3,
     title: "Creative-Level Analysis",
-    description: "Understand the performance of each individual AppLovin creative to identify what drives results and which assets perform best",
+    description: "Understand performance at the individual creative level",
   },
   {
     icon: Layers,
     title: "Creative-Set Analysis",
-    description: "Analyze performance patterns across creative sets to uncover winning themes and optimize your AppLovin campaign performance",
+    description: "Analyze patterns across creative sets to identify winners",
   },
   {
     icon: Sparkles,
     title: "Unified Workflow",
-    description: "Analyze AppLovin creatives inside the same workflow you use for Meta, TikTok, Google, and other channels",
+    description: "Analyze AppLovin alongside Meta, TikTok, and other channels",
   },
   {
     icon: TrendingUp,
     title: "Pattern Detection",
-    description: "Spot trends and patterns across creatives to inform your next AppLovin creative tests and optimization opportunities",
+    description: "Spot winning trends and creative directions instantly",
   },
   {
     icon: ArrowRight,
     title: "Signal-to-Decision",
-    description: "Transform raw AppLovin performance data into clear, actionable insights and next steps for creative optimization",
+    description: "Transform data into clear creative decisions",
   },
   {
     icon: Shield,
-    title: "Secure Official Partnership",
-    description: "Official AppLovin technology partner status ensures secure, reliable access to your AppLovin analytics data",
+    title: "Secure Partnership",
+    description: "Official AppLovin technology partner status",
   },
 ]
 
 const testimonials = [
   {
-    quote: "Upspring's AppLovin integration has completely transformed how we analyze creative performance. We're making decisions in hours, not days.",
-    author: "Sarah Chen",
-    role: "Head of Growth",
-    company: "Mobile Gaming Studio",
-    rating: 5,
+    name: "Andrew Watson",
+    title: "Co Founder at Igloo Media",
+    image: "/images/andrew.jpg",
+    quote:
+      "Upspring has become a core part of Igloo's creative workflow. We've already landed five new clients after showcasing Upspring in the pitch process, and internally we estimate it saves our team 30%+ of the time we used to spend on manual analysis and pulling insights. It helps us move faster, brief smarter, and make more confident creative decisions across accounts.",
   },
   {
-    quote: "The creative-set analysis is a game changer. We can finally see patterns across our entire AppLovin portfolio.",
-    author: "Marcus Johnson",
-    role: "Performance Marketing Director",
-    company: "DTC Brand",
-    rating: 5,
-  },
-  {
-    quote: "Being able to analyze AppLovin alongside our other channels in one place has been incredibly valuable for our team.",
-    author: "Emily Rodriguez",
-    role: "Creative Strategy Lead",
-    company: "Growth Agency",
-    rating: 5,
+    name: "Matt Lowenthal",
+    title: "Chief Strategy Officer at Brand.co",
+    image: "/images/matt.png",
+    quote:
+      "Upspring's smart UI makes it easy to parse performance data in real time, understand why an ad is working, and get AI-powered suggestions on what to test next. Fantastic tool for any brand or team running performance marketing",
   },
 ]
 
 const faqs = [
   {
-    question: "What is the Upspring AppLovin integration?",
-    answer: "Upspring is the first platform to offer an official AppLovin integration for full creative analysis. This allows you to analyze performance at both the creative level and creative-set level, helping you understand what drives results and identify winning patterns.",
+    question: "What is the AppLovin integration?",
+    answer: "Upspring offers an official AppLovin integration for creative analysis. Analyze performance at both creative and creative-set levels to identify winning patterns and optimize your campaigns.",
   },
   {
-    question: "How do I connect my AppLovin account?",
-    answer: "Simply navigate to Settings → Space → Data Sources in your Upspring dashboard, then select Axon (AppLovin) to connect your account. The setup takes just a few minutes.",
+    question: "How do I connect AppLovin?",
+    answer: "Navigate to Settings in your Upspring dashboard, then select Data Sources and connect Axon (AppLovin). Setup takes minutes.",
   },
   {
-    question: "What data can I analyze with this integration?",
-    answer: "You can analyze creative-level performance metrics, creative-set performance, identify winning patterns across your campaigns, and get AI-powered insights to inform your next creative tests.",
+    question: "What data can I analyze?",
+    answer: "You can analyze creative-level performance, creative-set patterns, and get AI-powered recommendations for your next tests.",
   },
   {
     question: "Is my data secure?",
-    answer: "Yes. As an official AppLovin technology partner, Upspring maintains the highest security standards. Your data is encrypted in transit and at rest, and we never share your data with third parties.",
+    answer: "Yes. As an official AppLovin partner, we maintain enterprise-grade security. Your data is encrypted and never shared with third parties.",
   },
   {
-    question: "Are there AppLovin ad credits available?",
-    answer: "Yes! As part of our strategic partnership, eligible Upspring clients may have access to AppLovin ad credits. Contact us to learn more about this exclusive benefit.",
+    question: "Are AppLovin ad credits available?",
+    answer: "Yes. Eligible teams may have access to exclusive AppLovin credits. Contact us to learn more.",
   },
   {
-    question: "Can I analyze AppLovin alongside other channels?",
-    answer: "Absolutely. One of the key benefits of Upspring is the unified workflow - analyze your AppLovin creatives alongside Meta, TikTok, Google, and other channels all in one place.",
-  },
-  {
-    question: "How quickly can I get started?",
-    answer: "Most teams are up and running within minutes. Once you connect your AppLovin account, you can immediately start analyzing your creatives and uncovering insights.",
+    question: "Can I use this with other channels?",
+    answer: "Absolutely. One of the core benefits is unified analysis across AppLovin, Meta, TikTok, Google, and more in one workflow.",
   },
 ]
 
@@ -117,38 +102,9 @@ const faqSchema = {
   })),
 }
 
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    {
-      "@type": "ListItem",
-      position: 1,
-      name: "Home",
-      item: "https://www.upspring.ai",
-    },
-    {
-      "@type": "ListItem",
-      position: 2,
-      name: "AppLovin Integration",
-      item: "https://www.upspring.ai/applovin",
-    },
-  ],
-}
-
 export default function ApplovinPage() {
   const [isLoaded, setIsLoaded] = useState(false)
   const shaderContainerRef = useRef<HTMLDivElement>(null)
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    businessType: "",
-    monthlySpend: "",
-    website: "",
-    message: "",
-  })
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitSuccess, setSubmitSuccess] = useState(false)
 
   useEffect(() => {
     const setShaderHeight = () => {
@@ -193,56 +149,25 @@ export default function ApplovinPage() {
     }
   }, [])
 
-  const scrollToDemo = () => {
-    const demoSection = document.getElementById("demo-form")
-    if (demoSection) {
-      demoSection.scrollIntoView({ behavior: "smooth" })
+  const scrollToForm = () => {
+    const formSection = document.getElementById("demo-form")
+    if (formSection) {
+      formSection.scrollIntoView({ behavior: "smooth" })
     }
-  }
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-    
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000))
-    
-    setIsSubmitting(false)
-    setSubmitSuccess(true)
-    setFormData({
-      name: "",
-      email: "",
-      businessType: "",
-      monthlySpend: "",
-      website: "",
-      message: "",
-    })
   }
 
   return (
     <>
       <Head>
-        <title>AppLovin Creative Analytics Integration | Upspring.ai</title>
+        <title>AppLovin Creative Analytics Integration | Upspring</title>
         <meta
           name="description"
-          content="Upspring is the first platform to offer official AppLovin integration for full creative analysis. Analyze creative-level and creative-set performance to uncover winning patterns."
+          content="Official AppLovin integration for unified creative analytics. Analyze creative-level performance and identify winning patterns across your campaigns."
         />
-        <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://www.upspring.ai/applovin" />
-        <meta property="og:title" content="AppLovin Creative Analytics Integration | Upspring.ai" />
-        <meta
-          property="og:description"
-          content="Upspring is the first platform to offer official AppLovin integration for full creative analysis."
-        />
-        <meta property="og:url" content="https://www.upspring.ai/applovin" />
-        <meta property="og:type" content="website" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
         />
       </Head>
 
@@ -281,422 +206,194 @@ export default function ApplovinPage() {
             isLoaded ? "opacity-100" : "opacity-0"
           }`}
         >
-          {/* Hero Section */}
-          <section className="flex min-h-[90vh] w-full flex-col justify-center px-6 pt-32 md:px-12 lg:px-16">
-            <div className="max-w-4xl">
-              <div className="mb-4 inline-block animate-in fade-in slide-in-from-bottom-4 rounded-full border border-foreground/20 bg-foreground/15 px-4 py-1.5 backdrop-blur-md duration-700">
-                <p className="font-mono leading-7 text-xs text-card-foreground font-semibold">Official AppLovin Partner</p>
+          {/* Strategic Partnership Banner */}
+          <section className="w-full border-b border-foreground/10 bg-foreground/8 px-6 py-4 md:px-12 lg:px-16">
+            <div className="max-w-4xl mx-auto flex items-center justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <div className="h-2 w-2 rounded-full bg-red-500" />
+                <div className="flex flex-col gap-0.5">
+                  <p className="font-sans text-sm font-semibold text-foreground md:text-base">Strategic Technology Partnership</p>
+                  <p className="font-mono text-xs text-foreground/60 md:text-sm">Upspring x AppLovin: Official Integration Live Now</p>
+                </div>
               </div>
-              <div className="mb-6 flex items-center gap-3 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-100">
-                <Zap className="h-5 w-5 text-foreground" />
-                <p className="text-base font-medium text-foreground md:text-lg">
-                  First platform to offer official AppLovin integration for full creative analysis
-                </p>
-              </div>
-              <h1 className="mb-6 animate-in fade-in slide-in-from-bottom-8 font-sans text-5xl font-light leading-[1.1] tracking-tight text-foreground duration-1000 md:text-7xl lg:text-8xl">
-                <span className="text-balance font-medium">AppLovin Creative Analytics, Unified</span>
-              </h1>
-              <p className="mb-8 max-w-xl animate-in fade-in slide-in-from-bottom-4 text-lg leading-relaxed text-foreground/90 duration-1000 delay-200 md:text-xl">
-                <span className="text-pretty">
-                  We&apos;re excited to announce our official integration with AppLovin. As a strategic technology partner, we deliver richer analysis and stronger creative intelligence for teams running on AppLovin.
-                </span>
-              </p>
-              <div className="flex animate-in fade-in slide-in-from-bottom-4 flex-col gap-4 duration-1000 delay-300 sm:flex-row sm:items-center">
-                <MagneticButton
-                  size="lg"
-                  variant="primary"
-                  onClick={scrollToDemo}
-                >
-                  Request a Demo
-                </MagneticButton>
-                <MagneticButton
-                  size="lg"
-                  variant="secondary"
-                  onClick={() => window.open("mailto:hello@upspring.ai", "_blank")}
-                >
-                  Contact Sales
-                </MagneticButton>
-              </div>
-              <p className="mt-6 animate-in fade-in slide-in-from-bottom-4 text-sm text-foreground/60 duration-1000 delay-400">
-                Trusted by performance marketers, DTC brands, and agencies worldwide
-              </p>
+              <button
+                onClick={() => scrollToForm()}
+                className="text-foreground/70 hover:text-foreground text-sm font-medium transition-colors whitespace-nowrap"
+              >
+                Learn More <ArrowRight className="inline ml-1 h-4 w-4" />
+              </button>
             </div>
           </section>
 
-          {/* Partner Announcement Banner */}
-          <section className="w-full px-6 py-8 md:px-12 lg:px-16">
-            <div className="mx-auto max-w-5xl rounded-2xl bg-[#4F8EF7]/20 border border-[#4F8EF7]/30 p-6 backdrop-blur-md">
-              <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
-                <div className="flex items-center gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#4F8EF7]/30">
-                    <Sparkles className="h-6 w-6 text-foreground" />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-foreground">Strategic Technology Partnership</p>
-                    <p className="text-sm text-foreground/70">Upspring x AppLovin - Official Integration Live Now</p>
+          {/* Hero Section */}
+          <section className="flex min-h-[70vh] w-full flex-col justify-center px-6 pt-20 pb-16 md:px-12 md:pt-24 md:pb-20 lg:px-16">
+            <div className="max-w-4xl">
+              <div className="mb-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
+                <div className="flex items-center gap-4 md:gap-6">
+                  <h1 className="font-sans text-4xl font-semibold leading-tight text-foreground md:text-5xl lg:text-6xl">
+                    <span className="text-balance">AppLovin Creative Analytics</span>
+                  </h1>
+                  <div className="h-16 w-16 md:h-20 md:w-20 flex-shrink-0">
+                    <Image
+                      src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-ZBSxu0dyGucLPID8YnpczitN4eMYuE.png"
+                      alt="AppLovin"
+                      width={80}
+                      height={80}
+                      className="w-full h-full object-contain"
+                    />
                   </div>
                 </div>
-                <button
-                  onClick={scrollToDemo}
-                  className="flex items-center gap-2 rounded-full bg-foreground/10 px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-foreground/20"
-                >
-                  Learn More
-                  <ChevronRight className="h-4 w-4" />
-                </button>
               </div>
-            </div>
-          </section>
 
-          {/* Partnership Image Section */}
-          <section className="w-full px-6 py-12 md:px-12 lg:px-16">
-            <div className="relative mx-auto max-w-4xl overflow-hidden rounded-3xl border border-foreground/10 shadow-2xl">
-              <Image
-                src="/images/applovin-partnership.png"
-                alt="Upspring x AppLovin Partnership - Official creative analytics integration"
-                width={1200}
-                height={675}
-                className="w-full h-auto"
-                priority
-              />
-            </div>
-          </section>
-
-          {/* Features Grid Section */}
-          <section className="w-full px-6 py-24 md:px-12 lg:px-16">
-            <div className="mb-16 max-w-3xl">
-              <h2 className="mb-6 font-sans text-4xl font-semibold leading-tight text-foreground md:text-5xl">
-                AppLovin Creative Analysis: Creative-Level and Creative-Set Insights
-              </h2>
-              <p className="text-lg text-foreground/80 md:text-xl">
-                Upspring is the first platform to offer official AppLovin integration for full creative analysis. With our AppLovin creative analytics platform, performance teams can analyze performance at both the creative level and creative-set level, making it easier to understand what drives AppLovin campaign success, identify winning patterns, and uncover new creative directions to test.
+              <p className="mb-8 max-w-2xl animate-in fade-in slide-in-from-bottom-4 text-lg leading-relaxed text-foreground/80 duration-1000 delay-200 md:text-xl">
+                Analyze AppLovin creatives at the creative and creative-set level inside your unified Upspring workflow. No new dashboards. No guesswork.
               </p>
-            </div>
 
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {features.map((feature, i) => (
-                <article
-                  key={i}
-                  className="group relative overflow-hidden rounded-2xl border border-foreground/10 bg-foreground/5 p-8 backdrop-blur-sm transition-colors hover:bg-foreground/10"
-                >
-                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-foreground/10 text-foreground">
-                    <feature.icon className="h-6 w-6" />
-                  </div>
-                  <h3 className="mb-2 font-sans text-xl font-medium text-foreground">{feature.title}</h3>
-                  <p className="text-foreground/70">{feature.description}</p>
-                </article>
-              ))}
+              <div className="flex animate-in fade-in slide-in-from-bottom-4 flex-col gap-4 duration-1000 delay-300 sm:flex-row sm:items-center">
+                <MagneticButton size="lg" variant="primary" onClick={scrollToForm}>
+                  Book a Demo
+                </MagneticButton>
+                <MagneticButton size="lg" variant="secondary">
+                  Talk to Sales <ArrowRight className="ml-2 h-4 w-4" />
+                </MagneticButton>
+              </div>
             </div>
           </section>
 
-          {/* How It Works Section */}
-          <section className="w-full px-6 py-24 md:px-12 lg:px-16">
-            <div className="mx-auto max-w-4xl">
-              <div className="mb-12 text-center">
-                <h2 className="mb-4 font-sans text-4xl font-semibold text-foreground md:text-5xl">
-                  How to Get Started with AppLovin Integration
+          {/* Trusted By Section from Homepage */}
+          <section className="w-full px-6 py-16 md:px-12 md:py-20 lg:px-16 border-t border-foreground/10">
+            <div className="max-w-7xl mx-auto">
+              <div className="mb-12 md:mb-16">
+                <h2 className="mb-2 font-sans text-4xl font-semibold tracking-tight text-foreground md:text-5xl">
+                  Trusted By
                 </h2>
-                <p className="text-lg text-foreground/70">
-                  Connect your AppLovin account and start analyzing creative performance in minutes
-                </p>
+                <p className="font-mono text-sm text-foreground/60 md:text-base">/ Industry Leaders</p>
               </div>
-              
-              <div className="relative">
-                {/* Vertical Line */}
-                <div className="absolute left-6 top-0 hidden h-full w-0.5 bg-foreground/20 md:block" />
-                
-                <div className="space-y-8">
-                  {[
-                    {
-                      step: 1,
-                      title: "Navigate to Data Sources",
-                      description: "Go to Settings, select your Space, then Data Sources in your Upspring dashboard",
-                    },
-                    {
-                      step: 2,
-                      title: "Connect AppLovin (Axon)",
-                      description: "Select the Axon (AppLovin) integration and authorize the connection with your AppLovin account",
-                    },
-                    {
-                      step: 3,
-                      title: "Begin Creative Analysis",
-                      description: "Start analyzing your AppLovin creatives with full creative-level and creative-set analytics",
-                    },
-                  ].map((item) => (
-                    <div key={item.step} className="flex gap-6">
-                      <div className="relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-foreground/10 border-2 border-foreground/20 font-mono text-lg font-bold text-foreground backdrop-blur-sm">
-                        {item.step}
+
+              <div className="mb-12 md:mb-16">
+                <LogoCarousel />
+              </div>
+
+              <div className="grid gap-6 md:gap-8 md:grid-cols-2">
+                {testimonials.map((testimonial, index) => (
+                  <div key={index} className="rounded-2xl border border-foreground/10 bg-foreground/5 p-6 backdrop-blur-sm md:p-8">
+                    <div className="flex items-start gap-4 mb-6">
+                      <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-full border border-foreground/20 bg-foreground/10">
+                        <Image
+                          src={testimonial.image || "/placeholder.svg"}
+                          alt={testimonial.name}
+                          fill
+                          className="object-cover"
+                        />
                       </div>
-                      <div className="rounded-2xl border border-foreground/10 bg-foreground/5 p-6 backdrop-blur-sm flex-1">
-                        <h3 className="mb-2 font-sans text-xl font-medium text-foreground">{item.title}</h3>
-                        <p className="text-foreground/70">{item.description}</p>
+                      <div>
+                        <div className="font-sans text-sm font-medium text-foreground">{testimonial.name}</div>
+                        <div className="font-mono text-xs text-foreground/60">{testimonial.title}</div>
                       </div>
                     </div>
-                  ))}
-                </div>
+                    <blockquote className="font-sans text-base leading-relaxed text-foreground/80 italic">
+                      "{testimonial.quote}"
+                    </blockquote>
+                  </div>
+                ))}
               </div>
             </div>
           </section>
 
-          {/* Ad Credits Callout Section */}
-          <section className="w-full px-6 py-12 md:px-12 lg:px-16">
-            <div className="mx-auto max-w-4xl">
-              <div className="rounded-3xl border-2 border-[#4F8EF7]/30 bg-[#4F8EF7]/10 p-8 text-center backdrop-blur-md md:p-12">
-                <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-[#4F8EF7]/20">
-                  <Zap className="h-8 w-8 text-foreground" />
-                </div>
-                <h3 className="mb-4 font-sans text-2xl font-semibold text-foreground md:text-3xl">
-                  AppLovin Ad Credits Available
-                </h3>
-                <p className="mx-auto mb-8 max-w-2xl text-foreground/80">
-                  As part of our strategic partnership, eligible Upspring clients may have access to AppLovin ad credits. This exclusive benefit helps you maximize your creative testing and scale your winning ads.
-                </p>
-                <MagneticButton
-                  size="lg"
-                  variant="primary"
-                  onClick={scrollToDemo}
-                >
-                  Check Eligibility
-                </MagneticButton>
+          {/* Features Section */}
+          <section className="w-full px-6 py-16 md:px-12 md:py-20 lg:px-16 border-t border-foreground/10">
+            <div className="max-w-7xl mx-auto">
+              <div className="mb-12 md:mb-16">
+                <h2 className="mb-2 font-sans text-4xl font-semibold tracking-tight text-foreground md:text-5xl">
+                  What You Get
+                </h2>
+                <p className="font-mono text-sm text-foreground/60 md:text-base">/ Core Features</p>
+              </div>
+
+              <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                {features.map((feature, index) => {
+                  const Icon = feature.icon
+                  return (
+                    <div key={index} className="flex flex-col gap-3">
+                      <Icon className="h-6 w-6 text-foreground" />
+                      <h3 className="font-sans text-lg font-medium text-foreground">{feature.title}</h3>
+                      <p className="text-sm text-foreground/70">{feature.description}</p>
+                    </div>
+                  )
+                })}
               </div>
             </div>
           </section>
 
-          {/* Testimonials Section */}
-          <section className="w-full px-6 py-24 md:px-12 lg:px-16">
-            <div className="mb-12 text-center">
-              <h2 className="mb-4 font-sans text-4xl font-semibold text-foreground md:text-5xl">
-                Trusted by Performance Teams
+          {/* AppLovin Ad Credits Section */}
+          <section className="w-full px-6 py-16 md:px-12 md:py-20 lg:px-16 border-t border-foreground/10">
+            <div className="max-w-4xl mx-auto bg-gradient-to-r from-red-500/10 to-red-500/5 border border-red-500/20 rounded-2xl p-8 md:p-12 text-center">
+              <h2 className="mb-4 font-sans text-2xl font-semibold text-foreground md:text-3xl">
+                Exclusive AppLovin Ad Credits
               </h2>
-              <p className="text-lg text-foreground/70">
-                See what teams are saying about Upspring&apos;s creative intelligence
+              <p className="mb-8 text-lg text-foreground/80">
+                Eligible teams unlock exclusive AppLovin ad credits as part of our strategic partnership.
               </p>
-            </div>
-
-            <div className="grid gap-6 md:grid-cols-3">
-              {testimonials.map((testimonial, i) => (
-                <article
-                  key={i}
-                  className="rounded-2xl border border-foreground/10 bg-foreground/5 p-8 backdrop-blur-sm"
-                >
-                  <div className="mb-4 flex gap-1">
-                    {Array.from({ length: testimonial.rating }).map((_, j) => (
-                      <Star key={j} className="h-5 w-5 fill-foreground text-foreground" />
-                    ))}
-                  </div>
-                  <blockquote className="mb-6 text-foreground/90">
-                    &ldquo;{testimonial.quote}&rdquo;
-                  </blockquote>
-                  <div>
-                    <p className="font-medium text-foreground">{testimonial.author}</p>
-                    <p className="text-sm text-foreground/60">
-                      {testimonial.role}, {testimonial.company}
-                    </p>
-                  </div>
-                </article>
-              ))}
+              <button
+                onClick={scrollToForm}
+                className="inline-flex items-center gap-2 font-sans font-medium text-foreground hover:text-foreground/80 transition-colors"
+              >
+                Check Eligibility <ArrowRight className="h-4 w-4" />
+              </button>
             </div>
           </section>
 
           {/* FAQ Section */}
-          <section className="w-full px-6 py-24 md:px-12 lg:px-16">
-            <div className="mx-auto max-w-3xl">
-              <div className="mb-12 text-center">
-                <h2 className="mb-4 font-sans text-4xl font-semibold text-foreground md:text-5xl">
-                  Frequently Asked Questions
+          <section className="w-full px-6 py-16 md:px-12 md:py-20 lg:px-16 border-t border-foreground/10">
+            <div className="max-w-4xl mx-auto">
+              <div className="mb-12">
+                <h2 className="mb-2 font-sans text-4xl font-semibold tracking-tight text-foreground md:text-5xl">
+                  FAQ
                 </h2>
-                <p className="text-lg text-foreground/70">
-                  Everything you need to know about the AppLovin integration
-                </p>
+                <p className="font-mono text-sm text-foreground/60">/ Common Questions</p>
               </div>
 
-              <Accordion type="single" collapsible className="w-full">
-                {faqs.map((faq, i) => (
-                  <AccordionItem
-                    key={i}
-                    value={`item-${i}`}
-                    className="border-foreground/10"
-                  >
-                    <AccordionTrigger className="text-left text-lg font-medium text-foreground hover:no-underline">
-                      {faq.question}
-                    </AccordionTrigger>
-                    <AccordionContent className="text-foreground/70">
-                      {faq.answer}
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
-            </div>
-          </section>
-
-          {/* Demo Request Form Section */}
-          <section id="demo-form" className="w-full px-6 py-24 md:px-12 lg:px-16">
-            <div className="mx-auto max-w-2xl">
-              <div className="rounded-3xl border border-foreground/10 bg-foreground/5 p-8 backdrop-blur-md md:p-12">
-                <div className="mb-8 text-center">
-                  <h2 className="mb-4 font-sans text-3xl font-semibold text-foreground md:text-4xl">
-                    Request a Demo
-                  </h2>
-                  <p className="text-foreground/70">
-                    See how Upspring&apos;s AppLovin integration can transform your creative analysis
-                  </p>
-                </div>
-
-                {submitSuccess ? (
-                  <div className="rounded-2xl bg-green-500/10 border border-green-500/20 p-8 text-center">
-                    <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-green-500/20">
-                      <Check className="h-6 w-6 text-green-400" />
-                    </div>
-                    <h3 className="mb-2 text-xl font-medium text-foreground">Thank you!</h3>
-                    <p className="text-foreground/70">
-                      We&apos;ll be in touch shortly to schedule your demo.
-                    </p>
+              <div className="space-y-4">
+                {faqs.map((faq, index) => (
+                  <div key={index} className="border border-foreground/10 rounded-lg overflow-hidden">
+                    <details className="group cursor-pointer">
+                      <summary className="flex items-center justify-between px-6 py-4 bg-foreground/5 hover:bg-foreground/10 transition-colors">
+                        <h3 className="font-sans font-medium text-foreground">{faq.question}</h3>
+                        <span className="text-foreground/60 group-open:rotate-180 transition-transform">
+                          <ArrowRight className="h-5 w-5 -rotate-90" />
+                        </span>
+                      </summary>
+                      <div className="px-6 py-4 border-t border-foreground/10">
+                        <p className="text-foreground/70">{faq.answer}</p>
+                      </div>
+                    </details>
                   </div>
-                ) : (
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid gap-6 md:grid-cols-2">
-                      <div>
-                        <label htmlFor="name" className="mb-2 block text-sm font-medium text-foreground">
-                          Name *
-                        </label>
-                        <input
-                          type="text"
-                          id="name"
-                          required
-                          value={formData.name}
-                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                          className="w-full rounded-xl border border-foreground/20 bg-foreground/5 px-4 py-3 text-foreground placeholder:text-foreground/40 focus:border-foreground/40 focus:outline-none focus:ring-2 focus:ring-foreground/10"
-                          placeholder="Your name"
-                        />
-                      </div>
-                      <div>
-                        <label htmlFor="email" className="mb-2 block text-sm font-medium text-foreground">
-                          Email *
-                        </label>
-                        <input
-                          type="email"
-                          id="email"
-                          required
-                          value={formData.email}
-                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                          className="w-full rounded-xl border border-foreground/20 bg-foreground/5 px-4 py-3 text-foreground placeholder:text-foreground/40 focus:border-foreground/40 focus:outline-none focus:ring-2 focus:ring-foreground/10"
-                          placeholder="you@company.com"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="grid gap-6 md:grid-cols-2">
-                      <div>
-                        <label htmlFor="businessType" className="mb-2 block text-sm font-medium text-foreground">
-                          Business Type
-                        </label>
-                        <select
-                          id="businessType"
-                          value={formData.businessType}
-                          onChange={(e) => setFormData({ ...formData, businessType: e.target.value })}
-                          className="w-full rounded-xl border border-foreground/20 bg-foreground/5 px-4 py-3 text-foreground focus:border-foreground/40 focus:outline-none focus:ring-2 focus:ring-foreground/10"
-                        >
-                          <option value="">Select type</option>
-                          <option value="dtc-brand">DTC Brand</option>
-                          <option value="agency">Agency</option>
-                          <option value="mobile-gaming">Mobile Gaming</option>
-                          <option value="app-developer">App Developer</option>
-                          <option value="other">Other</option>
-                        </select>
-                      </div>
-                      <div>
-                        <label htmlFor="monthlySpend" className="mb-2 block text-sm font-medium text-foreground">
-                          Monthly Ad Spend
-                        </label>
-                        <select
-                          id="monthlySpend"
-                          value={formData.monthlySpend}
-                          onChange={(e) => setFormData({ ...formData, monthlySpend: e.target.value })}
-                          className="w-full rounded-xl border border-foreground/20 bg-foreground/5 px-4 py-3 text-foreground focus:border-foreground/40 focus:outline-none focus:ring-2 focus:ring-foreground/10"
-                        >
-                          <option value="">Select range</option>
-                          <option value="under-10k">Under $10k</option>
-                          <option value="10k-50k">$10k - $50k</option>
-                          <option value="50k-100k">$50k - $100k</option>
-                          <option value="100k-500k">$100k - $500k</option>
-                          <option value="500k-plus">$500k+</option>
-                        </select>
-                      </div>
-                    </div>
-
-                    <div>
-                      <label htmlFor="website" className="mb-2 block text-sm font-medium text-foreground">
-                        Website
-                      </label>
-                      <input
-                        type="url"
-                        id="website"
-                        value={formData.website}
-                        onChange={(e) => setFormData({ ...formData, website: e.target.value })}
-                        className="w-full rounded-xl border border-foreground/20 bg-foreground/5 px-4 py-3 text-foreground placeholder:text-foreground/40 focus:border-foreground/40 focus:outline-none focus:ring-2 focus:ring-foreground/10"
-                        placeholder="https://yourcompany.com"
-                      />
-                    </div>
-
-                    <div>
-                      <label htmlFor="message" className="mb-2 block text-sm font-medium text-foreground">
-                        Message
-                      </label>
-                      <textarea
-                        id="message"
-                        rows={4}
-                        value={formData.message}
-                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                        className="w-full rounded-xl border border-foreground/20 bg-foreground/5 px-4 py-3 text-foreground placeholder:text-foreground/40 focus:border-foreground/40 focus:outline-none focus:ring-2 focus:ring-foreground/10 resize-none"
-                        placeholder="Tell us about your creative analysis needs..."
-                      />
-                    </div>
-
-                    <MagneticButton
-                      size="lg"
-                      variant="primary"
-                      className="w-full"
-                      type="submit"
-                      disabled={isSubmitting}
-                    >
-                      {isSubmitting ? "Submitting..." : "Request Demo"}
-                    </MagneticButton>
-                  </form>
-                )}
+                ))}
               </div>
             </div>
           </section>
 
-          {/* Final CTA Section */}
-          <section className="w-full px-6 py-24 md:px-12 lg:px-16">
-            <div className="rounded-3xl border border-foreground/10 bg-foreground/5 p-12 text-center backdrop-blur-md md:p-24">
-              <h2 className="mb-6 font-sans text-4xl font-semibold leading-tight text-foreground md:text-6xl">
-                The teams winning aren&apos;t louder.
-                <br />
-                They&apos;re sharper.
+          {/* CTA Section */}
+          <section className="w-full px-6 py-16 md:px-12 md:py-20 lg:px-16 border-t border-foreground/10">
+            <div className="max-w-4xl mx-auto text-center">
+              <h2 className="mb-6 font-sans text-4xl font-semibold text-foreground md:text-5xl">
+                Ready to Analyze AppLovin Creatively
               </h2>
-              <p className="mx-auto mb-10 max-w-2xl text-lg text-foreground/80 md:text-xl">
-                Early access teams are already analyzing their AppLovin creatives with Upspring. Join them and see what smarter creative intelligence looks like in practice.
+              <p className="mb-8 text-lg text-foreground/80 md:text-xl">
+                Join early access teams using Upspring to optimize their AppLovin performance today.
               </p>
-              <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-                <MagneticButton
-                  size="lg"
-                  variant="primary"
-                  onClick={scrollToDemo}
-                >
-                  Get Started with AppLovin
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <MagneticButton size="lg" variant="primary" onClick={scrollToForm}>
+                  Request Demo
                 </MagneticButton>
-                <MagneticButton
-                  size="lg"
-                  variant="secondary"
-                  onClick={() => window.open("mailto:hello@upspring.ai", "_blank")}
-                >
-                  Talk to Sales
+                <MagneticButton size="lg" variant="secondary">
+                  Learn More
                 </MagneticButton>
               </div>
             </div>
           </section>
 
-          <Footer />
+          <Footer id="demo-form" />
         </div>
       </main>
     </>
