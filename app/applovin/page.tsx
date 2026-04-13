@@ -271,7 +271,7 @@ export default function ApplovinPage() {
                 <div className="mb-6 animate-in fade-in slide-in-from-bottom-8 duration-1000">
                   <h1 className="font-sans text-4xl font-semibold leading-[1.1] tracking-tight text-foreground md:text-5xl lg:text-6xl">
                     <span className="block mb-2">Creative intelligence</span>
-                    <span className="flex items-center gap-4">
+                    <span className="flex items-center gap-4 mb-2">
                       <span>for</span>
                       <Image
                         src="/images/applovin-logo.svg"
@@ -281,8 +281,8 @@ export default function ApplovinPage() {
                         className="h-14 w-auto object-contain brightness-0 invert md:h-16 lg:h-20"
                         style={{ filter: "brightness(0) invert(1)" }}
                       />
-                      <span>Ads</span>
                     </span>
+                    <span className="block">Ads</span>
                   </h1>
                 </div>
 
