@@ -244,78 +244,130 @@ export default function ApplovinPage() {
         >
           {/* Hero Section */}
           <section className="flex min-h-[90vh] w-full flex-col justify-center px-6 pt-32 md:px-12 lg:px-16">
-            <div className="max-w-5xl">
-
-              {/* Strategic Partnership Banner - replaces "Official AppLovin Partner" badge */}
-              <div className="mb-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
-                <div className="inline-flex items-center gap-4 rounded-2xl bg-[#4F8EF7]/20 border border-[#4F8EF7]/30 px-5 py-3 backdrop-blur-md">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#4F8EF7]/30">
-                    <Sparkles className="h-4 w-4 text-foreground" />
+            <div className="mx-auto w-full max-w-[1400px] flex flex-col lg:flex-row gap-12 lg:gap-16 items-center">
+              {/* Left side - Messaging */}
+              <div className="flex-1 max-w-2xl">
+                {/* Strategic Partnership Banner */}
+                <div className="mb-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
+                  <div className="inline-flex items-center gap-4 rounded-2xl bg-[#4F8EF7]/20 border border-[#4F8EF7]/30 px-5 py-3 backdrop-blur-md">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#4F8EF7]/30">
+                      <Sparkles className="h-4 w-4 text-foreground" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold text-foreground leading-tight">Official Strategic Technology Partnership</p>
+                      <p className="text-xs text-foreground/70">Upspring x AppLovin - Official Integration Live Now</p>
+                    </div>
+                    <button
+                      onClick={scrollToFooter}
+                      className="ml-2 flex items-center gap-1 rounded-full bg-foreground/10 px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-foreground/20"
+                    >
+                      Learn More
+                      <ChevronRight className="h-3 w-3" />
+                    </button>
                   </div>
-                  <div>
-                    <p className="text-sm font-semibold text-foreground leading-tight">Official Strategic Technology Partnership</p>
-                    <p className="text-xs text-foreground/70">Upspring x AppLovin - Official Integration Live Now</p>
-                  </div>
-                  <button
-                    onClick={scrollToFooter}
-                    className="ml-2 flex items-center gap-1 rounded-full bg-foreground/10 px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-foreground/20"
-                  >
-                    Learn More
-                    <ChevronRight className="h-3 w-3" />
-                  </button>
                 </div>
-              </div>
 
-              {/* First platform line */}
-              <div className="mb-6 flex items-center gap-3 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-100">
-                <Zap className="h-4 w-4 text-foreground/70" />
-                <p className="text-sm font-medium text-foreground/80 md:text-base">
-                  First platform to offer official AppLovin integration for full creative analysis
-                </p>
-              </div>
+                {/* First platform line */}
+                <div className="mb-6 flex items-center gap-3 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-100">
+                  <Zap className="h-4 w-4 text-foreground/70" />
+                  <p className="text-sm font-medium text-foreground/80 md:text-base">
+                    First platform to offer official AppLovin integration for full creative analysis
+                  </p>
+                </div>
 
-              {/* H1 with AppLovin logo inline */}
-              <div className="mb-6 animate-in fade-in slide-in-from-bottom-8 duration-1000">
-                <h1 className="font-sans text-4xl font-semibold leading-[1.1] tracking-tight text-foreground md:text-5xl lg:text-6xl">
-                  <span className="text-balance">Creative Analytics for</span>
-                  <span className="mt-3 flex flex-wrap items-center gap-4">
+                {/* H1 with AppLovin logo on its own line */}
+                <div className="mb-6 animate-in fade-in slide-in-from-bottom-8 duration-1000">
+                  <h1 className="font-sans text-4xl font-semibold leading-[1.1] tracking-tight text-foreground md:text-5xl lg:text-6xl">
+                    <span className="text-balance block mb-4">Creative Analytics for</span>
                     <Image
                       src="/images/applovin-logo.svg"
                       alt="AppLovin"
-                      width={220}
-                      height={40}
-                      className="h-10 w-auto object-contain brightness-0 invert md:h-12"
+                      width={320}
+                      height={60}
+                      className="h-14 w-auto object-contain brightness-0 invert md:h-16 lg:h-20 mb-4"
                       style={{ filter: "brightness(0) invert(1)" }}
                     />
-                    <span className="font-light text-foreground/80">teams</span>
-                  </span>
-                </h1>
+                    <span className="block font-light text-foreground/80">teams</span>
+                  </h1>
+                </div>
+
+                <p className="mb-8 max-w-lg animate-in fade-in slide-in-from-bottom-4 text-base leading-relaxed text-foreground/80 duration-1000 delay-200 md:text-lg">
+                  As an official AppLovin technology partner, we deliver richer analysis and stronger creative intelligence for teams running on AppLovin.
+                </p>
+
+                <div className="flex animate-in fade-in slide-in-from-bottom-4 flex-col gap-4 duration-1000 delay-300 sm:flex-row sm:items-center">
+                  <MagneticButton
+                    size="lg"
+                    variant="primary"
+                    onClick={scrollToFooter}
+                  >
+                    Request a Demo
+                  </MagneticButton>
+                  <MagneticButton
+                    size="lg"
+                    variant="secondary"
+                    onClick={() => window.open("mailto:hello@upspring.ai", "_blank")}
+                  >
+                    Contact Sales
+                  </MagneticButton>
+                </div>
+
+                <p className="mt-6 animate-in fade-in slide-in-from-bottom-4 text-sm text-foreground/50 duration-1000 delay-400">
+                  Trusted by performance marketers, DTC brands, and agencies worldwide
+                </p>
               </div>
 
-              <p className="mb-8 max-w-lg animate-in fade-in slide-in-from-bottom-4 text-base leading-relaxed text-foreground/80 duration-1000 delay-200 md:text-lg">
-                As an official AppLovin technology partner, we deliver richer analysis and stronger creative intelligence for teams running on AppLovin.
-              </p>
+              {/* Right side - AI Analysis Card */}
+              <div className="w-full max-w-md flex-shrink-0 animate-in fade-in slide-in-from-right-8 duration-1000 delay-300 hidden lg:block">
+                <div className="relative rounded-2xl border border-foreground/20 backdrop-blur-xl overflow-hidden p-6">
+                  <div className="flex items-center gap-2 mb-4">
+                    <Sparkles className="h-6 w-6 text-blue-400" />
+                    <span className="text-sm font-medium text-foreground/70">AI Analysis</span>
+                  </div>
 
-              <div className="flex animate-in fade-in slide-in-from-bottom-4 flex-col gap-4 duration-1000 delay-300 sm:flex-row sm:items-center">
-                <MagneticButton
-                  size="lg"
-                  variant="primary"
-                  onClick={scrollToFooter}
-                >
-                  Request a Demo
-                </MagneticButton>
-                <MagneticButton
-                  size="lg"
-                  variant="secondary"
-                  onClick={() => window.open("mailto:hello@upspring.ai", "_blank")}
-                >
-                  Contact Sales
-                </MagneticButton>
+                  {/* Video Ad */}
+                  <div className="rounded-xl overflow-hidden mb-6">
+                    <video
+                      src="https://storage.googleapis.com/spring-assets/videos/0f7843ab-412c-47f8-9aac-887c5f3fe357_AQNyJSQ-2QZ007n8ue4TrpAoc3ei-Vkpt4_ge6OzF9LScOdwtGj5ewbETTRB1_oqGTgaFUEHG5xAUkpE_QUbq-FRP_19VnpqNjApKzKxYg.mp4"
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      className="w-full aspect-[9/16] max-h-[280px] object-cover"
+                    />
+                  </div>
+
+                  {/* AI Insights */}
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-3 mb-4 flex-wrap">
+                      <div className="flex items-center gap-2">
+                        <div className="h-2 w-2 rounded-full bg-green-400" />
+                        <span className="text-sm text-foreground/70">Score: 9.2/10</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className="h-2 w-2 rounded-full bg-blue-400" />
+                        <span className="text-sm text-foreground/70">Hook: Strong</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className="h-2 w-2 rounded-full bg-purple-400" />
+                        <span className="text-sm text-foreground/70">CTA: Excellent</span>
+                      </div>
+                    </div>
+                    <div className="rounded-lg bg-foreground/5 border border-foreground/10 p-3">
+                      <p className="text-xs text-foreground/50 mb-1">Why It Works</p>
+                      <p className="text-sm text-foreground">
+                        Dynamic montage with thematic overlays creates urgency. Aspirational lifestyle positioning paired with clear holiday gifting narrative drives action.
+                      </p>
+                    </div>
+                    <div className="rounded-lg bg-foreground/5 border border-foreground/10 p-3">
+                      <p className="text-xs text-foreground/50 mb-1">Recommendation</p>
+                      <p className="text-sm text-foreground">
+                        Test similar hook with Q1 product line. Consider A/B testing shorter 6s version for Stories.
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
-
-              <p className="mt-6 animate-in fade-in slide-in-from-bottom-4 text-sm text-foreground/50 duration-1000 delay-400">
-                Trusted by performance marketers, DTC brands, and agencies worldwide
-              </p>
             </div>
           </section>
 
