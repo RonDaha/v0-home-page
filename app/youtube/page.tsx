@@ -63,37 +63,37 @@ const features = [
     icon: Film,
     title: "Creative-Level Video Analysis",
     description:
-      "Go beyond views and clicks. Understand which specific videos, edits, and creative choices are driving results  - and which ones are silently killing performance.",
+      "Analyze individual video performance, edits, and creative decisions. Understand which specific videos and assets are driving watch time and conversions.",
   },
   {
     icon: ImageIcon,
-    title: "Hook & Thumbnail Intelligence",
+    title: "Hook and Thumbnail Intelligence",
     description:
-      "Analyze which hooks, opening frames, and thumbnails consistently capture attention and drive watch time across your YouTube campaigns.",
+      "Identify which opening frames, hooks, and thumbnails consistently capture attention and drive YouTube performance across your campaigns.",
   },
   {
     icon: Package,
     title: "Creative-Set Pattern Detection",
     description:
-      "Identify winning and losing patterns across intros, video lengths, CTAs, and formats  - so you know exactly what to scale and what to cut.",
+      "Spot winning patterns across intros, video lengths, CTAs, and formats. Know exactly what to scale, test, and cut from your YouTube strategy.",
   },
   {
     icon: Copy,
     title: "Unified Cross-Channel Workflow",
     description:
-      "Analyze YouTube alongside Meta, TikTok, AppLovin, and Shopify  - inside the single Upspring workflow your team already uses daily. No exports, no extra dashboards.",
+      "Analyze YouTube alongside Meta, TikTok, AppLovin, and Shopify inside your single Upspring workflow. No exports, no extra dashboards, no context switching.",
   },
   {
     icon: Target,
     title: "Signal-to-Brief Engine",
     description:
-      "Transform YouTube performance signals into sharper creative briefs, faster iteration cycles, and clear double-down vs. kill decisions for your team.",
+      "Transform YouTube performance signals into sharper creative briefs, clearer decisions, and faster iteration cycles for your creative team.",
   },
   {
     icon: Zap,
     title: "Instant Integration",
     description:
-      "Already live. Connect your Google Ads account in seconds via Settings → Data Connections and your YouTube creatives appear immediately.",
+      "Already live. Connect your Google Ads account in seconds via Settings, Data Connections and your YouTube creatives appear immediately.",
   },
 ]
 
@@ -248,12 +248,12 @@ export default function YouTubePage() {
             </div>
 
             <h1 className="mb-6 animate-in fade-in slide-in-from-bottom-8 font-sans text-5xl font-light leading-[1.1] tracking-tight text-foreground duration-1000 md:text-7xl lg:text-8xl">
-              <span className="text-balance font-medium">YouTube Ads Creative Analytics  - Powered by Upspring</span>
+              <span className="text-balance font-medium">YouTube Ads Creative Analytics for Performance Teams</span>
             </h1>
 
             <p className="mb-8 max-w-xl animate-in fade-in slide-in-from-bottom-4 text-lg leading-relaxed text-foreground/90 duration-1000 delay-200 md:text-xl">
               <span className="text-pretty">
-                Analyze your YouTube video creatives  - hooks, thumbnails, intros, CTAs, and formats  - inside the same Upspring workflow you already use. No new dashboards. No guesswork. Just clarity on what&apos;s actually working and why.
+                Analyze your YouTube video creatives (hooks, thumbnails, intros, CTAs, and formats) inside your existing Upspring workflow. No new dashboards. No guesswork. Just clarity on what is actually working and why.
               </span>
             </p>
 
@@ -267,7 +267,7 @@ export default function YouTubePage() {
             </div>
 
             <p className="mt-8 animate-in fade-in slide-in-from-bottom-4 max-w-2xl text-sm text-foreground/70 duration-1000 delay-400 md:text-base">
-              Already live  - early access teams are running YouTube campaigns through Upspring today
+              YouTube integration is live. Early access teams are already analyzing YouTube creatives today.
             </p>
           </div>
         </section>
@@ -276,10 +276,10 @@ export default function YouTubePage() {
         <section className="w-full border-l-4 border-red-500 bg-foreground/5 px-6 py-12 md:px-12 lg:px-16">
           <div className="max-w-4xl">
             <h2 className="mb-4 font-sans text-3xl font-semibold text-foreground md:text-4xl">
-              YouTube Ads Integration Is Now Live
+              YouTube Ads Creative Analytics, Now Live
             </h2>
             <p className="mb-6 text-lg text-foreground/80 md:text-xl">
-              Connect your Google Ads account and your YouTube creatives automatically appear alongside Meta, TikTok, AppLovin, and more  - enriched with the same AI analysis and creative workflows.
+              Connect your Google Ads account and your YouTube video creatives automatically appear alongside Meta, TikTok, AppLovin, and more. All analyzed with the same creative intelligence inside a unified Upspring workflow.
             </p>
             <Link href="#demo-form">
               <MagneticButton variant="secondary">
@@ -294,7 +294,7 @@ export default function YouTubePage() {
           <div className="mb-16 max-w-3xl">
             <p className="mb-4 font-mono text-xs font-semibold uppercase tracking-widest text-foreground/60">What You Can Do Now</p>
             <h2 className="mb-6 font-sans text-4xl font-semibold leading-tight text-foreground md:text-5xl">
-              Finally Understand What&apos;s Driving Performance on YouTube
+              YouTube Ad Creative Testing and Performance Intelligence
             </h2>
           </div>
 
@@ -369,21 +369,21 @@ export default function YouTubePage() {
         <section className="w-full px-6 py-24 md:px-12 lg:px-16">
           <div className="max-w-4xl">
             <h2 className="mb-12 font-sans text-4xl font-semibold text-foreground md:text-5xl">
-              Remove the Blind Spots. Ship Better Creative Every Week.
+              Remove Blind Spots. Ship Better Creative Every Week.
             </h2>
 
             <div className="grid gap-12 md:grid-cols-2">
               <p className="text-lg leading-relaxed text-foreground/80 md:text-xl">
-                Early access teams are already running their YouTube campaigns through Upspring and using these insights to tighten hooks, refresh winning concepts, and ship better tests every week. For the first time, you can see video performance at both the creative and creative-set level in one place  - so you actually understand which edits, hooks, and thumbnails are moving the needle.
+                Early access teams are analyzing their YouTube campaigns through Upspring and using these insights to tighten hooks, refresh winning concepts, and ship better tests every week. For the first time, see video performance at both the creative and creative-set level in one place so you understand which edits, hooks, and thumbnails are actually moving the needle on your YouTube campaigns.
               </p>
 
               <div className="space-y-4">
                 {[
-                  "No new dashboards or complex exports",
+                  "No new dashboards or complex exports required",
                   "Understand what works at the creative element level",
-                  "Spot patterns across intros, lengths, CTAs, and formats",
-                  "Turn data into clear 'scale vs. kill' decisions",
-                  "Works inside your existing Upspring workflow",
+                  "Spot patterns across intros, video lengths, CTAs, and formats",
+                  "Turn data into clear scale versus kill decisions",
+                  "Works inside your existing unified Upspring workflow",
                 ].map((item, i) => (
                   <div key={i} className="flex gap-3 items-start">
                     <Check className="h-6 w-6 text-foreground flex-shrink-0 mt-0.5" />
@@ -399,7 +399,7 @@ export default function YouTubePage() {
         <section className="w-full px-6 py-24 md:px-12 lg:px-16">
           <div className="max-w-4xl">
             <h2 className="mb-12 font-sans text-4xl font-semibold text-foreground md:text-5xl">
-              Frequently Asked Questions About YouTube Ads on Upspring
+              Frequently Asked Questions
             </h2>
 
             <Accordion type="single" collapsible className="w-full space-y-4">
@@ -425,12 +425,12 @@ export default function YouTubePage() {
         <section className="w-full px-6 py-24 md:px-12 lg:px-16">
           <div className="rounded-3xl border border-foreground/10 bg-foreground/5 p-12 text-center backdrop-blur-md md:p-24">
             <h2 className="mb-6 font-sans text-4xl font-semibold leading-tight text-foreground md:text-6xl">
-              The Teams Winning on YouTube Aren&apos;t Guessing.
+              The Teams Winning on YouTube Understand Their Creative Performance.
               <br />
-              They&apos;re Analyzing.
+              Now You Can Too.
             </h2>
             <p className="mx-auto mb-10 max-w-2xl text-lg text-foreground/80 md:text-xl">
-              Early access teams are already analyzing their YouTube creatives with Upspring. See what smarter video creative intelligence looks like  - without adding a single new dashboard.
+              Early access teams are already analyzing their YouTube creatives with Upspring. See what smarter YouTube ad creative intelligence looks like inside a unified platform, without adding single new tool or dashboard.
             </p>
             <div className="flex flex-col gap-4 justify-center sm:flex-row sm:items-center">
               <MagneticButton size="lg" variant="primary">
