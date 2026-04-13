@@ -6,7 +6,7 @@ import { Footer } from "@/components/footer"
 import { Header } from "@/components/header"
 import { MagneticButton } from "@/components/magnetic-button"
 import { useRef, useEffect, useState } from "react"
-import { Check, Zap, BarChart3, Layers, ArrowRight, Shield, TrendingUp, Sparkles, ChevronRight } from "lucide-react"
+import { Check, Zap, BarChart3, Layers, ArrowRight, Shield, TrendingUp, Sparkles, ChevronRight, Star } from "lucide-react"
 import Image from "next/image"
 import Head from "next/head"
 import {
@@ -420,6 +420,69 @@ export default function ApplovinPage() {
                 >
                   Check Eligibility
                 </MagneticButton>
+              </div>
+            </div>
+          </section>
+
+          {/* Trusted by Performance Teams */}
+          <section className="relative w-full px-6 py-24 md:px-12 lg:px-16">
+            <div className="absolute inset-0 bg-gradient-to-r from-[#71b6ee] to-[#ee6464] opacity-10" />
+            <div className="relative z-10 mx-auto max-w-5xl">
+              <div className="mb-16 text-center">
+                <h2 className="mb-4 font-sans text-4xl font-semibold text-foreground md:text-5xl">
+                  Trusted by Performance Teams
+                </h2>
+                <p className="text-lg text-foreground/70">
+                  See what teams are saying about Upspring&apos;s creative intelligence
+                </p>
+              </div>
+
+              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+                {[
+                  {
+                    name: "Ives Rocher",
+                    company: "Ron Rotter",
+                    quote: "Upspring's AppLovin integration has completely transformed how we analyze creative performance. We're making decisions in hours, not days.",
+                  },
+                  {
+                    name: "FansLegacy",
+                    company: "Tomar Arzoan",
+                    quote: "The creative-set analysis is a game changer. We can finally see patterns across our entire AppLovin portfolio.",
+                  },
+                  {
+                    name: "Rotem Avizohar",
+                    company: "Interaction",
+                    quote: "Being able to analyze AppLovin alongside our other channels in one place has been incredibly valuable for our team.",
+                  },
+                  {
+                    name: "Roni Trocky Polonio",
+                    company: "",
+                    quote: "Upspring gives us the clarity we needed to scale our winning AppLovin creatives with confidence.",
+                  },
+                ].map((item, i) => (
+                  <div
+                    key={i}
+                    className="flex flex-col gap-4 rounded-2xl border border-foreground/10 bg-foreground/5 p-6 backdrop-blur-md transition-all hover:border-foreground/20 hover:bg-foreground/10"
+                  >
+                    <div className="flex gap-1">
+                      {[...Array(5)].map((_, j) => (
+                        <Star
+                          key={j}
+                          className="h-4 w-4 fill-foreground text-foreground"
+                        />
+                      ))}
+                    </div>
+                    <p className="flex-grow text-sm italic text-foreground/80">
+                      "{item.quote}"
+                    </p>
+                    <div>
+                      <p className="font-medium text-foreground">{item.name}</p>
+                      {item.company && (
+                        <p className="text-sm text-foreground/60">{item.company}</p>
+                      )}
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </section>
