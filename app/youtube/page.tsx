@@ -280,7 +280,7 @@ export default function YouTubePage() {
                         height={56}
                         className="h-14 w-auto md:h-16 lg:h-20"
                       />
-                      <span>Ads</span>
+                      <span>YouTube Ads</span>
                     </span>
                   </h1>
                 </div>
