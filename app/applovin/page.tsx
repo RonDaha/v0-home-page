@@ -249,37 +249,30 @@ export default function ApplovinPage() {
               <div className="flex-1 max-w-2xl">
                 {/* Strategic Partnership Banner */}
                 <div className="mb-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
-                  <div className="inline-flex items-center gap-4 rounded-2xl bg-[#4F8EF7]/20 border border-[#4F8EF7]/30 px-5 py-3 backdrop-blur-md">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#4F8EF7]/30">
+                  <div className="inline-flex items-center gap-4 rounded-2xl bg-[#4F8EF7]/40 border-2 border-[#4F8EF7]/60 px-5 py-3 backdrop-blur-md">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#4F8EF7]/50">
                       <Sparkles className="h-4 w-4 text-foreground" />
                     </div>
                     <div>
-                      <p className="text-sm font-semibold text-foreground leading-tight">Official Strategic Technology Partnership</p>
-                      <p className="text-xs text-foreground/70">Upspring x AppLovin - Official Integration Live Now</p>
+                      <p className="text-sm font-bold text-foreground leading-tight">First Official Strategic Technology Partnership</p>
+                      <p className="text-xs text-foreground/80">Upspring x AppLovin - Official Integration Live Now</p>
                     </div>
                     <button
                       onClick={scrollToFooter}
-                      className="ml-2 flex items-center gap-1 rounded-full bg-foreground/10 px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-foreground/20"
+                      className="ml-2 flex items-center gap-1 rounded-full bg-foreground/20 px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-foreground/30"
                     >
-                      Learn More
+                      Book a Demo
                       <ChevronRight className="h-3 w-3" />
                     </button>
                   </div>
                 </div>
 
-                {/* First platform line */}
-                <div className="mb-6 flex items-center gap-3 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-100">
-                  <Zap className="h-4 w-4 text-foreground/70" />
-                  <p className="text-sm font-medium text-foreground/80 md:text-base">
-                    First platform to offer official AppLovin integration for full creative analysis
-                  </p>
-                </div>
-
                 {/* H1 with AppLovin logo on its own line */}
                 <div className="mb-6 animate-in fade-in slide-in-from-bottom-8 duration-1000">
                   <h1 className="font-sans text-4xl font-semibold leading-[1.1] tracking-tight text-foreground md:text-5xl lg:text-6xl">
-                    <span className="text-balance block mb-2">Creative intelligence for your</span>
-                    <span className="flex items-center gap-4 mb-2">
+                    <span className="text-balance block mb-2">Creative intelligence</span>
+                    <span className="block mb-2 font-light text-foreground/80">for your</span>
+                    <span className="flex items-center gap-4">
                       <Image
                         src="/images/applovin-logo.svg"
                         alt="AppLovin"
@@ -288,7 +281,7 @@ export default function ApplovinPage() {
                         className="h-14 w-auto object-contain brightness-0 invert md:h-16 lg:h-20"
                         style={{ filter: "brightness(0) invert(1)" }}
                       />
-                      <span className="font-light text-foreground/80">Ads</span>
+                      <span className="text-foreground">Ads</span>
                     </span>
                   </h1>
                 </div>
@@ -457,15 +450,15 @@ export default function ApplovinPage() {
           {/* Ad Credits Callout */}
           <section className="w-full px-6 py-12 md:px-12 lg:px-16">
             <div className="mx-auto max-w-4xl">
-              <div className="rounded-3xl border-2 border-[#4F8EF7]/30 bg-[#4F8EF7]/10 p-8 text-center backdrop-blur-md md:p-12">
-                <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-[#4F8EF7]/20">
+              <div className="rounded-3xl border-2 border-[#4F8EF7]/60 bg-[#4F8EF7]/30 p-8 text-center backdrop-blur-md md:p-12">
+                <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-[#4F8EF7]/40">
                   <Zap className="h-8 w-8 text-foreground" />
                 </div>
-                <h3 className="mb-4 font-sans text-2xl font-semibold text-foreground md:text-3xl">
+                <h3 className="mb-4 font-sans text-2xl font-bold text-foreground md:text-3xl">
                   AppLovin Ad Credits Available
                 </h3>
-                <p className="mx-auto mb-8 max-w-2xl text-foreground/80">
-                  As part of our strategic partnership, eligible Upspring clients may have access to AppLovin ad credits. This exclusive benefit helps you maximize your creative testing and scale your winning ads.
+                <p className="mx-auto mb-8 max-w-2xl text-foreground">
+                  Eligible Upspring clients may have access to AppLovin ad credits to maximize creative testing.
                 </p>
                 <MagneticButton
                   size="lg"
@@ -480,7 +473,6 @@ export default function ApplovinPage() {
 
           {/* Trusted by Performance Teams */}
           <section className="relative w-full px-6 py-24 md:px-12 lg:px-16">
-            <div className="absolute inset-0 bg-gradient-to-r from-[#71b6ee] to-[#ee6464] opacity-10" />
             <div className="relative z-10 mx-auto max-w-5xl">
               <div className="mb-16 text-center">
                 <h2 className="mb-4 font-sans text-4xl font-semibold text-foreground md:text-5xl">
@@ -569,36 +561,6 @@ export default function ApplovinPage() {
                   </AccordionItem>
                 ))}
               </Accordion>
-            </div>
-          </section>
-
-          {/* Final CTA Section */}
-          <section className="w-full px-6 py-24 md:px-12 lg:px-16">
-            <div className="rounded-3xl border border-foreground/10 bg-foreground/5 p-12 text-center backdrop-blur-md md:p-24">
-              <h2 className="mb-6 font-sans text-4xl font-semibold leading-tight text-foreground md:text-6xl">
-                The teams winning aren&apos;t louder.
-                <br />
-                They&apos;re sharper.
-              </h2>
-              <p className="mx-auto mb-10 max-w-2xl text-lg text-foreground/80 md:text-xl">
-                Early access teams are already analyzing their AppLovin creatives with Upspring. Join them and see what smarter creative intelligence looks like in practice.
-              </p>
-              <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-                <MagneticButton
-                  size="lg"
-                  variant="primary"
-                  onClick={scrollToFooter}
-                >
-                  Get Started with AppLovin
-                </MagneticButton>
-                <MagneticButton
-                  size="lg"
-                  variant="secondary"
-                  onClick={() => window.open("mailto:hello@upspring.ai", "_blank")}
-                >
-                  Talk to Sales
-                </MagneticButton>
-              </div>
             </div>
           </section>
 

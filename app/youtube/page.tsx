@@ -249,37 +249,30 @@ export default function YouTubePage() {
               <div className="flex-1 max-w-2xl">
                 {/* Official Partners Banner */}
                 <div className="mb-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
-                  <div className="inline-flex items-center gap-4 rounded-2xl bg-[#4F8EF7]/20 border border-[#4F8EF7]/30 px-5 py-3 backdrop-blur-md">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#4F8EF7]/30">
+                  <div className="inline-flex items-center gap-4 rounded-2xl bg-[#4F8EF7]/40 border-2 border-[#4F8EF7]/60 px-5 py-3 backdrop-blur-md">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#4F8EF7]/50">
                       <Sparkles className="h-4 w-4 text-foreground" />
                     </div>
                     <div>
-                      <p className="text-sm font-semibold text-foreground leading-tight">YouTube Ads Integration - Now Live</p>
-                      <p className="text-xs text-foreground/70">Official Google Partners</p>
+                      <p className="text-sm font-bold text-foreground leading-tight">YouTube Ads Integration - Now Live</p>
+                      <p className="text-xs text-foreground/80">Official Google Partners</p>
                     </div>
                     <button
                       onClick={scrollToFooter}
-                      className="ml-2 flex items-center gap-1 rounded-full bg-foreground/10 px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-foreground/20"
+                      className="ml-2 flex items-center gap-1 rounded-full bg-foreground/20 px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-foreground/30"
                     >
-                      Learn More
+                      Book a Demo
                       <ChevronRight className="h-3 w-3" />
                     </button>
                   </div>
                 </div>
 
-                {/* First platform line */}
-                <div className="mb-6 flex items-center gap-3 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-100">
-                  <Zap className="h-4 w-4 text-foreground/70" />
-                  <p className="text-sm font-medium text-foreground/80 md:text-base">
-                    Analyze YouTube video creatives inside Upspring
-                  </p>
-                </div>
-
                 {/* H1 - same structure as AppLovin */}
                 <div className="mb-6 animate-in fade-in slide-in-from-bottom-8 duration-1000">
                   <h1 className="font-sans text-4xl font-semibold leading-[1.1] tracking-tight text-foreground md:text-5xl lg:text-6xl">
-                    <span className="text-balance block mb-2">Creative intelligence for your</span>
-                    <span className="flex items-center gap-4 mb-2">
+                    <span className="text-balance block mb-2">Creative intelligence</span>
+                    <span className="block mb-2 font-light text-foreground/80">for your</span>
+                    <span className="flex items-center gap-4">
                       <Image
                         src="/images/youtube-logo.png"
                         alt="YouTube"
@@ -287,7 +280,7 @@ export default function YouTubePage() {
                         height={56}
                         className="h-14 w-auto md:h-16 lg:h-20"
                       />
-                      <span className="font-light text-foreground/80">Ads</span>
+                      <span className="text-foreground">YouTube Ads</span>
                     </span>
                   </h1>
                 </div>
@@ -457,7 +450,6 @@ export default function YouTubePage() {
 
           {/* Trusted by Performance Teams - second review component */}
           <section className="relative w-full px-6 py-24 md:px-12 lg:px-16">
-            <div className="absolute inset-0 bg-gradient-to-r from-[#71b6ee] to-[#ee6464] opacity-10" />
             <div className="relative z-10 mx-auto max-w-5xl">
               <div className="mb-16 text-center">
                 <h2 className="mb-4 font-sans text-4xl font-semibold text-foreground md:text-5xl">
