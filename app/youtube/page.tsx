@@ -455,30 +455,6 @@ export default function YouTubePage() {
             </div>
           </section>
 
-          {/* Value Proposition - centered and cleaner */}
-          <section className="w-full px-6 py-24 md:px-12 lg:px-16">
-            <div className="mx-auto max-w-3xl text-center">
-              <h2 className="mb-8 font-sans text-3xl font-semibold text-foreground md:text-4xl">
-                Ship Better Creative Every Week
-              </h2>
-
-              <div className="space-y-4 text-left">
-                {[
-                  "No new dashboards or complex exports",
-                  "Understand what works at the creative element level",
-                  "Spot patterns across intros, video lengths, CTAs",
-                  "Turn data into clear scale vs kill decisions",
-                  "Works inside your existing Upspring workflow",
-                ].map((item, i) => (
-                  <div key={i} className="flex gap-3 items-center justify-center">
-                    <Check className="h-5 w-5 text-foreground flex-shrink-0" />
-                    <p className="text-foreground/80 text-base">{item}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-
           {/* Trusted by Performance Teams - second review component */}
           <section className="relative w-full px-6 py-24 md:px-12 lg:px-16">
             <div className="absolute inset-0 bg-gradient-to-r from-[#71b6ee] to-[#ee6464] opacity-10" />
