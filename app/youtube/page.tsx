@@ -78,24 +78,32 @@ const testimonials = [
 
 const faqs = [
   {
-    question: "What is Upspring's YouTube Ads integration?",
-    answer: "Upspring's YouTube Ads integration connects directly to your Google Ads account and brings your YouTube video creatives into Upspring's AI-powered creative analytics platform.",
+    question: "What is the Upspring YouTube Ads integration?",
+    answer: "Upspring connects directly to your Google Ads account to analyze your YouTube video creatives. This allows you to understand performance at both the creative level and creative-set level, helping you identify winning hooks, thumbnails, and formats.",
   },
   {
-    question: "How do I connect YouTube Ads to Upspring?",
-    answer: "Go to Settings, Data Connections inside Upspring, select YouTube Ads (Google Ads), and authorize your account. Your video creatives will sync automatically.",
+    question: "How do I connect my YouTube Ads account?",
+    answer: "Simply navigate to Settings, select your Space, then Data Connections in your Upspring dashboard, then select YouTube Ads (Google Ads) to connect your account. The setup takes just a few minutes.",
   },
   {
-    question: "What YouTube creative metrics can I analyze?",
-    answer: "Analyze individual video performance, hook effectiveness, thumbnail performance, intro and CTA patterns, video length trends, and overall creative-set patterns.",
+    question: "What data can I analyze with this integration?",
+    answer: "You can analyze individual video performance, hook effectiveness, thumbnail performance, intro and CTA patterns, video length trends, and get AI-powered insights to inform your next creative tests.",
   },
   {
-    question: "Does Upspring support YouTube alongside other platforms?",
-    answer: "Yes. Upspring supports YouTube Ads, Meta, TikTok, AppLovin, Shopify, and more within the same unified workflow.",
+    question: "Is my data secure?",
+    answer: "Yes. Upspring maintains the highest security standards as an official Google partner. Your data is encrypted in transit and at rest, and we never share your data with third parties.",
   },
   {
-    question: "Is the YouTube Ads integration available now?",
-    answer: "Yes. The YouTube Ads integration is live for all Upspring users. Head to Settings, Data Connections to connect your account.",
+    question: "Can I analyze YouTube alongside other channels?",
+    answer: "Absolutely. One of the key benefits of Upspring is the unified workflow. Analyze your YouTube creatives alongside Meta, TikTok, AppLovin, and other channels all in one place.",
+  },
+  {
+    question: "What types of YouTube campaigns are supported?",
+    answer: "Upspring supports all YouTube ad formats including in-stream ads, discovery ads, bumper ads, and more. Any video creative running through Google Ads can be analyzed.",
+  },
+  {
+    question: "How quickly can I get started?",
+    answer: "Most teams are up and running within minutes. Once you connect your Google Ads account, you can immediately start analyzing your YouTube creatives and uncovering insights.",
   },
 ]
 
@@ -480,24 +488,29 @@ export default function YouTubePage() {
             </div>
           </section>
 
-          {/* FAQ Section - centered */}
+          {/* FAQ Section */}
           <section className="w-full px-6 py-24 md:px-12 lg:px-16">
             <div className="mx-auto max-w-3xl">
-              <h2 className="mb-12 text-center font-sans text-3xl font-semibold text-foreground md:text-4xl">
-                Frequently Asked Questions
-              </h2>
+              <div className="mb-12 text-center">
+                <h2 className="mb-4 font-sans text-4xl font-semibold text-foreground md:text-5xl">
+                  Frequently Asked Questions
+                </h2>
+                <p className="text-lg text-foreground/70">
+                  Everything you need to know about the YouTube Ads integration
+                </p>
+              </div>
 
-              <Accordion type="single" collapsible className="w-full space-y-4">
+              <Accordion type="single" collapsible className="w-full">
                 {faqs.map((faq, i) => (
                   <AccordionItem
                     key={i}
                     value={`item-${i}`}
-                    className="border border-foreground/10 rounded-lg px-6 py-4 data-[state=open]:bg-foreground/5"
+                    className="border-foreground/10"
                   >
-                    <AccordionTrigger className="text-left font-sans text-base font-semibold text-foreground hover:text-foreground/80">
+                    <AccordionTrigger className="text-left text-lg font-medium text-foreground hover:no-underline">
                       {faq.question}
                     </AccordionTrigger>
-                    <AccordionContent className="text-foreground/70 text-sm pt-4">
+                    <AccordionContent className="text-foreground/70">
                       {faq.answer}
                     </AccordionContent>
                   </AccordionItem>
