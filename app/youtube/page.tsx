@@ -6,111 +6,134 @@ import { Footer } from "@/components/footer"
 import { Header } from "@/components/header"
 import { MagneticButton } from "@/components/magnetic-button"
 import { useRef, useEffect, useState } from "react"
-import { Check, Play, Film, Image as ImageIcon, Package, Copy, Target, Zap, MessageCircle } from "lucide-react"
+import { Check, Film, Image as ImageIcon, Package, Copy, Target, Zap, Sparkles, ChevronRight, Star } from "lucide-react"
+import Image from "next/image"
+import Head from "next/head"
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
-import Link from "next/link"
-
-const faqs = [
-  {
-    question: "What is Upspring's YouTube Ads integration?",
-    answer:
-      "Upspring's YouTube Ads integration connects directly to your Google Ads account and brings your YouTube video creatives into Upspring's AI-powered creative analytics platform. You can analyze hooks, thumbnails, video length, CTAs, and creative patterns alongside your other paid social channels.",
-  },
-  {
-    question: "How do I connect YouTube Ads to Upspring?",
-    answer:
-      "To connect YouTube Ads, go to Settings → Data Connections inside Upspring, select YouTube Ads (Google Ads), and authorize your account. Your video creatives will sync automatically and appear alongside your other channels immediately.",
-  },
-  {
-    question: "What YouTube creative metrics can I analyze in Upspring?",
-    answer:
-      "With Upspring's YouTube integration, you can analyze individual video performance, hook effectiveness, thumbnail performance, intro and CTA patterns, video length trends, creative-set patterns, and overall what creative elements are driving watch time, clicks, and conversions.",
-  },
-  {
-    question: "Does Upspring support YouTube alongside other ad platforms?",
-    answer:
-      "Yes. Upspring supports YouTube Ads, Meta, TikTok, AppLovin (Axon), Shopify, and more  - all within the same unified creative analytics workflow. You can compare creative performance across channels without switching tools or exporting data.",
-  },
-  {
-    question: "What makes Upspring's YouTube analytics different from Google Ads native reporting?",
-    answer:
-      "Google Ads shows you what happened  - views, clicks, and conversions. Upspring shows you why it happened  - which creative elements, patterns, hooks, and formats are driving results  - so you can make strategic decisions about what to scale, refresh, or test next.",
-  },
-  {
-    question: "Is the YouTube Ads integration available now?",
-    answer:
-      "Yes. The YouTube Ads integration is already live for all Upspring users. Head to Settings → Data Connections to connect your account and start analyzing your YouTube creatives immediately.",
-  },
-  {
-    question: "Who is Upspring's YouTube integration designed for?",
-    answer:
-      "Upspring's YouTube integration is built for performance marketing teams, DTC brands, and agencies that run YouTube ad campaigns and want to go beyond surface-level metrics to understand what creative decisions are actually driving results.",
-  },
-  {
-    question: "Do I need a separate Upspring plan to access YouTube Ads?",
-    answer:
-      "No separate plan is required. YouTube Ads is available as a data connection within your existing Upspring account. Connect it via Settings → Data Connections.",
-  },
-]
+import { LogoCarousel } from "@/components/logo-carousel"
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 
 const features = [
   {
     icon: Film,
     title: "Creative-Level Video Analysis",
-    description:
-      "Analyze individual video performance, edits, and creative decisions. Understand which specific videos and assets are driving watch time and conversions.",
+    description: "Analyze individual video performance and creative decisions. Understand which videos drive watch time and conversions.",
   },
   {
     icon: ImageIcon,
     title: "Hook and Thumbnail Intelligence",
-    description:
-      "Identify which opening frames, hooks, and thumbnails consistently capture attention and drive YouTube performance across your campaigns.",
+    description: "Identify which hooks and thumbnails consistently capture attention and drive YouTube performance.",
   },
   {
     icon: Package,
     title: "Creative-Set Pattern Detection",
-    description:
-      "Spot winning patterns across intros, video lengths, CTAs, and formats. Know exactly what to scale, test, and cut from your YouTube strategy.",
+    description: "Spot winning patterns across intros, video lengths, CTAs, and formats.",
   },
   {
     icon: Copy,
     title: "Unified Cross-Channel Workflow",
-    description:
-      "Analyze YouTube alongside Meta, TikTok, AppLovin, and Shopify inside your single Upspring workflow. No exports, no extra dashboards, no context switching.",
+    description: "Analyze YouTube alongside Meta, TikTok, AppLovin inside your single Upspring workflow.",
   },
   {
     icon: Target,
     title: "Signal-to-Brief Engine",
-    description:
-      "Transform YouTube performance signals into sharper creative briefs, clearer decisions, and faster iteration cycles for your creative team.",
+    description: "Transform YouTube performance signals into sharper creative briefs and faster iteration cycles.",
   },
   {
     icon: Zap,
     title: "Instant Integration",
-    description:
-      "Already live. Connect your Google Ads account in seconds via Settings, Data Connections and your YouTube creatives appear immediately.",
+    description: "Connect your Google Ads account in seconds and your YouTube creatives appear immediately.",
   },
 ]
+
+const testimonials = [
+  {
+    name: "Andrew Watson",
+    title: "Co Founder at Igloo Media",
+    image: "/images/andrew.jpg",
+    quote:
+      "Upspring has become a core part of Igloo's creative workflow. We've already landed five new clients after showcasing Upspring in the pitch process, and internally we estimate it saves our team 30% of the time we used to spend on manual analysis.",
+  },
+  {
+    name: "Matt Lowenthal",
+    title: "Chief Strategy Officer at Brand.co",
+    image: "/images/matt.png",
+    quote:
+      "Upspring's smart UI makes it easy to parse performance data in real time, understand why an ad is working, and get AI-powered suggestions on what to test next.",
+  },
+  {
+    name: "Tomer Arzoan",
+    title: "Co-Founder at Maëlys",
+    image:
+      "https://cdn.prod.website-files.com/6767cd956661bd59e5a74391/67db09945cb20a822e894199_tomer-profile.jpeg?height=64&width=64",
+    quote:
+      "Being able to analyze YouTube alongside our other channels in one place has been incredibly valuable for our team.",
+  },
+]
+
+const faqs = [
+  {
+    question: "What is Upspring's YouTube Ads integration?",
+    answer: "Upspring's YouTube Ads integration connects directly to your Google Ads account and brings your YouTube video creatives into Upspring's AI-powered creative analytics platform.",
+  },
+  {
+    question: "How do I connect YouTube Ads to Upspring?",
+    answer: "Go to Settings, Data Connections inside Upspring, select YouTube Ads (Google Ads), and authorize your account. Your video creatives will sync automatically.",
+  },
+  {
+    question: "What YouTube creative metrics can I analyze?",
+    answer: "Analyze individual video performance, hook effectiveness, thumbnail performance, intro and CTA patterns, video length trends, and overall creative-set patterns.",
+  },
+  {
+    question: "Does Upspring support YouTube alongside other platforms?",
+    answer: "Yes. Upspring supports YouTube Ads, Meta, TikTok, AppLovin, Shopify, and more within the same unified workflow.",
+  },
+  {
+    question: "Is the YouTube Ads integration available now?",
+    answer: "Yes. The YouTube Ads integration is live for all Upspring users. Head to Settings, Data Connections to connect your account.",
+  },
+]
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.answer,
+    },
+  })),
+}
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://www.upspring.ai",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "YouTube Integration",
+      item: "https://www.upspring.ai/youtube",
+    },
+  ],
+}
 
 export default function YouTubePage() {
   const [isLoaded, setIsLoaded] = useState(false)
   const shaderContainerRef = useRef<HTMLDivElement>(null)
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    businessType: "",
-    adSpend: "",
-    website: "",
-    message: "",
-  })
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitSuccess, setSubmitSuccess] = useState(false)
-  const [submitError, setSubmitError] = useState(false)
 
   useEffect(() => {
     const setShaderHeight = () => {
@@ -140,14 +163,10 @@ export default function YouTubePage() {
     if (checkShaderReady()) return
 
     const intervalId = setInterval(() => {
-      if (checkShaderReady()) {
-        clearInterval(intervalId)
-      }
+      if (checkShaderReady()) clearInterval(intervalId)
     }, 100)
 
-    const fallbackTimer = setTimeout(() => {
-      setIsLoaded(true)
-    }, 1500)
+    const fallbackTimer = setTimeout(() => setIsLoaded(true), 1500)
 
     return () => {
       clearInterval(intervalId)
@@ -155,441 +174,355 @@ export default function YouTubePage() {
     }
   }, [])
 
-  const isValidEmail = (email: string) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    if (!emailRegex.test(email)) return false
-    const parts = email.split("@")
-    if (parts.length !== 2) return false
-    const domain = parts[1]
-    const domainParts = domain.split(".")
-    const tld = domainParts[domainParts.length - 1]
-    return tld.length >= 2 && /^[a-zA-Z]+$/.test(tld)
-  }
-
-  const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-
-    if (!formData.name || !formData.email || !formData.businessType || !formData.adSpend || !formData.message) {
-      return
-    }
-
-    if (!isValidEmail(formData.email)) {
-      setSubmitError(true)
-      setTimeout(() => setSubmitError(false), 5000)
-      return
-    }
-
-    setIsSubmitting(true)
-    setSubmitError(false)
-
-    try {
-      // Form submission logic here (submit to HubSpot/Attio if integrated)
-      setSubmitSuccess(true)
-      setFormData({
-        name: "",
-        email: "",
-        businessType: "",
-        adSpend: "",
-        website: "",
-        message: "",
-      })
-      setTimeout(() => setSubmitSuccess(false), 5000)
-    } catch (error) {
-      setSubmitError(true)
-    } finally {
-      setIsSubmitting(false)
-    }
+  const scrollToFooter = () => {
+    const footer = document.querySelector("footer")
+    if (footer) footer.scrollIntoView({ behavior: "smooth" })
   }
 
   return (
-    <main className="relative min-h-screen w-full bg-background">
-      <GrainOverlay />
+    <>
+      <Head>
+        <title>YouTube Ads Creative Analytics Integration | Upspring.ai</title>
+        <meta
+          name="description"
+          content="Upspring integrates directly with YouTube Ads (Google Ads) to analyze your video creatives in one unified workflow."
+        />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://www.upspring.ai/youtube" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        />
+      </Head>
 
-      <div
-        ref={shaderContainerRef}
-        className={`shader-fixed-height fixed inset-0 z-0 transition-opacity duration-700 pointer-events-none ${
-          isLoaded ? "opacity-100" : "opacity-0"
-        }`}
-        style={{ contain: "strict" }}
-      >
-        <Shader className="h-full w-full">
-          <Swirl
-            colorA="#71b6ee"
-            colorB="#ee6464"
-            speed={0.8}
-            detail={0.8}
-            blend={50}
-            coarseX={40}
-            coarseY={40}
-            mediumX={40}
-            mediumY={40}
-            fineX={40}
-            fineY={40}
-          />
-        </Shader>
-        <div className="absolute inset-0 bg-black/20" />
-      </div>
+      <main className="relative min-h-screen w-full bg-background">
+        <GrainOverlay />
 
-      <Header isLoaded={isLoaded} />
+        <div
+          ref={shaderContainerRef}
+          className={`shader-fixed-height fixed inset-0 z-0 transition-opacity duration-700 pointer-events-none ${
+            isLoaded ? "opacity-100" : "opacity-0"
+          }`}
+          style={{ contain: "strict" }}
+        >
+          <Shader className="h-full w-full">
+            <Swirl
+              colorA="#71b6ee"
+              colorB="#ee6464"
+              speed={0.8}
+              detail={0.8}
+              blend={50}
+              coarseX={40}
+              coarseY={40}
+              mediumX={40}
+              mediumY={40}
+              fineX={40}
+              fineY={40}
+            />
+          </Shader>
+          <div className="absolute inset-0 bg-black/20" />
+        </div>
 
-      <div
-        className={`relative z-10 flex flex-col w-full transition-opacity duration-700 ${
-          isLoaded ? "opacity-100" : "opacity-0"
-        }`}
-      >
-        {/* Hero Section */}
-        <section className="flex min-h-[90vh] w-full flex-col justify-center px-6 pt-32 md:px-12 lg:px-16">
-          <div className="max-w-4xl">
-            <div className="mb-4 inline-block animate-in fade-in slide-in-from-bottom-4 rounded-full border border-foreground/20 bg-foreground/15 px-4 py-1.5 backdrop-blur-md duration-700">
-              <div className="flex items-center gap-2">
-                <div className="flex h-1.5 w-1.5 items-center justify-center rounded-full bg-red-500" />
-                <p className="font-mono leading-7 text-xs text-card-foreground font-semibold">YouTube Ads Integration  - Now Live</p>
+        <Header isLoaded={isLoaded} />
+
+        <div
+          className={`relative z-10 flex flex-col w-full transition-opacity duration-700 ${
+            isLoaded ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          {/* Hero Section */}
+          <section className="flex min-h-[90vh] w-full flex-col justify-center px-6 pt-32 md:px-12 lg:px-16">
+            <div className="max-w-5xl">
+
+              {/* Official Partners Banner */}
+              <div className="mb-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
+                <div className="inline-flex items-center gap-4 rounded-2xl bg-[#4F8EF7]/20 border border-[#4F8EF7]/30 px-5 py-3 backdrop-blur-md">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#4F8EF7]/30">
+                    <Sparkles className="h-4 w-4 text-foreground" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-foreground leading-tight">YouTube Ads Integration - Now Live</p>
+                    <p className="text-xs text-foreground/70">Official Google Partners</p>
+                  </div>
+                  <button
+                    onClick={scrollToFooter}
+                    className="ml-2 flex items-center gap-1 rounded-full bg-foreground/10 px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-foreground/20"
+                  >
+                    Learn More
+                    <ChevronRight className="h-3 w-3" />
+                  </button>
+                </div>
               </div>
-            </div>
 
-            <h1 className="mb-6 animate-in fade-in slide-in-from-bottom-8 font-sans text-5xl font-light leading-[1.1] tracking-tight text-foreground duration-1000 md:text-7xl lg:text-8xl">
-              <span className="text-balance font-medium">YouTube Ads Creative Analytics for Performance Teams</span>
-            </h1>
+              {/* First platform line */}
+              <div className="mb-6 flex items-center gap-3 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-100">
+                <Zap className="h-4 w-4 text-foreground/70" />
+                <p className="text-sm font-medium text-foreground/80 md:text-base">
+                  Analyze YouTube video creatives inside Upspring
+                </p>
+              </div>
 
-            <p className="mb-8 max-w-xl animate-in fade-in slide-in-from-bottom-4 text-lg leading-relaxed text-foreground/90 duration-1000 delay-200 md:text-xl">
-              <span className="text-pretty">
-                Analyze your YouTube video creatives (hooks, thumbnails, intros, CTAs, and formats) inside your existing Upspring workflow. No new dashboards. No guesswork. Just clarity on what is actually working and why.
-              </span>
-            </p>
+              {/* H1 - smaller font size like AppLovin */}
+              <div className="mb-6 animate-in fade-in slide-in-from-bottom-8 duration-1000">
+                <h1 className="font-sans text-4xl font-semibold leading-[1.1] tracking-tight text-foreground md:text-5xl lg:text-6xl">
+                  <span className="text-balance">Creative Analytics for</span>
+                  <span className="mt-3 flex flex-wrap items-center gap-4">
+                    <span className="text-red-400">YouTube Ads</span>
+                    <span className="font-light text-foreground/80">teams</span>
+                  </span>
+                </h1>
+              </div>
 
-            <div className="flex animate-in fade-in slide-in-from-bottom-4 flex-col gap-4 duration-1000 delay-300 sm:flex-row sm:items-center">
-              <MagneticButton size="lg" variant="primary">
-                Connect YouTube Ads
-              </MagneticButton>
-              <MagneticButton size="lg" variant="secondary">
-                Book a Demo
-              </MagneticButton>
-            </div>
-
-            <p className="mt-8 animate-in fade-in slide-in-from-bottom-4 max-w-2xl text-sm text-foreground/70 duration-1000 delay-400 md:text-base">
-              YouTube integration is live. Early access teams are already analyzing YouTube creatives today.
-            </p>
-          </div>
-        </section>
-
-        {/* Announcement Banner */}
-        <section className="w-full border-l-4 border-red-500 bg-foreground/5 px-6 py-12 md:px-12 lg:px-16">
-          <div className="max-w-4xl">
-            <h2 className="mb-4 font-sans text-3xl font-semibold text-foreground md:text-4xl">
-              YouTube Ads Creative Analytics, Now Live
-            </h2>
-            <p className="mb-6 text-lg text-foreground/80 md:text-xl">
-              Connect your Google Ads account and your YouTube video creatives automatically appear alongside Meta, TikTok, AppLovin, and more. All analyzed with the same creative intelligence inside a unified Upspring workflow.
-            </p>
-            <Link href="#demo-form">
-              <MagneticButton variant="secondary">
-                Get Started <ArrowRight className="ml-2 h-4 w-4" />
-              </MagneticButton>
-            </Link>
-          </div>
-        </section>
-
-        {/* Features Section */}
-        <section className="w-full px-6 py-24 md:px-12 lg:px-16">
-          <div className="mb-16 max-w-3xl">
-            <p className="mb-4 font-mono text-xs font-semibold uppercase tracking-widest text-foreground/60">What You Can Do Now</p>
-            <h2 className="mb-6 font-sans text-4xl font-semibold leading-tight text-foreground md:text-5xl">
-              YouTube Ad Creative Testing and Performance Intelligence
-            </h2>
-          </div>
-
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {features.map((feature, i) => {
-              const Icon = feature.icon
-              return (
-                <div
-                  key={i}
-                  className="group relative overflow-hidden rounded-2xl border border-foreground/10 bg-foreground/5 p-8 backdrop-blur-sm transition-colors hover:bg-foreground/10"
-                >
-                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-foreground/10 text-foreground">
-                    <Icon className="h-6 w-6" />
-                  </div>
-                  <h3 className="mb-2 font-sans text-xl font-medium text-foreground">{feature.title}</h3>
-                  <p className="text-foreground/70">{feature.description}</p>
-                </div>
-              )
-            })}
-          </div>
-        </section>
-
-        {/* How It Works */}
-        <section className="w-full px-6 py-24 md:px-12 lg:px-16">
-          <div className="max-w-4xl">
-            <h2 className="mb-16 font-sans text-4xl font-semibold text-foreground md:text-5xl">
-              How to Connect YouTube Ads to Upspring
-            </h2>
-
-            <div className="flex flex-col gap-8 md:gap-12">
-              {[
-                {
-                  step: "1",
-                  title: "Go to Settings",
-                  description: "Navigate to Settings → Data Connections inside your Upspring account.",
-                },
-                {
-                  step: "2",
-                  title: "Connect YouTube Ads",
-                  description: "Select YouTube Ads (Google Ads) and authorize your account. Your creatives sync automatically.",
-                },
-                {
-                  step: "3",
-                  title: "Start Analyzing",
-                  description: "Your YouTube video creatives are immediately available for analysis alongside your other channels inside Upspring.",
-                },
-              ].map((item) => (
-                <div key={item.step} className="flex gap-8">
-                  <div className="flex flex-col items-center">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-full border-2 border-foreground/30 text-foreground font-semibold">
-                      {item.step}
-                    </div>
-                    <div className="mt-4 h-12 w-0.5 bg-foreground/20 md:h-24" />
-                  </div>
-                  <div className="pb-8">
-                    <h3 className="mb-2 font-sans text-xl font-semibold text-foreground">{item.title}</h3>
-                    <p className="text-foreground/70 text-lg">{item.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-12">
-              <MagneticButton size="lg" variant="primary">
-                Connect YouTube Ads Now
-              </MagneticButton>
-            </div>
-          </div>
-        </section>
-
-        {/* Value Proposition */}
-        <section className="w-full px-6 py-24 md:px-12 lg:px-16">
-          <div className="max-w-4xl">
-            <h2 className="mb-12 font-sans text-4xl font-semibold text-foreground md:text-5xl">
-              Remove Blind Spots. Ship Better Creative Every Week.
-            </h2>
-
-            <div className="grid gap-12 md:grid-cols-2">
-              <p className="text-lg leading-relaxed text-foreground/80 md:text-xl">
-                Early access teams are analyzing their YouTube campaigns through Upspring and using these insights to tighten hooks, refresh winning concepts, and ship better tests every week. For the first time, see video performance at both the creative and creative-set level in one place so you understand which edits, hooks, and thumbnails are actually moving the needle on your YouTube campaigns.
+              <p className="mb-8 max-w-lg animate-in fade-in slide-in-from-bottom-4 text-base leading-relaxed text-foreground/80 duration-1000 delay-200 md:text-lg">
+                Analyze hooks, thumbnails, intros, CTAs, and formats inside your existing Upspring workflow. No new dashboards. Just clarity on what works.
               </p>
 
-              <div className="space-y-4">
+              <div className="flex animate-in fade-in slide-in-from-bottom-4 flex-col gap-4 duration-1000 delay-300 sm:flex-row sm:items-center">
+                <MagneticButton
+                  size="lg"
+                  variant="primary"
+                  onClick={scrollToFooter}
+                >
+                  Connect YouTube Ads
+                </MagneticButton>
+                <MagneticButton
+                  size="lg"
+                  variant="secondary"
+                  onClick={() => window.open("mailto:hello@upspring.ai", "_blank")}
+                >
+                  Contact Sales
+                </MagneticButton>
+              </div>
+
+              <p className="mt-6 animate-in fade-in slide-in-from-bottom-4 text-sm text-foreground/50 duration-1000 delay-400">
+                Trusted by performance marketers, DTC brands, and agencies worldwide
+              </p>
+            </div>
+          </section>
+
+          {/* Trusted By Section - logo carousel + testimonials */}
+          <section className="w-full px-6 py-20 md:px-12 lg:px-16">
+            <div className="mx-auto w-full max-w-7xl">
+              <div className="mb-8 md:mb-12">
+                <h2 className="mb-2 font-sans text-5xl font-semibold tracking-tight text-foreground md:text-6xl lg:text-7xl">
+                  Trusted By
+                </h2>
+                <p className="font-mono text-sm text-foreground/60 md:text-base">/ Industry Leaders</p>
+              </div>
+
+              <div className="mb-16 md:mb-24">
+                <LogoCarousel />
+              </div>
+
+              {/* Testimonials Carousel */}
+              <Carousel
+                opts={{ align: "start", loop: true }}
+                className="mx-auto w-full max-w-[95vw] lg:max-w-[90vw] xl:max-w-[1400px]"
+              >
+                <CarouselContent className="-ml-4">
+                  {testimonials.map((testimonial, index) => (
+                    <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-[48%]">
+                      <div className="h-full rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm md:p-8 lg:p-10">
+                        <div className="flex flex-col gap-6">
+                          <div className="flex items-start gap-4">
+                            <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-full border border-white/20 bg-white/10">
+                              <Image
+                                src={testimonial.image || "/placeholder.svg"}
+                                alt={testimonial.name}
+                                fill
+                                className="object-cover"
+                              />
+                            </div>
+                            <div className="flex flex-col gap-1">
+                              <div className="font-sans text-lg font-medium text-foreground">{testimonial.name}</div>
+                              <div className="font-mono text-sm text-popover">{testimonial.title}</div>
+                            </div>
+                          </div>
+                          <blockquote className="font-sans text-lg font-light italic leading-relaxed text-foreground md:text-xl">
+                            &ldquo;{testimonial.quote}&rdquo;
+                          </blockquote>
+                        </div>
+                      </div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <div className="mt-8 flex justify-center gap-2">
+                  <CarouselPrevious className="relative left-0 translate-y-0 border-white/20 bg-white/10 text-white hover:bg-white/20 hover:text-white" />
+                  <CarouselNext className="relative right-0 translate-y-0 border-white/20 bg-white/10 text-white hover:bg-white/20 hover:text-white" />
+                </div>
+              </Carousel>
+            </div>
+          </section>
+
+          {/* Features Grid Section */}
+          <section className="w-full px-6 py-24 md:px-12 lg:px-16">
+            <div className="mx-auto max-w-5xl">
+              <div className="mb-12 text-center">
+                <h2 className="mb-4 font-sans text-3xl font-semibold leading-tight text-foreground md:text-4xl">
+                  YouTube Creative Analysis
+                </h2>
+                <p className="mx-auto max-w-2xl text-base text-foreground/70 md:text-lg">
+                  Analyze performance at both the creative and creative-set level.
+                </p>
+              </div>
+
+              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                {features.map((feature, i) => (
+                  <article
+                    key={i}
+                    className="group relative overflow-hidden rounded-2xl border border-foreground/10 bg-foreground/5 p-8 backdrop-blur-sm transition-colors hover:bg-foreground/10"
+                  >
+                    <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-foreground/10 text-foreground">
+                      <feature.icon className="h-6 w-6" />
+                    </div>
+                    <h3 className="mb-2 font-sans text-lg font-medium text-foreground">{feature.title}</h3>
+                    <p className="text-sm text-foreground/70">{feature.description}</p>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* Value Proposition - centered and cleaner */}
+          <section className="w-full px-6 py-24 md:px-12 lg:px-16">
+            <div className="mx-auto max-w-3xl text-center">
+              <h2 className="mb-8 font-sans text-3xl font-semibold text-foreground md:text-4xl">
+                Ship Better Creative Every Week
+              </h2>
+
+              <div className="space-y-4 text-left">
                 {[
-                  "No new dashboards or complex exports required",
+                  "No new dashboards or complex exports",
                   "Understand what works at the creative element level",
-                  "Spot patterns across intros, video lengths, CTAs, and formats",
-                  "Turn data into clear scale versus kill decisions",
-                  "Works inside your existing unified Upspring workflow",
+                  "Spot patterns across intros, video lengths, CTAs",
+                  "Turn data into clear scale vs kill decisions",
+                  "Works inside your existing Upspring workflow",
                 ].map((item, i) => (
-                  <div key={i} className="flex gap-3 items-start">
-                    <Check className="h-6 w-6 text-foreground flex-shrink-0 mt-0.5" />
-                    <p className="text-foreground/80 text-lg">{item}</p>
+                  <div key={i} className="flex gap-3 items-center justify-center">
+                    <Check className="h-5 w-5 text-foreground flex-shrink-0" />
+                    <p className="text-foreground/80 text-base">{item}</p>
                   </div>
                 ))}
               </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        {/* FAQ Section */}
-        <section className="w-full px-6 py-24 md:px-12 lg:px-16">
-          <div className="max-w-4xl">
-            <h2 className="mb-12 font-sans text-4xl font-semibold text-foreground md:text-5xl">
-              Frequently Asked Questions
-            </h2>
+          {/* Trusted by Performance Teams - second review component */}
+          <section className="relative w-full px-6 py-24 md:px-12 lg:px-16">
+            <div className="absolute inset-0 bg-gradient-to-r from-[#71b6ee] to-[#ee6464] opacity-10" />
+            <div className="relative z-10 mx-auto max-w-5xl">
+              <div className="mb-16 text-center">
+                <h2 className="mb-4 font-sans text-4xl font-semibold text-foreground md:text-5xl">
+                  Trusted by Performance Teams
+                </h2>
+                <p className="text-lg text-foreground/70">
+                  See what teams are saying about Upspring&apos;s creative intelligence
+                </p>
+              </div>
 
-            <Accordion type="single" collapsible className="w-full space-y-4">
-              {faqs.map((faq, i) => (
-                <AccordionItem
-                  key={i}
-                  value={`item-${i}`}
-                  className="border border-foreground/10 rounded-lg px-6 py-4 data-[state=open]:bg-foreground/5"
-                >
-                  <AccordionTrigger className="text-left font-sans text-lg font-semibold text-foreground hover:text-foreground/80">
-                    {faq.question}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-foreground/70 text-base pt-4">
-                    {faq.answer}
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </div>
-        </section>
-
-        {/* Final CTA Section */}
-        <section className="w-full px-6 py-24 md:px-12 lg:px-16">
-          <div className="rounded-3xl border border-foreground/10 bg-foreground/5 p-12 text-center backdrop-blur-md md:p-24">
-            <h2 className="mb-6 font-sans text-4xl font-semibold leading-tight text-foreground md:text-6xl">
-              The Teams Winning on YouTube Understand Their Creative Performance.
-              <br />
-              Now You Can Too.
-            </h2>
-            <p className="mx-auto mb-10 max-w-2xl text-lg text-foreground/80 md:text-xl">
-              Early access teams are already analyzing their YouTube creatives with Upspring. See what smarter YouTube ad creative intelligence looks like inside a unified platform, without adding single new tool or dashboard.
-            </p>
-            <div className="flex flex-col gap-4 justify-center sm:flex-row sm:items-center">
-              <MagneticButton size="lg" variant="primary">
-                Connect YouTube Ads →
-              </MagneticButton>
-              <MagneticButton size="lg" variant="secondary">
-                Book a Demo
-              </MagneticButton>
+              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+                {[
+                  {
+                    name: "Ives Rocher",
+                    company: "Ron Rotter",
+                    quote: "Upspring's YouTube integration has transformed how we analyze video creative performance. We're iterating on hooks faster than ever.",
+                  },
+                  {
+                    name: "FansLegacy",
+                    company: "Tomar Arzoan",
+                    quote: "The thumbnail and hook intelligence is a game changer. We finally understand what drives watch time on YouTube.",
+                  },
+                  {
+                    name: "Rotem Avizohar",
+                    company: "Interaction",
+                    quote: "Being able to analyze YouTube alongside our other channels in one place has been incredibly valuable.",
+                  },
+                  {
+                    name: "Roni Trocky Polonio",
+                    company: "",
+                    quote: "Upspring gives us the clarity we needed to scale our winning YouTube creatives with confidence.",
+                  },
+                ].map((item, i) => (
+                  <div
+                    key={i}
+                    className="flex flex-col gap-4 rounded-2xl border border-foreground/10 bg-foreground/5 p-6 backdrop-blur-md transition-all hover:border-foreground/20 hover:bg-foreground/10"
+                  >
+                    <div className="flex gap-1">
+                      {[...Array(5)].map((_, j) => (
+                        <Star
+                          key={j}
+                          className="h-4 w-4 fill-foreground text-foreground"
+                        />
+                      ))}
+                    </div>
+                    <p className="flex-grow text-sm italic text-foreground/80">
+                      &quot;{item.quote}&quot;
+                    </p>
+                    <div>
+                      <p className="font-medium text-foreground">{item.name}</p>
+                      {item.company && (
+                        <p className="text-sm text-foreground/60">{item.company}</p>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        {/* Demo Form Section */}
-        <section id="demo-form" className="w-full px-6 py-24 md:px-12 lg:px-16">
-          <div className="max-w-2xl">
-            <h2 className="mb-12 font-sans text-4xl font-semibold text-foreground md:text-5xl">Book a Demo</h2>
+          {/* FAQ Section - centered */}
+          <section className="w-full px-6 py-24 md:px-12 lg:px-16">
+            <div className="mx-auto max-w-3xl">
+              <h2 className="mb-12 text-center font-sans text-3xl font-semibold text-foreground md:text-4xl">
+                Frequently Asked Questions
+              </h2>
 
-            <form onSubmit={handleFormSubmit} className="space-y-6">
-              <div>
-                <label className="block mb-2 font-sans text-sm font-medium text-foreground">Name</label>
-                <input
-                  type="text"
-                  required
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full rounded-lg border border-foreground/20 bg-foreground/5 px-4 py-3 font-sans text-foreground placeholder:text-foreground/40 focus:border-foreground/40 focus:outline-none focus:bg-foreground/10"
-                  placeholder="Your name"
-                />
+              <Accordion type="single" collapsible className="w-full space-y-4">
+                {faqs.map((faq, i) => (
+                  <AccordionItem
+                    key={i}
+                    value={`item-${i}`}
+                    className="border border-foreground/10 rounded-lg px-6 py-4 data-[state=open]:bg-foreground/5"
+                  >
+                    <AccordionTrigger className="text-left font-sans text-base font-semibold text-foreground hover:text-foreground/80">
+                      {faq.question}
+                    </AccordionTrigger>
+                    <AccordionContent className="text-foreground/70 text-sm pt-4">
+                      {faq.answer}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </div>
+          </section>
+
+          {/* Final CTA Section - centered and cleaner */}
+          <section className="w-full px-6 py-24 md:px-12 lg:px-16">
+            <div className="mx-auto max-w-3xl rounded-3xl border border-foreground/10 bg-foreground/5 p-12 text-center backdrop-blur-md">
+              <h2 className="mb-6 font-sans text-3xl font-semibold leading-tight text-foreground md:text-4xl">
+                Ready to understand your YouTube creative performance?
+              </h2>
+              <p className="mx-auto mb-8 max-w-xl text-base text-foreground/80">
+                Connect your Google Ads account and start analyzing your YouTube creatives today.
+              </p>
+              <div className="flex flex-col gap-4 justify-center sm:flex-row sm:items-center">
+                <MagneticButton size="lg" variant="primary" onClick={scrollToFooter}>
+                  Connect YouTube Ads
+                </MagneticButton>
+                <MagneticButton size="lg" variant="secondary" onClick={() => window.open("mailto:hello@upspring.ai", "_blank")}>
+                  Contact Sales
+                </MagneticButton>
               </div>
+            </div>
+          </section>
 
-              <div>
-                <label className="block mb-2 font-sans text-sm font-medium text-foreground">Email</label>
-                <input
-                  type="email"
-                  required
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full rounded-lg border border-foreground/20 bg-foreground/5 px-4 py-3 font-sans text-foreground placeholder:text-foreground/40 focus:border-foreground/40 focus:outline-none focus:bg-foreground/10"
-                  placeholder="your@email.com"
-                />
-              </div>
-
-              <div>
-                <label className="block mb-2 font-sans text-sm font-medium text-foreground">Business Type</label>
-                <select
-                  required
-                  value={formData.businessType}
-                  onChange={(e) => setFormData({ ...formData, businessType: e.target.value })}
-                  className="w-full rounded-lg border border-foreground/20 bg-foreground/5 px-4 py-3 font-sans text-foreground placeholder:text-foreground/40 focus:border-foreground/40 focus:outline-none focus:bg-foreground/10"
-                >
-                  <option value="">Select your business type</option>
-                  <option value="Brand">Brand</option>
-                  <option value="Agency">Agency</option>
-                  <option value="SaaS">SaaS</option>
-                  <option value="Other">Other</option>
-                </select>
-              </div>
-
-              <div>
-                <label className="block mb-2 font-sans text-sm font-medium text-foreground">Monthly Ad Spend</label>
-                <select
-                  required
-                  value={formData.adSpend}
-                  onChange={(e) => setFormData({ ...formData, adSpend: e.target.value })}
-                  className="w-full rounded-lg border border-foreground/20 bg-foreground/5 px-4 py-3 font-sans text-foreground placeholder:text-foreground/40 focus:border-foreground/40 focus:outline-none focus:bg-foreground/10"
-                >
-                  <option value="">Select monthly ad spend</option>
-                  <option value="Under $50K">Under $50K</option>
-                  <option value="$50K–$100K">$50K–$100K</option>
-                  <option value="$100K–$500K">$100K–$500K</option>
-                  <option value="$500K–$1M">$500K–$1M</option>
-                  <option value="Over $1M">Over $1M</option>
-                </select>
-              </div>
-
-              <div>
-                <label className="block mb-2 font-sans text-sm font-medium text-foreground">Website URL</label>
-                <input
-                  type="text"
-                  value={formData.website}
-                  onChange={(e) => setFormData({ ...formData, website: e.target.value })}
-                  className="w-full rounded-lg border border-foreground/20 bg-foreground/5 px-4 py-3 font-sans text-foreground placeholder:text-foreground/40 focus:border-foreground/40 focus:outline-none focus:bg-foreground/10"
-                  placeholder="yoursite.com"
-                />
-              </div>
-
-              <div>
-                <label className="block mb-2 font-sans text-sm font-medium text-foreground">Message</label>
-                <textarea
-                  required
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  rows={4}
-                  className="w-full rounded-lg border border-foreground/20 bg-foreground/5 px-4 py-3 font-sans text-foreground placeholder:text-foreground/40 focus:border-foreground/40 focus:outline-none focus:bg-foreground/10 resize-none"
-                  placeholder="Tell us more about your YouTube advertising goals..."
-                />
-              </div>
-
-              {submitError && (
-                <p className="text-red-500 text-sm">Please check your information and try again.</p>
-              )}
-              {submitSuccess && (
-                <p className="text-green-500 text-sm">Thank you! We&apos;ll be in touch soon.</p>
-              )}
-
-              <MagneticButton size="lg" variant="primary" className="w-full" disabled={isSubmitting}>
-                {isSubmitting ? "Submitting..." : "Book a Demo"}
-              </MagneticButton>
-            </form>
-          </div>
-        </section>
-
-        <Footer />
-      </div>
-
-      {/* JSON-LD Schema Markup */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: faqs.map((faq) => ({
-              "@type": "Question",
-              name: faq.question,
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: faq.answer,
-              },
-            })),
-          }),
-        }}
-      />
-
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            itemListElement: [
-              {
-                "@type": "ListItem",
-                position: 1,
-                name: "Home",
-                item: "https://upspring.ai",
-              },
-              {
-                "@type": "ListItem",
-                position: 2,
-                name: "YouTube Ads Integration",
-                item: "https://upspring.ai/youtube",
-              },
-            ],
-          }),
-        }}
-      />
-    </main>
+          <Footer />
+        </div>
+      </main>
+    </>
   )
 }
-
-import { ArrowRight } from "lucide-react"
