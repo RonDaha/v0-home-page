@@ -271,7 +271,13 @@ export default function YouTubePage() {
                 <h1 className="font-sans text-4xl font-semibold leading-[1.1] tracking-tight text-foreground md:text-5xl lg:text-6xl">
                   <span className="text-balance">Creative Analytics for</span>
                   <span className="mt-3 flex flex-wrap items-center gap-4">
-                    <span className="text-red-400">YouTube Ads</span>
+                    <Image
+                      src="/images/youtube-logo.png"
+                      alt="YouTube"
+                      width={56}
+                      height={40}
+                      className="h-10 w-auto md:h-12"
+                    />
                     <span className="font-light text-foreground/80">teams</span>
                   </span>
                 </h1>
