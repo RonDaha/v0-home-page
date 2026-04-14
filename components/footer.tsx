@@ -135,6 +135,20 @@ export function Footer({ id = "contact" }: { id?: string }) {
                   <span>Upspring for Shopify</span>
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </a>
+                <a
+                  href="/applovin"
+                  className="group mt-4 flex items-center gap-2 text-base text-foreground transition-colors hover:text-foreground/70 md:text-xl"
+                >
+                  <span>Upspring for Applovin</span>
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </a>
+                <a
+                  href="/youtube"
+                  className="group mt-4 flex items-center gap-2 text-base text-foreground transition-colors hover:text-foreground/70 md:text-xl"
+                >
+                  <span>Upspring for YouTube</span>
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </a>
               </div>
 
               <a

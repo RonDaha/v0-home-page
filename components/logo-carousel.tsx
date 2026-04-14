@@ -13,6 +13,7 @@ const LOGOS = [
   { type: "image", src: "/images/miscn-logo.svg", alt: "MISCN", width: 150 },
   { type: "image", src: "/images/cape-diablo.webp", alt: "Cape Diablo", width: 140 },
   { type: "image", src: "/images/bezel.svg", alt: "Bezel", width: 130 },
+  { type: "image", src: "/images/casper.svg", alt: "Casper", width: 120 },
   { type: "image", src: "/images/steve.png", alt: "Steve Madden", width: 140 },
   { type: "image", src: "/images/fct.svg", alt: "FCT", width: 140 },
 ]
