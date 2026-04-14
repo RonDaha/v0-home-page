@@ -306,10 +306,6 @@ export default function ApplovinPage() {
                     Contact Sales
                   </MagneticButton>
                 </div>
-
-                <p className="mt-6 animate-in fade-in slide-in-from-bottom-4 text-sm text-foreground/50 duration-1000 delay-400">
-                  Trusted by performance marketers, DTC brands, and agencies worldwide
-                </p>
               </div>
 
               {/* Right side - AI Analysis Card */}
