@@ -6,7 +6,7 @@ import { Footer } from "@/components/footer"
 import { Header } from "@/components/header"
 import { MagneticButton } from "@/components/magnetic-button"
 import { useRef, useEffect, useState } from "react"
-import { Check, Zap, BarChart3, Layers, ArrowRight, Shield, TrendingUp, Sparkles, ChevronRight, Star } from "lucide-react"
+import { Check, Film, Image as ImageIcon, Package, Copy, Target, Zap, Sparkles, ChevronRight, Star } from "lucide-react"
 import Image from "next/image"
 import Head from "next/head"
 import {
@@ -20,34 +20,34 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 
 const features = [
   {
-    icon: BarChart3,
-    title: "Creative-Level Analysis",
-    description: "Understand the performance of each individual AppLovin creative to identify what drives results.",
+    icon: Film,
+    title: "Creative-Level Video Analysis",
+    description: "Analyze individual video performance and creative decisions. Understand which videos drive watch time and conversions.",
   },
   {
-    icon: Layers,
-    title: "Creative-Set Analysis",
-    description: "Analyze performance patterns across creative sets to uncover winning themes and optimize campaigns.",
+    icon: ImageIcon,
+    title: "Hook and Thumbnail Intelligence",
+    description: "Identify which hooks and thumbnails consistently capture attention and drive YouTube performance.",
   },
   {
-    icon: Sparkles,
-    title: "Unified Workflow",
-    description: "Analyze AppLovin creatives inside the same workflow you use for Meta, TikTok, Google, and more.",
+    icon: Package,
+    title: "Creative-Set Pattern Detection",
+    description: "Spot winning patterns across intros, video lengths, CTAs, and formats.",
   },
   {
-    icon: TrendingUp,
-    title: "Pattern Detection",
-    description: "Spot trends across creatives to inform your next AppLovin tests and optimization opportunities.",
+    icon: Copy,
+    title: "Unified Cross-Channel Workflow",
+    description: "Analyze YouTube alongside Meta, TikTok, AppLovin inside your single Upspring workflow.",
   },
   {
-    icon: ArrowRight,
-    title: "Signal-to-Decision",
-    description: "Transform raw AppLovin performance data into clear, actionable insights and next steps.",
+    icon: Target,
+    title: "Signal-to-Brief Engine",
+    description: "Transform YouTube performance signals into sharper creative briefs and faster iteration cycles.",
   },
   {
-    icon: Shield,
-    title: "Secure Official Partnership",
-    description: "Official AppLovin technology partner status ensures secure, reliable access to your analytics data.",
+    icon: Zap,
+    title: "Instant Integration",
+    description: "Connect your Google Ads account in seconds and your YouTube creatives appear immediately.",
   },
 ]
 
@@ -57,14 +57,14 @@ const testimonials = [
     title: "Co Founder at Igloo Media",
     image: "/images/andrew.jpg",
     quote:
-      "Upspring has become a core part of Igloo's creative workflow. We've already landed five new clients after showcasing Upspring in the pitch process, and internally we estimate it saves our team 30% of the time we used to spend on manual analysis and pulling insights. It helps us move faster, brief smarter, and make more confident creative decisions across accounts.",
+      "Upspring has become a core part of Igloo's creative workflow. We've already landed five new clients after showcasing Upspring in the pitch process, and internally we estimate it saves our team 30% of the time we used to spend on manual analysis.",
   },
   {
     name: "Matt Lowenthal",
     title: "Chief Strategy Officer at Brand.co",
     image: "/images/matt.png",
     quote:
-      "Upspring's smart UI makes it easy to parse performance data in real time, understand why an ad is working, and get AI-powered suggestions on what to test next. Fantastic tool for any brand or team running performance marketing.",
+      "Upspring's smart UI makes it easy to parse performance data in real time, understand why an ad is working, and get AI-powered suggestions on what to test next.",
   },
   {
     name: "Tomer Arzoan",
@@ -72,38 +72,38 @@ const testimonials = [
     image:
       "https://cdn.prod.website-files.com/6767cd956661bd59e5a74391/67db09945cb20a822e894199_tomer-profile.jpeg?height=64&width=64",
     quote:
-      "Being able to analyze AppLovin alongside our other channels in one place has been incredibly valuable for our team. Upspring gives us the clarity we needed to scale our winning creatives with confidence.",
+      "Being able to analyze YouTube alongside our other channels in one place has been incredibly valuable for our team.",
   },
 ]
 
 const faqs = [
   {
-    question: "What is the Upspring AppLovin integration?",
-    answer: "Upspring is the first platform to offer an official AppLovin integration for full creative analysis. This allows you to analyze performance at both the creative level and creative-set level, helping you understand what drives results and identify winning patterns.",
+    question: "What is the Upspring YouTube Ads integration?",
+    answer: "Upspring connects directly to your Google Ads account to analyze your YouTube video creatives. This allows you to understand performance at both the creative level and creative-set level, helping you identify winning hooks, thumbnails, and formats.",
   },
   {
-    question: "How do I connect my AppLovin account?",
-    answer: "Simply navigate to Settings, select your Space, then Data Sources in your Upspring dashboard, then select Axon (AppLovin) to connect your account. The setup takes just a few minutes.",
+    question: "How do I connect my YouTube Ads account?",
+    answer: "Simply navigate to Settings, select your Space, then Data Connections in your Upspring dashboard, then select YouTube Ads (Google Ads) to connect your account. The setup takes just a few minutes.",
   },
   {
     question: "What data can I analyze with this integration?",
-    answer: "You can analyze creative-level performance metrics, creative-set performance, identify winning patterns across your campaigns, and get AI-powered insights to inform your next creative tests.",
+    answer: "You can analyze individual video performance, hook effectiveness, thumbnail performance, intro and CTA patterns, video length trends, and get AI-powered insights to inform your next creative tests.",
   },
   {
     question: "Is my data secure?",
-    answer: "Yes. As an official AppLovin technology partner, Upspring maintains the highest security standards. Your data is encrypted in transit and at rest, and we never share your data with third parties.",
+    answer: "Yes. Upspring maintains the highest security standards as an official Google partner. Your data is encrypted in transit and at rest, and we never share your data with third parties.",
   },
   {
-    question: "Are there AppLovin ad credits available?",
-    answer: "Yes. As part of our strategic partnership, eligible Upspring clients may have access to AppLovin ad credits. Contact us to learn more about this exclusive benefit.",
+    question: "Can I analyze YouTube alongside other channels?",
+    answer: "Absolutely. One of the key benefits of Upspring is the unified workflow. Analyze your YouTube creatives alongside Meta, TikTok, AppLovin, and other channels all in one place.",
   },
   {
-    question: "Can I analyze AppLovin alongside other channels?",
-    answer: "Absolutely. One of the key benefits of Upspring is the unified workflow. Analyze your AppLovin creatives alongside Meta, TikTok, Google, and other channels all in one place.",
+    question: "What types of YouTube campaigns are supported?",
+    answer: "Upspring supports all YouTube ad formats including in-stream ads, discovery ads, bumper ads, and more. Any video creative running through Google Ads can be analyzed.",
   },
   {
     question: "How quickly can I get started?",
-    answer: "Most teams are up and running within minutes. Once you connect your AppLovin account, you can immediately start analyzing your creatives and uncovering insights.",
+    answer: "Most teams are up and running within minutes. Once you connect your Google Ads account, you can immediately start analyzing your YouTube creatives and uncovering insights.",
   },
 ]
 
@@ -133,13 +133,13 @@ const breadcrumbSchema = {
     {
       "@type": "ListItem",
       position: 2,
-      name: "AppLovin Integration",
-      item: "https://www.upspring.ai/applovin",
+      name: "YouTube Integration",
+      item: "https://www.upspring.ai/youtube",
     },
   ],
 }
 
-export default function ApplovinPage() {
+export default function YouTubePage() {
   const [isLoaded, setIsLoaded] = useState(false)
   const shaderContainerRef = useRef<HTMLDivElement>(null)
 
@@ -190,13 +190,13 @@ export default function ApplovinPage() {
   return (
     <>
       <Head>
-        <title>AppLovin Creative Analytics Integration | Upspring.ai</title>
+        <title>YouTube Ads Creative Analytics Integration | Upspring.ai</title>
         <meta
           name="description"
-          content="Upspring is the first platform to offer official AppLovin integration for full creative analysis. Analyze creative-level and creative-set performance to uncover winning patterns."
+          content="Upspring integrates directly with YouTube Ads (Google Ads) to analyze your video creatives in one unified workflow."
         />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://www.upspring.ai/applovin" />
+        <link rel="canonical" href="https://www.upspring.ai/youtube" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
@@ -247,15 +247,15 @@ export default function ApplovinPage() {
             <div className="mx-auto w-full max-w-[1400px] flex flex-col lg:flex-row gap-12 lg:gap-16 items-center">
               {/* Left side - Messaging */}
               <div className="flex-1 max-w-2xl">
-                {/* Strategic Partnership Banner */}
+                {/* Official Partners Banner */}
                 <div className="mb-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
                   <div className="inline-flex items-center gap-4 rounded-2xl bg-[#4F8EF7]/40 border-2 border-[#4F8EF7]/60 px-5 py-3 backdrop-blur-md">
                     <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#4F8EF7]/50">
                       <Sparkles className="h-4 w-4 text-foreground" />
                     </div>
                     <div>
-                      <p className="text-sm font-bold text-foreground leading-tight">First Official Strategic Technology Partnership</p>
-                      <p className="text-xs text-foreground/80">Upspring x AppLovin - Official Integration Live Now</p>
+                      <p className="text-sm font-bold text-foreground leading-tight">YouTube Ads Integration - Now Live</p>
+                      <p className="text-xs text-foreground/80">Official Google Partners</p>
                     </div>
                     <button
                       onClick={scrollToFooter}
@@ -267,27 +267,26 @@ export default function ApplovinPage() {
                   </div>
                 </div>
 
-                {/* H1 with AppLovin logo on its own line */}
+                {/* H1 - same structure as AppLovin */}
                 <div className="mb-6 animate-in fade-in slide-in-from-bottom-8 duration-1000">
                   <h1 className="font-sans text-4xl font-semibold leading-[1.1] tracking-tight text-foreground md:text-5xl lg:text-6xl">
                     <span className="block mb-2">Creative intelligence</span>
-                    <span className="flex items-center gap-4 mb-2">
+                    <span className="flex items-center gap-4">
                       <span>for</span>
                       <Image
-                        src="/images/applovin-logo.svg"
-                        alt="AppLovin"
-                        width={320}
-                        height={60}
-                        className="h-14 w-auto object-contain brightness-0 invert md:h-16 lg:h-20"
-                        style={{ filter: "brightness(0) invert(1)" }}
+                        src="/images/youtube-logo.png"
+                        alt="YouTube"
+                        width={80}
+                        height={56}
+                        className="h-14 w-auto md:h-16 lg:h-20"
                       />
+                      <span>YouTube Ads</span>
                     </span>
-                    <span className="block">Ads</span>
                   </h1>
                 </div>
 
                 <p className="mb-8 max-w-lg animate-in fade-in slide-in-from-bottom-4 text-base leading-relaxed text-foreground/80 duration-1000 delay-200 md:text-lg">
-                  As an official AppLovin technology partner, we deliver richer analysis and stronger creative intelligence for teams running on AppLovin.
+                  Analyze hooks, thumbnails, intros, CTAs, and formats inside your existing Upspring workflow. No new dashboards. Just clarity on what works.
                 </p>
 
                 <div className="flex animate-in fade-in slide-in-from-bottom-4 flex-col gap-4 duration-1000 delay-300 sm:flex-row sm:items-center">
@@ -296,7 +295,7 @@ export default function ApplovinPage() {
                     variant="primary"
                     onClick={scrollToFooter}
                   >
-                    Request a Demo
+                    Connect YouTube Ads
                   </MagneticButton>
                   <MagneticButton
                     size="lg"
@@ -347,13 +346,13 @@ export default function ApplovinPage() {
                     <div className="rounded-lg bg-foreground/5 border border-foreground/10 p-3">
                       <p className="text-xs text-foreground/50 mb-1">Why It Works</p>
                       <p className="text-sm text-foreground">
-                        Dynamic montage with thematic overlays creates urgency. Aspirational lifestyle positioning paired with clear holiday gifting narrative drives action.
+                        Strong hook in first 3 seconds captures attention. Clean product shots with lifestyle context drive engagement.
                       </p>
                     </div>
                     <div className="rounded-lg bg-foreground/5 border border-foreground/10 p-3">
                       <p className="text-xs text-foreground/50 mb-1">Recommendation</p>
                       <p className="text-sm text-foreground">
-                        Test similar hook with Q1 product line. Consider A/B testing shorter 6s version for Stories.
+                        Test shorter 6s bumper version. Consider adding text overlay for sound-off viewers.
                       </p>
                     </div>
                   </div>
@@ -418,56 +417,34 @@ export default function ApplovinPage() {
 
           {/* Features Grid Section */}
           <section className="w-full px-6 py-24 md:px-12 lg:px-16">
-            <div className="mb-12 max-w-2xl">
-              <h2 className="mb-4 font-sans text-3xl font-semibold leading-tight text-foreground md:text-4xl">
-                AppLovin Creative Analysis
-              </h2>
-              <p className="text-base text-foreground/70 md:text-lg">
-                Analyze performance at both the creative and creative-set level. Understand what drives AppLovin campaign success, identify winning patterns, and uncover new directions to test.
-              </p>
-            </div>
-
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {features.map((feature, i) => (
-                <article
-                  key={i}
-                  className="group relative overflow-hidden rounded-2xl border border-foreground/10 bg-foreground/5 p-8 backdrop-blur-sm transition-colors hover:bg-foreground/10"
-                >
-                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-foreground/10 text-foreground">
-                    <feature.icon className="h-6 w-6" />
-                  </div>
-                  <h3 className="mb-2 font-sans text-lg font-medium text-foreground">{feature.title}</h3>
-                  <p className="text-sm text-foreground/70">{feature.description}</p>
-                </article>
-              ))}
-            </div>
-          </section>
-
-          {/* Ad Credits Callout */}
-          <section className="w-full px-6 py-12 md:px-12 lg:px-16">
-            <div className="mx-auto max-w-4xl">
-              <div className="rounded-3xl border-2 border-[#4F8EF7]/60 bg-[#4F8EF7]/30 p-8 text-center backdrop-blur-md md:p-12">
-                <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-[#4F8EF7]/40">
-                  <Zap className="h-8 w-8 text-foreground" />
-                </div>
-                <h3 className="mb-4 font-sans text-2xl font-bold text-foreground md:text-3xl">
-                  AppLovin Ad Credits Available
-                </h3>
-                <p className="mx-auto mb-8 max-w-2xl text-foreground">
-                  Eligible Upspring clients may have access to AppLovin ad credits to maximize creative testing.
+            <div className="mx-auto max-w-5xl">
+              <div className="mb-12 text-center">
+                <h2 className="mb-4 font-sans text-3xl font-semibold leading-tight text-foreground md:text-4xl">
+                  YouTube Creative Analysis
+                </h2>
+                <p className="mx-auto max-w-2xl text-base text-foreground/70 md:text-lg">
+                  Analyze performance at both the creative and creative-set level.
                 </p>
-                <MagneticButton
-                  size="lg"
-                  variant="primary"
-                  onClick={scrollToFooter}
-                >
-                  Check Eligibility
-                </MagneticButton>
+              </div>
+
+              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                {features.map((feature, i) => (
+                  <article
+                    key={i}
+                    className="group relative overflow-hidden rounded-2xl border border-foreground/10 bg-foreground/5 p-8 backdrop-blur-sm transition-colors hover:bg-foreground/10"
+                  >
+                    <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-foreground/10 text-foreground">
+                      <feature.icon className="h-6 w-6" />
+                    </div>
+                    <h3 className="mb-2 font-sans text-lg font-medium text-foreground">{feature.title}</h3>
+                    <p className="text-sm text-foreground/70">{feature.description}</p>
+                  </article>
+                ))}
               </div>
             </div>
           </section>
 
-          {/* Trusted by Performance Teams */}
+          {/* Trusted by Performance Teams - second review component */}
           <section className="relative w-full px-6 py-24 md:px-12 lg:px-16">
             <div className="relative z-10 mx-auto max-w-5xl">
               <div className="mb-16 text-center">
@@ -484,22 +461,22 @@ export default function ApplovinPage() {
                   {
                     company: "Ives Rocher",
                     person: "Ron Rotter",
-                    quote: "Upspring's AppLovin integration has completely transformed how we analyze creative performance. We're making decisions in hours, not days.",
+                    quote: "Upspring's YouTube integration has transformed how we analyze video creative performance. We're iterating on hooks faster than ever.",
                   },
                   {
                     company: "FansLegacy",
                     person: "Tomar Arzoan",
-                    quote: "The creative-set analysis is a game changer. We can finally see patterns across our entire AppLovin portfolio.",
+                    quote: "The thumbnail and hook intelligence is a game changer. We finally understand what drives watch time on YouTube.",
                   },
                   {
                     company: "Interaction",
                     person: "Rotem Avizohar",
-                    quote: "Being able to analyze AppLovin alongside our other channels in one place has been incredibly valuable for our team.",
+                    quote: "Being able to analyze YouTube alongside our other channels in one place has been incredibly valuable.",
                   },
                   {
                     company: "Polonio",
                     person: "Roni Trocky",
-                    quote: "Upspring gives us the clarity we needed to scale our winning AppLovin creatives with confidence.",
+                    quote: "Upspring gives us the clarity we needed to scale our winning YouTube creatives with confidence.",
                   },
                 ].map((item, i) => (
                   <div
@@ -515,7 +492,7 @@ export default function ApplovinPage() {
                       ))}
                     </div>
                     <p className="flex-grow text-sm italic text-foreground/80">
-                      "{item.quote}"
+                      &quot;{item.quote}&quot;
                     </p>
                     <div>
                       <p className="font-medium text-foreground">{item.company}</p>
@@ -535,7 +512,7 @@ export default function ApplovinPage() {
                   Frequently Asked Questions
                 </h2>
                 <p className="text-lg text-foreground/70">
-                  Everything you need to know about the AppLovin integration
+                  Everything you need to know about the YouTube Ads integration
                 </p>
               </div>
 
