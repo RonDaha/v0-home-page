@@ -459,23 +459,23 @@ export default function YouTubePage() {
               <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
                 {[
                   {
-                    name: "Ives Rocher",
-                    company: "Ron Rotter",
+                    company: "Ives Rocher",
+                    person: "Ron Rotter",
                     quote: "Upspring's YouTube integration has transformed how we analyze video creative performance. We're iterating on hooks faster than ever.",
                   },
                   {
-                    name: "FansLegacy",
-                    company: "Tomar Arzoan",
+                    company: "FansLegacy",
+                    person: "Tomar Arzoan",
                     quote: "The thumbnail and hook intelligence is a game changer. We finally understand what drives watch time on YouTube.",
                   },
                   {
-                    name: "Rotem Avizohar",
                     company: "Interaction",
+                    person: "Rotem Avizohar",
                     quote: "Being able to analyze YouTube alongside our other channels in one place has been incredibly valuable.",
                   },
                   {
-                    name: "Roni Trocky Polonio",
-                    company: "",
+                    company: "Polonio",
+                    person: "Roni Trocky",
                     quote: "Upspring gives us the clarity we needed to scale our winning YouTube creatives with confidence.",
                   },
                 ].map((item, i) => (
@@ -495,10 +495,8 @@ export default function YouTubePage() {
                       &quot;{item.quote}&quot;
                     </p>
                     <div>
-                      <p className="font-medium text-foreground">{item.name}</p>
-                      {item.company && (
-                        <p className="text-sm text-foreground/60">{item.company}</p>
-                      )}
+                      <p className="font-medium text-foreground">{item.company}</p>
+                      <p className="text-sm text-foreground/60">{item.person}</p>
                     </div>
                   </div>
                 ))}

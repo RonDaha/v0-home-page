@@ -482,23 +482,23 @@ export default function ApplovinPage() {
               <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
                 {[
                   {
-                    name: "Ives Rocher",
-                    company: "Ron Rotter",
+                    company: "Ives Rocher",
+                    person: "Ron Rotter",
                     quote: "Upspring's AppLovin integration has completely transformed how we analyze creative performance. We're making decisions in hours, not days.",
                   },
                   {
-                    name: "FansLegacy",
-                    company: "Tomar Arzoan",
+                    company: "FansLegacy",
+                    person: "Tomar Arzoan",
                     quote: "The creative-set analysis is a game changer. We can finally see patterns across our entire AppLovin portfolio.",
                   },
                   {
-                    name: "Rotem Avizohar",
                     company: "Interaction",
+                    person: "Rotem Avizohar",
                     quote: "Being able to analyze AppLovin alongside our other channels in one place has been incredibly valuable for our team.",
                   },
                   {
-                    name: "Roni Trocky Polonio",
-                    company: "",
+                    company: "Polonio",
+                    person: "Roni Trocky",
                     quote: "Upspring gives us the clarity we needed to scale our winning AppLovin creatives with confidence.",
                   },
                 ].map((item, i) => (
@@ -518,10 +518,8 @@ export default function ApplovinPage() {
                       "{item.quote}"
                     </p>
                     <div>
-                      <p className="font-medium text-foreground">{item.name}</p>
-                      {item.company && (
-                        <p className="text-sm text-foreground/60">{item.company}</p>
-                      )}
+                      <p className="font-medium text-foreground">{item.company}</p>
+                      <p className="text-sm text-foreground/60">{item.person}</p>
                     </div>
                   </div>
                 ))}
