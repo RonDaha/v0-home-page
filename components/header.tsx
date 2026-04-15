@@ -47,6 +47,7 @@ export function Header({ isLoaded, currentSection, hideContactLink = false }: He
 
   const navItems = [
     { name: "Home", href: "/" },
+    { name: "Case Studies", href: "/case-studies" },
     { name: "Resources", href: "/resources" },
     { name: "Pricing", href: "/pricing" },
     { name: "Contact", action: scrollToContact },
