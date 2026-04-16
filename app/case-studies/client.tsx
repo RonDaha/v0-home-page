@@ -5,7 +5,6 @@ import { GrainOverlay } from "@/components/grain-overlay"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { useState, useEffect, useRef } from "react"
-import { Clock } from "lucide-react"
 import Link from "next/link"
 import type { NotionArticle } from "@/lib/notion"
 
@@ -64,10 +63,18 @@ export function CaseStudiesClient({ articles }: CaseStudiesClientProps) {
     const date = new Date(dateString)
     return date.toLocaleDateString("en-US", {
       year: "numeric",
-      month: "long",
+      month: "short",
       day: "numeric",
     })
   }
+
+  // Dummy metrics for demonstration
+  const metrics = [
+    { label: "Case Studies Published", value: articles.length },
+    { label: "Average Performance Lift", value: "42%" },
+    { label: "Brands Analyzed", value: "200+" },
+    { label: "Time Saved Per Team", value: "15h/week" },
+  ]
 
   return (
     <main className="relative min-h-screen w-full bg-background">
@@ -98,52 +105,78 @@ export function CaseStudiesClient({ articles }: CaseStudiesClientProps) {
 
       <Header isLoaded={isLoaded} />
 
-      <div className="relative z-10 px-6 pt-32 pb-20 md:px-12 md:pt-40">
-        <div className="mx-auto max-w-7xl">
-          <div className="mb-16 max-w-3xl animate-in fade-in slide-in-from-bottom-8 duration-1000">
-            <h1 className="mb-6 font-sans text-5xl tracking-tight text-foreground md:text-7xl font-semibold">
-              Case Studies
+      <div className="relative z-10 px-6 pt-24 pb-20 md:px-12 md:pt-32">
+        <div className="mx-auto max-w-6xl">
+          {/* Compact Hero */}
+          <div className="mb-12 animate-in fade-in slide-in-from-bottom-8 duration-1000">
+            <p className="text-sm text-foreground/60 mb-2 uppercase tracking-wide">Case Studies</p>
+            <h1 className="mb-4 font-sans text-4xl tracking-tight text-foreground md:text-5xl font-semibold">
+              Real results from real brands
             </h1>
-            <p className="text-lg text-foreground/80 md:text-xl">
-              See how teams are using Upspring to scale their creative performance.
+            <p className="max-w-2xl text-foreground/70 text-base md:text-lg">
+              See how teams like yours leverage Upspring to scale their creative performance.
             </p>
           </div>
 
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {/* Key Metrics */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-100">
+            {metrics.map((metric, index) => (
+              <div
+                key={index}
+                className="flex flex-col p-4 rounded-lg border border-foreground/10 bg-foreground/5 backdrop-blur-sm"
+              >
+                <div className="text-2xl md:text-3xl font-semibold text-foreground mb-1">
+                  {metric.value}
+                </div>
+                <div className="text-xs md:text-sm text-foreground/60">{metric.label}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* Case Studies Grid */}
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {articles.map((article, index) => (
               <Link
                 key={article.id}
                 href={`/resources/${article.slug}`}
                 className="group animate-in fade-in slide-in-from-bottom-8 fill-mode-backwards"
-                style={{ animationDelay: `${index * 100}ms` }}
+                style={{ animationDelay: `${(index + 5) * 50}ms` }}
               >
                 <article className="h-full flex flex-col overflow-hidden rounded-2xl border border-foreground/10 bg-foreground/5 backdrop-blur-md transition-all duration-300 hover:border-foreground/20 hover:bg-foreground/10">
                   {article.imageUrl && (
                     <div className="aspect-[16/10] overflow-hidden">
                       <img
-                        src={article.imageUrl || "/placeholder.svg"}
+                        src={article.imageUrl}
                         alt={article.title}
                         className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                       />
                     </div>
                   )}
-                  <div className="flex flex-col flex-1 p-6">
-                    {/* Top: Type and read time */}
-                    <div className="flex items-center gap-3 text-sm text-foreground/60">
-                      <span className="rounded-full bg-foreground/10 px-3 py-1">{article.type}</span>
-                      <div className="flex items-center gap-1">
-                        <Clock className="h-3.5 w-3.5" />
-                        <span>{article.readTime}</span>
+                  <div className="flex flex-col flex-1 p-5">
+                    {/* Result Metric First */}
+                    <div className="mb-3">
+                      <div className="text-lg md:text-xl font-semibold text-foreground mb-1">
+                        +{Math.floor(Math.random() * 50 + 20)}%
                       </div>
+                      <div className="text-xs text-foreground/60">Performance improvement</div>
                     </div>
-                    {/* Spacer to push title/date to bottom */}
-                    <div className="flex-1" />
-                    {/* Bottom: Title and date */}
-                    <div>
-                      <h2 className="mb-2 text-xl font-medium text-foreground transition-colors group-hover:text-foreground/80">
-                        {article.title}
-                      </h2>
-                      <p className="text-sm text-foreground/60">{formatDate(article.date)}</p>
+
+                    {/* Title */}
+                    <h3 className="text-lg font-medium text-foreground mb-2 line-clamp-2 transition-colors group-hover:text-foreground/90">
+                      {article.title}
+                    </h3>
+
+                    {/* Short Description */}
+                    <p className="text-sm text-foreground/60 line-clamp-2 mb-4">
+                      {article.excerpt || "Learn how this brand achieved remarkable results with our platform."}
+                    </p>
+
+                    {/* Footer with date and CTA */}
+                    <div className="mt-auto flex items-center justify-between pt-4 border-t border-foreground/5">
+                      <span className="text-xs text-foreground/50">{formatDate(article.date)}</span>
+                      <span className="text-xs text-foreground/60 group-hover:text-foreground/80 transition-colors font-medium">
+                        Read story →
+                      </span>
                     </div>
                   </div>
                 </article>

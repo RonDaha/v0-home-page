@@ -4,7 +4,7 @@ import { Shader, Swirl } from "shaders/react"
 import { GrainOverlay } from "@/components/grain-overlay"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect, useRef, useMemo } from "react"
 import { Clock } from "lucide-react"
 import Link from "next/link"
 import type { NotionArticle } from "@/lib/notion"
@@ -15,7 +15,26 @@ interface ResourcesClientProps {
 
 export function ResourcesClient({ articles }: ResourcesClientProps) {
   const [isLoaded, setIsLoaded] = useState(false)
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
   const shaderContainerRef = useRef<HTMLDivElement>(null)
+
+  const categories = useMemo(() => {
+    const types = new Set(articles.map((a) => a.type).filter(Boolean))
+    return Array.from(types).sort()
+  }, [articles])
+
+  const filteredArticles = useMemo(() => {
+    if (!selectedCategory) return articles
+    return articles.filter((a) => a.type === selectedCategory)
+  }, [articles, selectedCategory])
+
+  const featuredArticle = useMemo(() => {
+    return filteredArticles.length > 0 ? filteredArticles[0] : null
+  }, [filteredArticles])
+
+  const gridArticles = useMemo(() => {
+    return filteredArticles.slice(1)
+  }, [filteredArticles])
 
   useEffect(() => {
     const setShaderHeight = () => {
@@ -64,7 +83,7 @@ export function ResourcesClient({ articles }: ResourcesClientProps) {
     const date = new Date(dateString)
     return date.toLocaleDateString("en-US", {
       year: "numeric",
-      month: "long",
+      month: "short",
       day: "numeric",
     })
   }
@@ -98,53 +117,118 @@ export function ResourcesClient({ articles }: ResourcesClientProps) {
 
       <Header isLoaded={isLoaded} />
 
-      <div className="relative z-10 px-6 pt-32 pb-20 md:px-12 md:pt-40">
-        <div className="mx-auto max-w-7xl">
-          <div className="mb-16 max-w-3xl animate-in fade-in slide-in-from-bottom-8 duration-1000">
-            <h1 className="mb-6 font-sans text-5xl tracking-tight text-foreground md:text-7xl font-semibold">
-              Resources
+      <div className="relative z-10 px-6 pt-24 pb-20 md:px-12 md:pt-32">
+        <div className="mx-auto max-w-6xl">
+          {/* Compact Hero */}
+          <div className="mb-12 animate-in fade-in slide-in-from-bottom-8 duration-1000">
+            <p className="text-sm text-foreground/60 mb-2 uppercase tracking-wide">Resources</p>
+            <h1 className="mb-4 font-sans text-4xl tracking-tight text-foreground md:text-5xl font-semibold">
+              Learn from our insights
             </h1>
-            <p className="text-lg text-foreground/80 md:text-xl">
-              Insights, guides, and strategies to help you scale your creative performance.
+            <p className="max-w-2xl text-foreground/70 text-base md:text-lg">
+              Guides, strategies, and deep dives to help you scale creative performance.
             </p>
           </div>
 
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {articles.map((article, index) => (
+          {/* Category Filters */}
+          <div className="mb-12 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-100">
+            <div className="flex flex-wrap gap-3">
+              <button
+                onClick={() => setSelectedCategory(null)}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                  selectedCategory === null
+                    ? "bg-foreground/20 text-foreground border border-foreground/30"
+                    : "bg-foreground/5 text-foreground/70 border border-foreground/10 hover:border-foreground/20 hover:bg-foreground/10"
+                }`}
+              >
+                All
+              </button>
+              {categories.map((category) => (
+                <button
+                  key={category}
+                  onClick={() => setSelectedCategory(category)}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                    selectedCategory === category
+                      ? "bg-foreground/20 text-foreground border border-foreground/30"
+                      : "bg-foreground/5 text-foreground/70 border border-foreground/10 hover:border-foreground/20 hover:bg-foreground/10"
+                  }`}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Featured Article */}
+          {featuredArticle && (
+            <Link
+              href={`/resources/${featuredArticle.slug}`}
+              className="group mb-12 block animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-200"
+            >
+              <article className="flex flex-col md:flex-row gap-6 overflow-hidden rounded-2xl border border-foreground/10 bg-foreground/5 backdrop-blur-md transition-all duration-300 hover:border-foreground/20 hover:bg-foreground/10 p-6">
+                {featuredArticle.imageUrl && (
+                  <div className="md:w-2/5 flex-shrink-0">
+                    <img
+                      src={featuredArticle.imageUrl}
+                      alt={featuredArticle.title}
+                      className="h-full w-full object-cover rounded-lg transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
+                )}
+                <div className="md:w-3/5 flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center gap-3 mb-3">
+                      <span className="text-xs text-foreground/60 uppercase tracking-wide">Featured</span>
+                      <span className="text-xs text-foreground/60 bg-foreground/5 px-2 py-1 rounded-full">
+                        {featuredArticle.type}
+                      </span>
+                    </div>
+                    <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-2 transition-colors group-hover:text-foreground/90">
+                      {featuredArticle.title}
+                    </h2>
+                  </div>
+                  <div className="flex items-center gap-3 mt-4 text-sm text-foreground/60">
+                    <Clock className="h-4 w-4" />
+                    <span>{featuredArticle.readTime}</span>
+                    <span>•</span>
+                    <span>{formatDate(featuredArticle.date)}</span>
+                  </div>
+                </div>
+              </article>
+            </Link>
+          )}
+
+          {/* Grid Articles */}
+          <div className="mb-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {gridArticles.map((article, index) => (
               <Link
                 key={article.id}
                 href={`/resources/${article.slug}`}
                 className="group animate-in fade-in slide-in-from-bottom-8 fill-mode-backwards"
-                style={{ animationDelay: `${index * 100}ms` }}
+                style={{ animationDelay: `${(index + 3) * 50}ms` }}
               >
                 <article className="h-full flex flex-col overflow-hidden rounded-2xl border border-foreground/10 bg-foreground/5 backdrop-blur-md transition-all duration-300 hover:border-foreground/20 hover:bg-foreground/10">
                   {article.imageUrl && (
                     <div className="aspect-[16/10] overflow-hidden">
                       <img
-                        src={article.imageUrl || "/placeholder.svg"}
+                        src={article.imageUrl}
                         alt={article.title}
                         className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                       />
                     </div>
                   )}
-                  <div className="flex flex-col flex-1 p-6">
-                    {/* Top: Type and read time */}
-                    <div className="flex items-center gap-3 text-sm text-foreground/60">
-                      <span className="rounded-full bg-foreground/10 px-3 py-1">{article.type}</span>
+                  <div className="flex flex-col flex-1 p-5">
+                    <div className="flex items-center gap-2 mb-3 text-xs text-foreground/60">
+                      <span className="rounded-full bg-foreground/10 px-2 py-1">{article.type}</span>
                       <div className="flex items-center gap-1">
-                        <Clock className="h-3.5 w-3.5" />
+                        <Clock className="h-3 w-3" />
                         <span>{article.readTime}</span>
                       </div>
                     </div>
-                    {/* Spacer to push title/date to bottom */}
-                    <div className="flex-1" />
-                    {/* Bottom: Title and date */}
-                    <div>
-                      <h2 className="mb-2 text-xl font-medium text-foreground transition-colors group-hover:text-foreground/80">
-                        {article.title}
-                      </h2>
-                      <p className="text-sm text-foreground/60">{formatDate(article.date)}</p>
-                    </div>
+                    <h3 className="text-lg font-medium text-foreground mb-2 line-clamp-2 transition-colors group-hover:text-foreground/90">
+                      {article.title}
+                    </h3>
+                    <div className="mt-auto text-xs text-foreground/50">{formatDate(article.date)}</div>
                   </div>
                 </article>
               </Link>
