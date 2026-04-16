@@ -68,12 +68,16 @@ export function CaseStudiesClient({ articles }: CaseStudiesClientProps) {
     })
   }
 
-  // Dummy metrics for demonstration
+  // Key metrics
   const metrics = [
-    { label: "Case Studies Published", value: articles.length },
+    { label: "Happy Customers", value: "+100" },
+    { label: "Brands Analyzed", value: "2000+" },
+    { label: "Cut on Creative Testing (Q1 2026)", value: "25%" },
+    { label: "Sharable Reports Generated", value: "1744" },
+    { label: "New Features This Year", value: "24" },
     { label: "Average Performance Lift", value: "42%" },
-    { label: "Brands Analyzed", value: "200+" },
     { label: "Time Saved Per Team", value: "15h/week" },
+    { label: "Creative Assets Analyzed", value: "50K+" },
   ]
 
   return (
@@ -118,17 +122,17 @@ export function CaseStudiesClient({ articles }: CaseStudiesClientProps) {
             </p>
           </div>
 
-          {/* Key Metrics */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-100">
+          {/* Key Metrics - 4x2 grid */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-100">
             {metrics.map((metric, index) => (
               <div
                 key={index}
-                className="flex flex-col p-4 rounded-lg border border-foreground/10 bg-foreground/5 backdrop-blur-sm"
+                className="flex flex-col p-4 rounded-xl border border-foreground/10 bg-foreground/5 backdrop-blur-sm"
               >
                 <div className="text-2xl md:text-3xl font-semibold text-foreground mb-1">
                   {metric.value}
                 </div>
-                <div className="text-xs md:text-sm text-foreground/60">{metric.label}</div>
+                <div className="text-xs text-foreground/60 leading-tight">{metric.label}</div>
               </div>
             ))}
           </div>
