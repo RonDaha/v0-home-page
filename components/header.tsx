@@ -1,13 +1,13 @@
 "use client"
 
 import Link from "next/link"
-import { usePathname } from "next/navigation"
+import { usePathname, useSearchParams } from "next/navigation"
 import { MagneticButton } from "@/components/magnetic-button"
 import Image from "next/image"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Button } from "@/components/ui/button"
 import { Menu, ChevronDown } from "lucide-react"
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect, useRef, Suspense } from "react"
 import { openWithUtm } from "@/lib/utm-utils"
 
 interface HeaderProps {
@@ -16,8 +16,20 @@ interface HeaderProps {
   hideContactLink?: boolean
 }
 
+function useResourcesFilter() {
+  const searchParams = useSearchParams()
+  return searchParams.get("filter")
+}
+
+function ResourcesFilterBridge({ onFilter }: { onFilter: (f: string | null) => void }) {
+  const filter = useResourcesFilter()
+  useEffect(() => { onFilter(filter) }, [filter, onFilter])
+  return null
+}
+
 export function Header({ isLoaded, currentSection, hideContactLink = false }: HeaderProps) {
   const pathname = usePathname()
+  const [resourcesFilter, setResourcesFilter] = useState<string | null>(null)
   const [isOpen, setIsOpen] = useState(false)
   const [hasScrolled, setHasScrolled] = useState(false)
   const [resourcesOpen, setResourcesOpen] = useState(false)
@@ -71,12 +83,22 @@ export function Header({ isLoaded, currentSection, hideContactLink = false }: He
 
   const isResourcesActive = pathname === "/case-studies" || pathname === "/resources" || pathname.startsWith("/resources/")
 
+  const isResourcesItemActive = (href: string) => {
+    if (href === "/case-studies") return pathname === "/case-studies"
+    if (href === "/resources?filter=blog") return pathname === "/resources" && resourcesFilter === "blog"
+    if (href === "/resources") return pathname === "/resources" && !resourcesFilter
+    return false
+  }
+
   return (
     <nav
       className={`fixed left-0 right-0 top-0 z-50 flex items-center justify-between px-6 py-6 transition-opacity duration-700 md:px-12 ${
         isLoaded ? "opacity-100" : "opacity-0"
       }`}
     >
+      <Suspense fallback={null}>
+        <ResourcesFilterBridge onFilter={setResourcesFilter} />
+      </Suspense>
       <Link href="/" onClick={scrollToTop} className="flex items-center gap-2 transition-transform cursor-pointer">
         <div className="relative h-8 w-auto">
           <Image
@@ -134,7 +156,7 @@ export function Header({ isLoaded, currentSection, hideContactLink = false }: He
                   href={item.href}
                   onClick={() => setResourcesOpen(false)}
                   className={`flex items-center px-4 py-3 text-sm font-medium transition-colors hover:bg-foreground/10 ${
-                    pathname === item.href ? "text-foreground bg-foreground/5" : "text-foreground/75 hover:text-foreground"
+                    isResourcesItemActive(item.href) ? "text-foreground bg-foreground/5" : "text-foreground/75 hover:text-foreground"
                   }`}
                 >
                   {item.name}

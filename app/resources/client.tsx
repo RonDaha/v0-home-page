@@ -32,6 +32,10 @@ export function ResourcesClient({ articles }: ResourcesClientProps) {
   }, [searchParams])
 
   const handleCategoryChange = (category: string | null) => {
+    if (category === "Case Study") {
+      router.push("/case-studies")
+      return
+    }
     setSelectedCategory(category)
     if (category === "Blog") {
       router.push("/resources?filter=blog", { scroll: false })
