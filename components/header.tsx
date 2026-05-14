@@ -6,8 +6,8 @@ import { MagneticButton } from "@/components/magnetic-button"
 import Image from "next/image"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Button } from "@/components/ui/button"
-import { Menu } from "lucide-react"
-import { useState, useEffect } from "react"
+import { Menu, ChevronDown } from "lucide-react"
+import { useState, useEffect, useRef } from "react"
 import { openWithUtm } from "@/lib/utm-utils"
 
 interface HeaderProps {
@@ -20,6 +20,18 @@ export function Header({ isLoaded, currentSection, hideContactLink = false }: He
   const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(false)
   const [hasScrolled, setHasScrolled] = useState(false)
+  const [resourcesOpen, setResourcesOpen] = useState(false)
+  const resourcesRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (resourcesRef.current && !resourcesRef.current.contains(e.target as Node)) {
+        setResourcesOpen(false)
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside)
+    return () => document.removeEventListener("mousedown", handleClickOutside)
+  }, [])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -47,11 +59,16 @@ export function Header({ isLoaded, currentSection, hideContactLink = false }: He
 
   const navItems = [
     { name: "Home", href: "/" },
-    { name: "Case Studies", href: "/case-studies" },
-    { name: "Resources", href: "/resources" },
     { name: "Pricing", href: "/pricing" },
     { name: "Contact", action: scrollToContact },
   ].filter((item) => !hideContactLink || item.name !== "Contact")
+
+  const resourcesItems = [
+    { name: "Case Studies", href: "/case-studies" },
+    { name: "Blog", href: "/resources" },
+  ]
+
+  const isResourcesActive = pathname === "/case-studies" || pathname === "/resources" || pathname.startsWith("/resources/")
 
   return (
     <nav
@@ -77,7 +94,57 @@ export function Header({ isLoaded, currentSection, hideContactLink = false }: He
           hasScrolled ? "bg-foreground/15 backdrop-blur-sm" : ""
         }`}
       >
-        {navItems.map((item) => {
+        {/* Home link */}
+        <Link
+          href="/"
+          onClick={scrollToTop}
+          className={`group relative font-sans text-sm font-medium transition-colors cursor-pointer ${
+            pathname === "/" ? "text-foreground" : "text-foreground/80 hover:text-foreground"
+          }`}
+        >
+          Home
+          <span className={`absolute -bottom-1 left-0 h-px bg-foreground transition-all duration-300 ${pathname === "/" ? "w-full" : "w-0 group-hover:w-full"}`} />
+        </Link>
+
+        {/* Resources dropdown */}
+        <div ref={resourcesRef} className="relative">
+          <Link
+            href="/case-studies"
+            className={`group relative flex items-center gap-1 font-sans text-sm font-medium transition-colors cursor-pointer ${
+              isResourcesActive ? "text-foreground" : "text-foreground/80 hover:text-foreground"
+            }`}
+            onMouseEnter={() => setResourcesOpen(true)}
+          >
+            Resources
+            <ChevronDown
+              className={`h-3.5 w-3.5 transition-transform duration-200 ${resourcesOpen ? "rotate-180" : ""}`}
+            />
+            <span className={`absolute -bottom-1 left-0 h-px bg-foreground transition-all duration-300 ${isResourcesActive ? "w-full" : "w-0 group-hover:w-full"}`} />
+          </Link>
+
+          {resourcesOpen && (
+            <div
+              className="absolute left-1/2 top-full mt-3 -translate-x-1/2 w-44 rounded-xl border border-foreground/15 bg-background/80 backdrop-blur-xl shadow-xl overflow-hidden"
+              onMouseLeave={() => setResourcesOpen(false)}
+            >
+              {resourcesItems.map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  onClick={() => setResourcesOpen(false)}
+                  className={`flex items-center px-4 py-3 text-sm font-medium transition-colors hover:bg-foreground/10 ${
+                    pathname === item.href ? "text-foreground bg-foreground/5" : "text-foreground/75 hover:text-foreground"
+                  }`}
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* Remaining nav items */}
+        {navItems.filter(i => i.name !== "Home").map((item) => {
           const isActive = pathname === item.href
 
           if (item.action) {
@@ -97,17 +164,12 @@ export function Header({ isLoaded, currentSection, hideContactLink = false }: He
             <Link
               key={item.name}
               href={item.href!}
-              onClick={item.name === "Home" ? scrollToTop : undefined}
               className={`group relative font-sans text-sm font-medium transition-colors cursor-pointer ${
                 isActive ? "text-foreground" : "text-foreground/80 hover:text-foreground"
               }`}
             >
               {item.name}
-              <span
-                className={`absolute -bottom-1 left-0 h-px bg-foreground transition-all duration-300 ${
-                  isActive ? "w-full" : "w-0 group-hover:w-full"
-                }`}
-              />
+              <span className={`absolute -bottom-1 left-0 h-px bg-foreground transition-all duration-300 ${isActive ? "w-full" : "w-0 group-hover:w-full"}`} />
             </Link>
           )
         })}
@@ -135,7 +197,39 @@ export function Header({ isLoaded, currentSection, hideContactLink = false }: He
           <SheetContent side="right" className="w-full border-l border-white/10 bg-background/50 backdrop-blur-2xl p-0">
             <div className="flex h-full flex-col items-center justify-center gap-12 p-8">
               <div className="flex flex-col items-center gap-8">
-                {navItems.map((item, index) => (
+                {/* Home */}
+                <Link
+                  href="/"
+                  onClick={() => {
+                    scrollToTop()
+                    setIsOpen(false)
+                  }}
+                  className="text-3xl font-light text-foreground/80 hover:text-foreground transition-all duration-300 hover:scale-110"
+                  style={{ animation: isOpen ? "fadeIn 0.5s ease-out 0s both" : "none" }}
+                >
+                  Home
+                </Link>
+
+                {/* Resources with submenu */}
+                <div className="flex flex-col items-center gap-4">
+                  <div className="text-2xl font-light text-foreground/60" style={{ animation: isOpen ? "fadeIn 0.5s ease-out 0.1s both" : "none" }}>
+                    Resources
+                  </div>
+                  {resourcesItems.map((subItem, idx) => (
+                    <Link
+                      key={subItem.name}
+                      href={subItem.href}
+                      onClick={() => setIsOpen(false)}
+                      className="text-xl font-light text-foreground/70 hover:text-foreground transition-all duration-300 hover:scale-110"
+                      style={{ animation: isOpen ? `fadeIn 0.5s ease-out ${0.15 + idx * 0.05}s both` : "none" }}
+                    >
+                      {subItem.name}
+                    </Link>
+                  ))}
+                </div>
+
+                {/* Remaining items */}
+                {navItems.filter(i => i.name !== "Home").map((item, index) => (
                   <Link
                     key={item.name}
                     href={item.href || "#"}
@@ -143,15 +237,11 @@ export function Header({ isLoaded, currentSection, hideContactLink = false }: He
                       if (item.action) {
                         e.preventDefault()
                         item.action()
-                      } else if (item.name === "Home") {
-                        scrollToTop()
                       }
                       setIsOpen(false)
                     }}
                     className="text-3xl font-light text-foreground/80 hover:text-foreground transition-all duration-300 hover:scale-110"
-                    style={{
-                      animation: isOpen ? `fadeIn 0.5s ease-out ${index * 0.1}s both` : "none",
-                    }}
+                    style={{ animation: isOpen ? `fadeIn 0.5s ease-out ${0.25 + index * 0.1}s both` : "none" }}
                   >
                     {item.name}
                   </Link>
