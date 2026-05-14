@@ -64,8 +64,9 @@ export function Header({ isLoaded, currentSection, hideContactLink = false }: He
   ].filter((item) => !hideContactLink || item.name !== "Contact")
 
   const resourcesItems = [
+    { name: "All", href: "/resources" },
+    { name: "Blog", href: "/resources?filter=blog" },
     { name: "Case Studies", href: "/case-studies" },
-    { name: "Blog", href: "/resources" },
   ]
 
   const isResourcesActive = pathname === "/case-studies" || pathname === "/resources" || pathname.startsWith("/resources/")

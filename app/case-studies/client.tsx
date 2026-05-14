@@ -75,9 +75,6 @@ export function CaseStudiesClient({ articles }: CaseStudiesClientProps) {
     { label: "Cut on Creative Testing (Q1 2026)", value: "25%" },
     { label: "Sharable Reports Generated", value: "1744" },
     { label: "New Features This Year", value: "24" },
-    { label: "Average Performance Lift", value: "42%" },
-    { label: "Time Saved Per Team", value: "15h/week" },
-    { label: "Creative Assets Analyzed", value: "50K+" },
   ]
 
   return (
@@ -122,8 +119,8 @@ export function CaseStudiesClient({ articles }: CaseStudiesClientProps) {
             </p>
           </div>
 
-          {/* Key Metrics - 4x2 grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-100">
+          {/* Key Metrics - 5 in a row on desktop, 2-col on mobile */}
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-16 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-100">
             {metrics.map((metric, index) => (
               <div
                 key={index}

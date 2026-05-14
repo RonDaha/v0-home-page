@@ -7,6 +7,7 @@ import { Footer } from "@/components/footer"
 import { useState, useEffect, useRef, useMemo } from "react"
 import { Clock } from "lucide-react"
 import Link from "next/link"
+import { useRouter, useSearchParams } from "next/navigation"
 import type { NotionArticle } from "@/lib/notion"
 
 interface ResourcesClientProps {
@@ -17,6 +18,27 @@ export function ResourcesClient({ articles }: ResourcesClientProps) {
   const [isLoaded, setIsLoaded] = useState(false)
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
   const shaderContainerRef = useRef<HTMLDivElement>(null)
+  const router = useRouter()
+  const searchParams = useSearchParams()
+
+  // Read filter from URL on mount and when URL changes
+  useEffect(() => {
+    const filter = searchParams.get("filter")
+    if (filter === "blog") {
+      setSelectedCategory("Blog")
+    } else {
+      setSelectedCategory(null)
+    }
+  }, [searchParams])
+
+  const handleCategoryChange = (category: string | null) => {
+    setSelectedCategory(category)
+    if (category === "Blog") {
+      router.push("/resources?filter=blog", { scroll: false })
+    } else {
+      router.push("/resources", { scroll: false })
+    }
+  }
 
   const categories = useMemo(() => {
     const types = new Set(articles.map((a) => a.type).filter(Boolean))
@@ -134,7 +156,7 @@ export function ResourcesClient({ articles }: ResourcesClientProps) {
           <div className="mb-12 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-100">
             <div className="flex flex-wrap gap-3">
               <button
-                onClick={() => setSelectedCategory(null)}
+                onClick={() => handleCategoryChange(null)}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
                   selectedCategory === null
                     ? "bg-foreground/20 text-foreground border border-foreground/30"
@@ -146,7 +168,7 @@ export function ResourcesClient({ articles }: ResourcesClientProps) {
               {categories.map((category) => (
                 <button
                   key={category}
-                  onClick={() => setSelectedCategory(category)}
+                  onClick={() => handleCategoryChange(category)}
                   className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
                     selectedCategory === category
                       ? "bg-foreground/20 text-foreground border border-foreground/30"
