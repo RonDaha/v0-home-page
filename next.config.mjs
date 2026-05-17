@@ -21,6 +21,11 @@ const nextConfig = {
         destination: "/resources/:slug",
         permanent: true,
       },
+      {
+        source: "/case-studies",
+        destination: "/resources?filter=case-study",
+        permanent: false,
+      },
     ]
   },
 }

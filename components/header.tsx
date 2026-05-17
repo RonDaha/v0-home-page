@@ -78,13 +78,13 @@ export function Header({ isLoaded, currentSection, hideContactLink = false }: He
   const resourcesItems = [
     { name: "All", href: "/resources" },
     { name: "Blog", href: "/resources?filter=blog" },
-    { name: "Case Studies", href: "/case-studies" },
+    { name: "Case Studies", href: "/resources?filter=case-study" },
   ]
 
-  const isResourcesActive = pathname === "/case-studies" || pathname === "/resources" || pathname.startsWith("/resources/")
+  const isResourcesActive = pathname === "/resources" || pathname.startsWith("/resources/")
 
   const isResourcesItemActive = (href: string) => {
-    if (href === "/case-studies") return pathname === "/case-studies"
+    if (href === "/resources?filter=case-study") return pathname === "/resources" && resourcesFilter === "case-study"
     if (href === "/resources?filter=blog") return pathname === "/resources" && resourcesFilter === "blog"
     if (href === "/resources") return pathname === "/resources" && !resourcesFilter
     return false
@@ -132,7 +132,7 @@ export function Header({ isLoaded, currentSection, hideContactLink = false }: He
         {/* Resources dropdown */}
         <div ref={resourcesRef} className="relative">
           <Link
-            href="/case-studies"
+            href="/resources"
             className={`group relative flex items-center gap-1 font-sans text-sm font-medium transition-colors cursor-pointer ${
               isResourcesActive ? "text-foreground" : "text-foreground/80 hover:text-foreground"
             }`}
@@ -243,7 +243,9 @@ export function Header({ isLoaded, currentSection, hideContactLink = false }: He
                       key={subItem.name}
                       href={subItem.href}
                       onClick={() => setIsOpen(false)}
-                      className="text-xl font-light text-foreground/70 hover:text-foreground transition-all duration-300 hover:scale-110"
+                      className={`text-xl font-light transition-all duration-300 hover:scale-110 ${
+                        isResourcesItemActive(subItem.href) ? "text-foreground" : "text-foreground/70 hover:text-foreground"
+                      }`}
                       style={{ animation: isOpen ? `fadeIn 0.5s ease-out ${0.15 + idx * 0.05}s both` : "none" }}
                     >
                       {subItem.name}
