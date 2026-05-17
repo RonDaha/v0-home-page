@@ -6,16 +6,9 @@ import { MagneticButton } from "@/components/magnetic-button"
 import Image from "next/image"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Button } from "@/components/ui/button"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
 import { Menu, ChevronDown } from "lucide-react"
-import { useState, useEffect, Suspense } from "react"
+import { useState, useEffect, useRef, Suspense } from "react"
 import { openWithUtm } from "@/lib/utm-utils"
-import { cn } from "@/lib/utils"
 
 interface HeaderProps {
   isLoaded: boolean
@@ -39,6 +32,18 @@ export function Header({ isLoaded, currentSection, hideContactLink = false }: He
   const [resourcesFilter, setResourcesFilter] = useState<string | null>(null)
   const [isOpen, setIsOpen] = useState(false)
   const [hasScrolled, setHasScrolled] = useState(false)
+  const [resourcesOpen, setResourcesOpen] = useState(false)
+  const resourcesRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (resourcesRef.current && !resourcesRef.current.contains(e.target as Node)) {
+        setResourcesOpen(false)
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside)
+    return () => document.removeEventListener("mousedown", handleClickOutside)
+  }, [])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -124,37 +129,42 @@ export function Header({ isLoaded, currentSection, hideContactLink = false }: He
           <span className={`absolute -bottom-1 left-0 h-px bg-foreground transition-all duration-300 ${pathname === "/" ? "w-full" : "w-0 group-hover:w-full"}`} />
         </Link>
 
-        {/* Resources dropdown — shadcn DropdownMenu */}
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <button
-              className={cn(
-                "group relative flex items-center gap-1 font-sans text-sm font-medium transition-colors cursor-pointer outline-none",
-                isResourcesActive ? "text-foreground" : "text-foreground/80 hover:text-foreground"
-              )}
+        {/* Resources dropdown */}
+        <div ref={resourcesRef} className="relative">
+          <Link
+            href="/resources"
+            className={`group relative flex items-center gap-1 font-sans text-sm font-medium transition-colors cursor-pointer ${
+              isResourcesActive ? "text-foreground" : "text-foreground/80 hover:text-foreground"
+            }`}
+            onMouseEnter={() => setResourcesOpen(true)}
+          >
+            Resources
+            <ChevronDown
+              className={`h-3.5 w-3.5 transition-transform duration-200 ${resourcesOpen ? "rotate-180" : ""}`}
+            />
+            <span className={`absolute -bottom-1 left-0 h-px bg-foreground transition-all duration-300 ${isResourcesActive ? "w-full" : "w-0 group-hover:w-full"}`} />
+          </Link>
+
+          {resourcesOpen && (
+            <div
+              className="absolute left-1/2 top-full mt-3 -translate-x-1/2 w-44 rounded-xl border border-foreground/15 bg-background/80 backdrop-blur-xl shadow-xl overflow-hidden"
+              onMouseLeave={() => setResourcesOpen(false)}
             >
-              Resources
-              <ChevronDown className="h-3.5 w-3.5 transition-transform duration-200 group-data-[state=open]:rotate-180" />
-              <span className={cn(
-                "absolute -bottom-1 left-0 h-px bg-foreground transition-all duration-300",
-                isResourcesActive ? "w-full" : "w-0 group-hover:w-full"
-              )} />
-            </button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="center" className="w-48">
-            {resourcesItems.map((item) => (
-              <DropdownMenuItem key={item.name} asChild>
+              {resourcesItems.map((item) => (
                 <Link
+                  key={item.name}
                   href={item.href}
-                  data-active={isResourcesItemActive(item.href)}
-                  className="data-[active=true]:bg-accent data-[active=true]:text-accent-foreground"
+                  onClick={() => setResourcesOpen(false)}
+                  className={`flex items-center px-4 py-3 text-sm font-medium transition-colors hover:bg-foreground/10 ${
+                    isResourcesItemActive(item.href) ? "text-foreground bg-foreground/5" : "text-foreground/75 hover:text-foreground"
+                  }`}
                 >
                   {item.name}
                 </Link>
-              </DropdownMenuItem>
-            ))}
-          </DropdownMenuContent>
-        </DropdownMenu>
+              ))}
+            </div>
+          )}
+        </div>
 
         {/* Remaining nav items */}
         {navItems.filter(i => i.name !== "Home").map((item) => {
