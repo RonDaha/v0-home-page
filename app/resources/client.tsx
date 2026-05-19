@@ -18,11 +18,11 @@ interface ResourcesClientProps {
 type FilterValue = "all" | "blog" | "case-study"
 
 const METRICS = [
-  { label: "Happy Customers", value: "+100" },
-  { label: "Brands Analyzed", value: "2000+" },
-  { label: "Cut on Creative Testing (Q1 2026)", value: "25%" },
-  { label: "Sharable Reports Generated", value: "1744" },
-  { label: "New Features This Year", value: "24" },
+  { label: "Cut on Creative Testing Costs", value: "25%" },
+  { label: "Average ROAS Improvement", value: "+42%" },
+  { label: "Time Saved Per Team Weekly", value: "15h" },
+  { label: "Brands Scaled Successfully", value: "2000+" },
+  { label: "Faster Creative Decisions", value: "3x" },
 ]
 
 export function ResourcesClient({ articles }: ResourcesClientProps) {
