@@ -95,7 +95,7 @@ export default function PrivacyPolicyPage() {
           <h1 className="mb-6 font-sans text-4xl font-semibold tracking-tight text-foreground md:text-5xl lg:text-6xl">
             Upspring Privacy Policy
           </h1>
-          <p className="mb-12 font-mono text-sm text-foreground/60">Last Updated: Feb 19, 2026</p>
+          <p className="mb-12 font-mono text-sm text-foreground/60">Last Updated: Jul 25, 2026</p>
 
           <div className="prose prose-invert max-w-none space-y-8 text-foreground/80">
             <p>
@@ -776,7 +776,72 @@ export default function PrivacyPolicyPage() {
 
             {/* Section 11 */}
             <section className="space-y-4">
-              <h2 className="text-2xl font-semibold text-foreground md:text-3xl">11. Contact Us</h2>
+              <h2 className="text-2xl font-semibold text-foreground md:text-3xl">
+                11. AI Assistant Integrations and Developer API
+              </h2>
+              <p>
+                Upspring can be connected to third-party AI assistants — including Anthropic's Claude, via our official
+                connector — and offers a developer API for programmatic access. This section explains what data those
+                surfaces involve.
+              </p>
+
+              <h3 className="text-xl font-semibold text-foreground">
+                11.1 The Upspring Connector for Claude (and similar AI assistants)
+              </h3>
+              <p>When you connect your Upspring account to an AI assistant such as Claude:</p>
+              <ul className="list-disc space-y-2 pl-6">
+                <li>
+                  <strong>Authentication:</strong> You authenticate with your Upspring credentials through an OAuth
+                  authorization flow and approve access on a consent screen. We issue access tokens scoped to your
+                  account; we never share your Upspring password with the assistant provider. Disconnecting the
+                  integration (in the assistant's settings or by contacting us) revokes these tokens.
+                </li>
+                <li>
+                  <strong>What we receive:</strong> We receive only the tool requests the assistant makes on your behalf
+                  — the name of the requested capability and its structured parameters (for example, a search filter or
+                  an advertiser identifier). We do not receive, store, or have any access to your conversations with the
+                  assistant.
+                </li>
+                <li>
+                  <strong>What we return:</strong> In response to those requests, we return data your account is already
+                  entitled to in the Upspring platform — our advertising-intelligence corpus, and, where your workspace
+                  has connected ad accounts, your own advertising data (as described in Section 1.2). The same access
+                  controls that govern the Upspring app govern the connector.
+                </li>
+                <li>
+                  <strong>What we log:</strong> For security, reliability, and abuse prevention, we log usage metadata
+                  about connector requests (which capability was called, parameters, timing, and success/failure),
+                  associated with your account.
+                </li>
+                <li>
+                  <strong>The assistant provider:</strong> Your conversations with the assistant, and the assistant
+                  provider's handling of any data you or the assistant submit to it, are governed by that provider's own
+                  privacy policy (for Claude, Anthropic's privacy policy) — not this one. As described in Section 8,
+                  this Privacy Policy does not apply to third-party services.
+                </li>
+              </ul>
+
+              <h3 className="text-xl font-semibold text-foreground">11.2 Developer API</h3>
+              <p>Where we issue API keys for programmatic access to Upspring data:</p>
+              <ul className="list-disc space-y-2 pl-6">
+                <li>
+                  API keys are stored only in cryptographically hashed form; the plaintext key is shown once at issuance
+                  and cannot be retrieved by us afterward.
+                </li>
+                <li>
+                  We log API usage metadata per key (endpoint, request parameters, response status, timing) for
+                  security, reliability, rate limiting, support, and service planning.
+                </li>
+                <li>
+                  API responses contain data from our advertising-intelligence corpus and do not include other
+                  customers' personal or account data.
+                </li>
+              </ul>
+            </section>
+
+            {/* Section 12 */}
+            <section className="space-y-4">
+              <h2 className="text-2xl font-semibold text-foreground md:text-3xl">12. Contact Us</h2>
               <p>
                 If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices,
                 you can contact us using the information below:
