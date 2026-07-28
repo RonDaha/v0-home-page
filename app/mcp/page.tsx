@@ -323,15 +323,18 @@ export default function Page() {
           margin-bottom:20px;
         }
         .marquee{
+          display:flex;
           width:100%;
           overflow:hidden;
           -webkit-mask-image:linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
           mask-image:linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
         }
         .marquee-track{
+          flex:none;
           display:flex;
           align-items:center;
           gap:48px;
+          padding-right:48px;
           width:max-content;
           animation:scroll-left 32s linear infinite;
         }
@@ -351,7 +354,7 @@ export default function Page() {
         }
         @keyframes scroll-left{
           from{ transform:translateX(0); }
-          to{ transform:translateX(-50%); }
+          to{ transform:translateX(-100%); }
         }
 
         footer{
