@@ -314,7 +314,7 @@ export default function Page() {
           gap:28px;
         }
         .trust-icons img{
-          height:22px;
+          height:26px;
           width:auto;
           opacity:.55;
           filter:grayscale(1);
