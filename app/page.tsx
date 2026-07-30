@@ -153,16 +153,16 @@ export default function Home() {
                 href="https://claude.ai/directory/connectors/upspring"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group mb-5 inline-flex animate-in fade-in slide-in-from-bottom-4 items-center gap-2 rounded-full border border-foreground/20 bg-foreground/5 py-1.5 pl-2 pr-4 backdrop-blur-md transition-all duration-300 delay-100 hover:border-foreground/40 hover:bg-foreground/10"
+                className="group mb-5 inline-flex animate-in fade-in slide-in-from-bottom-4 items-center gap-2 rounded-full bg-white/95 py-1.5 pl-2 pr-4 shadow-sm backdrop-blur-md transition-all duration-300 delay-100 hover:bg-white"
               >
                 <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#D97757]/15">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src="/icons/claude.svg" alt="" aria-hidden="true" className="h-3.5 w-3.5" />
                 </span>
-                <span className="font-mono text-xs font-semibold uppercase tracking-wider text-foreground/90">
+                <span className="font-mono text-xs font-semibold uppercase tracking-wider text-black">
                   Official Claude Connector
                 </span>
-                <ArrowUpRight className="h-3.5 w-3.5 text-foreground/60 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-foreground" />
+                <ArrowUpRight className="h-3.5 w-3.5 text-black/60 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-black" />
               </a>
               <h1 className="mb-4 md:mb-6 animate-in fade-in slide-in-from-bottom-8 font-sans text-4xl font-light leading-[1.1] tracking-tight text-foreground duration-1000 md:text-6xl lg:text-7xl">
                 <span className="text-balance font-semibold leading-6">The Creative Intelligence platform</span>
