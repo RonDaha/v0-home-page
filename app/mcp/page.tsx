@@ -1,8 +1,7 @@
 "use client";
 
 const CONNECTOR_URL = "https://api.upspring.ai/mcp";
-const CONNECT_CTA_URL =
-  "https://claude.ai/customize/connectors?modal=add-custom-connector&connectorName=Upspring&connectorUrl=https%3A%2F%2Fapi.upspring.ai/mcp";
+const CONNECT_CTA_URL = "https://claude.ai/directory/connectors/upspring";
 
 const clientLogos: { src: string; alt: string; text?: string }[] = [
   { src: "/assets/clients/ridge.svg", alt: "Ridge" },
@@ -49,6 +48,11 @@ export default function Page() {
           world of knowledge.
         </h1>
 
+        <p className="official-badge">
+          <img src="/assets/claude-burst.png" alt="" />
+          Official Claude Connector
+        </p>
+
         <p className="kicker-sub">Stop burning your tokens.</p>
 
         <p className="subhead">
@@ -88,6 +92,7 @@ export default function Page() {
 
         <div className="cta">
           <a className="btn-primary" href={CONNECT_CTA_URL}>
+            <img className="btn-claude-icon" src="/assets/claude-burst.png" alt="" />
             Connect Upspring →
           </a>
         </div>
@@ -148,20 +153,21 @@ export default function Page() {
           font-family:var(--font);
           -webkit-font-smoothing:antialiased;
           min-height:100vh;
-          display:flex;
-          flex-direction:column;
-          align-items:center;
+          width:100%;
+          overflow-x:hidden;
         }
 
         .page{
           width:100%;
           max-width:900px;
+          margin:0 auto;
           padding:64px 24px 56px;
           display:flex;
           flex-direction:column;
           align-items:center;
           text-align:center;
         }
+        .page > *{ max-width:100%; min-width:0; }
 
         .brand-row{
           display:flex;
@@ -185,6 +191,25 @@ export default function Page() {
           color:var(--coral-deep);
         }
 
+        .official-badge{
+          margin-top:18px;
+          display:inline-flex;
+          align-items:center;
+          gap:7px;
+          background:rgba(240,116,92,.1);
+          color:var(--coral-deep);
+          font-size:12px;
+          font-weight:600;
+          letter-spacing:.02em;
+          padding:6px 13px;
+          border-radius:var(--radius-pill);
+        }
+        .official-badge img{
+          height:14px;
+          width:14px;
+          display:block;
+        }
+
         .kicker-sub{
           margin-top:14px;
           font-family:var(--font-serif);
@@ -206,6 +231,7 @@ export default function Page() {
           margin-top:44px;
           width:100%;
           max-width:820px;
+          min-width:0;
           border-radius:var(--radius-xl);
           border:1px solid var(--border);
           box-shadow:var(--shadow-md);
@@ -231,6 +257,7 @@ export default function Page() {
           display:flex;
           align-items:center;
           gap:10px;
+          max-width:100%;
           background:var(--bg);
           border:1px solid var(--border);
           border-radius:var(--radius-md);
@@ -240,11 +267,18 @@ export default function Page() {
           color:var(--ink);
           box-shadow:0 1px 2px rgba(32,24,16,.04);
         }
+        .connector-chip > span{
+          overflow:hidden;
+          text-overflow:ellipsis;
+          white-space:nowrap;
+          min-width:0;
+        }
         .connector-chip .dot{
           width:7px; height:7px; border-radius:50%;
           background:var(--coral);
           flex:none;
         }
+        .connector-chip button{ flex:none; }
         .connector-chip button{
           border:none;
           background:var(--border);
@@ -283,6 +317,12 @@ export default function Page() {
           transform:translateY(-1px);
           box-shadow:0 16px 28px -10px rgba(240,116,92,.6);
         }
+        .btn-claude-icon{
+          height:20px;
+          width:20px;
+          display:block;
+          filter:brightness(0) invert(1);
+        }
 
         .trust{
           margin-top:60px;
@@ -304,7 +344,7 @@ export default function Page() {
           gap:28px;
         }
         .trust-icons img{
-          height:22px;
+          height:26px;
           width:auto;
           opacity:.55;
           filter:grayscale(1);
@@ -323,15 +363,18 @@ export default function Page() {
           margin-bottom:20px;
         }
         .marquee{
+          display:flex;
           width:100%;
           overflow:hidden;
           -webkit-mask-image:linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
           mask-image:linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
         }
         .marquee-track{
+          flex:none;
           display:flex;
           align-items:center;
           gap:48px;
+          padding-right:48px;
           width:max-content;
           animation:scroll-left 32s linear infinite;
         }
@@ -351,7 +394,7 @@ export default function Page() {
         }
         @keyframes scroll-left{
           from{ transform:translateX(0); }
-          to{ transform:translateX(-50%); }
+          to{ transform:translateX(-100%); }
         }
 
         footer{
@@ -367,6 +410,26 @@ export default function Page() {
           color:var(--ink-faint);
           text-decoration:underline;
           text-underline-offset:2px;
+        }
+
+        @media (max-width:640px){
+          .page{ padding:40px 20px 44px; }
+          .brand-row{ margin-bottom:32px; }
+          .brand-row img{ height:26px; }
+          h1{ font-size:clamp(24px, 7.5vw, 32px); line-height:1.2; }
+          .kicker-sub{ margin-top:12px; }
+          .subhead{ margin-top:16px; font-size:15px; line-height:1.5; }
+          .hero-frame{ margin-top:32px; border-radius:var(--radius-lg); }
+          .connector{ margin-top:28px; width:100%; }
+          .connector-chip{ width:100%; font-size:12px; padding:10px 12px; }
+          .connector-note{ text-align:center; }
+          .cta{ margin-top:22px; width:100%; }
+          .btn-primary{ width:100%; justify-content:center; font-size:15px; padding:14px 20px; }
+          .trust{ margin-top:44px; }
+          .trust-icons{ gap:20px; flex-wrap:wrap; justify-content:center; }
+          .clients{ margin-top:48px; }
+          .marquee-track{ gap:32px; padding-right:32px; }
+          footer{ margin-top:52px; padding:0 8px; text-align:center; line-height:1.5; }
         }
       `}</style>
     </>
