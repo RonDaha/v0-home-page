@@ -6,7 +6,7 @@ import { MagneticButton } from "@/components/magnetic-button"
 import Image from "next/image"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Button } from "@/components/ui/button"
-import { Menu } from "lucide-react"
+import { Menu, ArrowUpRight } from "lucide-react"
 import { useState, useEffect } from "react"
 import { openWithUtm } from "@/lib/utm-utils"
 
@@ -72,7 +72,7 @@ export function Header({ isLoaded, currentSection, hideContactLink = false }: He
       </Link>
 
       <div
-        className={`hidden items-center gap-8 md:flex rounded-full px-8 py-3 transition-all duration-300 absolute left-1/2 -translate-x-1/2 ${
+        className={`hidden items-center gap-6 lg:flex rounded-full px-8 py-3 transition-all duration-300 absolute left-1/2 -translate-x-1/2 ${
           hasScrolled ? "bg-foreground/15 backdrop-blur-sm" : ""
         }`}
       >
@@ -110,10 +110,20 @@ export function Header({ isLoaded, currentSection, hideContactLink = false }: He
             </Link>
           )
         })}
+
+        <a
+          href="https://claude.ai/directory/connectors/upspring"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group inline-flex items-center gap-1.5 whitespace-nowrap rounded-full border border-foreground/30 bg-foreground/5 px-3.5 py-1.5 font-sans text-sm font-medium text-foreground transition-all duration-300 hover:border-foreground/60 hover:bg-foreground/10"
+        >
+          Connect Claude
+          <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+        </a>
       </div>
 
       <div className="flex items-center gap-4">
-        <div className="hidden md:flex items-center gap-4">
+        <div className="hidden lg:flex items-center gap-4">
           <MagneticButton
             variant="secondary"
             onClick={() => openWithUtm("https://app.upspring.ai/auth/register?utm_campaign=home&utm_source=header")}
@@ -126,7 +136,7 @@ export function Header({ isLoaded, currentSection, hideContactLink = false }: He
         </div>
 
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
-          <SheetTrigger asChild className="md:hidden">
+          <SheetTrigger asChild className="lg:hidden">
             <Button variant="ghost" className="text-foreground hover:bg-foreground/10 !h-12 !w-12 !p-0">
               <Menu style={{ width: 28, height: 28 }} />
             </Button>
@@ -155,6 +165,20 @@ export function Header({ isLoaded, currentSection, hideContactLink = false }: He
                     {item.name}
                   </Link>
                 ))}
+
+                <a
+                  href="https://claude.ai/directory/connectors/upspring"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setIsOpen(false)}
+                  className="inline-flex items-center gap-2 rounded-full border border-foreground/25 bg-foreground/5 px-6 py-2 text-2xl font-light text-foreground/80 transition-all duration-300 hover:scale-110 hover:text-foreground"
+                  style={{
+                    animation: isOpen ? `fadeIn 0.5s ease-out ${navItems.length * 0.1}s both` : "none",
+                  }}
+                >
+                  Connect Claude
+                  <ArrowUpRight className="h-6 w-6" />
+                </a>
               </div>
 
               <div
