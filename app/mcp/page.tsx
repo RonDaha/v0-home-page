@@ -1,8 +1,7 @@
 "use client";
 
 const CONNECTOR_URL = "https://api.upspring.ai/mcp";
-const CONNECT_CTA_URL =
-  "https://claude.ai/customize/connectors?modal=add-custom-connector&connectorName=Upspring&connectorUrl=https%3A%2F%2Fapi.upspring.ai/mcp";
+const CONNECT_CTA_URL = "https://claude.ai/directory/connectors/upspring";
 
 const clientLogos: { src: string; alt: string; text?: string }[] = [
   { src: "/assets/clients/ridge.svg", alt: "Ridge" },
@@ -88,6 +87,7 @@ export default function Page() {
 
         <div className="cta">
           <a className="btn-primary" href={CONNECT_CTA_URL}>
+            <img className="btn-claude-icon" src="/assets/claude-burst.png" alt="" />
             Connect Upspring →
           </a>
         </div>
@@ -292,6 +292,12 @@ export default function Page() {
         .btn-primary:hover{
           transform:translateY(-1px);
           box-shadow:0 16px 28px -10px rgba(240,116,92,.6);
+        }
+        .btn-claude-icon{
+          height:20px;
+          width:20px;
+          display:block;
+          filter:brightness(0) invert(1);
         }
 
         .trust{
