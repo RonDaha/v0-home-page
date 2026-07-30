@@ -72,7 +72,7 @@ export function Header({ isLoaded, currentSection, hideContactLink = false }: He
       </Link>
 
       <div
-        className={`hidden items-center gap-6 md:flex rounded-full px-8 py-3 transition-all duration-300 absolute left-1/2 -translate-x-1/2 ${
+        className={`hidden items-center gap-6 lg:flex rounded-full px-8 py-3 transition-all duration-300 absolute left-1/2 -translate-x-1/2 ${
           hasScrolled ? "bg-foreground/15 backdrop-blur-sm" : ""
         }`}
       >
@@ -123,7 +123,7 @@ export function Header({ isLoaded, currentSection, hideContactLink = false }: He
       </div>
 
       <div className="flex items-center gap-4">
-        <div className="hidden md:flex items-center gap-4">
+        <div className="hidden lg:flex items-center gap-4">
           <MagneticButton
             variant="secondary"
             onClick={() => openWithUtm("https://app.upspring.ai/auth/register?utm_campaign=home&utm_source=header")}
@@ -136,7 +136,7 @@ export function Header({ isLoaded, currentSection, hideContactLink = false }: He
         </div>
 
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
-          <SheetTrigger asChild className="md:hidden">
+          <SheetTrigger asChild className="lg:hidden">
             <Button variant="ghost" className="text-foreground hover:bg-foreground/10 !h-12 !w-12 !p-0">
               <Menu style={{ width: 28, height: 28 }} />
             </Button>
