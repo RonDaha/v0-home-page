@@ -11,6 +11,7 @@ import { MagneticButton } from "@/components/magnetic-button"
 import { AdAnalysisRoller } from "@/components/ad-analysis-roller"
 import { useRef, useEffect, useState } from "react"
 import { openWithUtm } from "@/lib/utm-utils"
+import { ArrowUpRight } from "lucide-react"
 
 export default function Home() {
   const [currentSection, setCurrentSection] = useState(0)
@@ -148,6 +149,21 @@ export default function Home() {
         >
           <div className="mx-auto w-full max-w-[1800px] flex flex-col lg:flex-row justify-between gap-4 md:gap-12 lg:gap-8 flex-1 lg:items-end min-[1600px]:items-center justify-center lg:justify-between">
             <div className="max-w-3xl w-full flex-shrink pb-2 lg:pb-0">
+              <a
+                href="https://claude.ai/directory/connectors/upspring"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group mb-5 inline-flex animate-in fade-in slide-in-from-bottom-4 items-center gap-2 rounded-full border border-foreground/20 bg-foreground/5 py-1.5 pl-2 pr-4 backdrop-blur-md transition-all duration-300 delay-100 hover:border-foreground/40 hover:bg-foreground/10"
+              >
+                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#D97757]/15">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/icons/claude.svg" alt="" aria-hidden="true" className="h-3.5 w-3.5" />
+                </span>
+                <span className="font-mono text-xs font-semibold uppercase tracking-wider text-foreground/90">
+                  Official Claude Connector
+                </span>
+                <ArrowUpRight className="h-3.5 w-3.5 text-foreground/60 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-foreground" />
+              </a>
               <h1 className="mb-4 md:mb-6 animate-in fade-in slide-in-from-bottom-8 font-sans text-4xl font-light leading-[1.1] tracking-tight text-foreground duration-1000 md:text-6xl lg:text-7xl">
                 <span className="text-balance font-semibold leading-6">The Creative Intelligence platform</span>
               </h1>
