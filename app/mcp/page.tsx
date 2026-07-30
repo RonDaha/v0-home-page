@@ -1,8 +1,7 @@
 "use client";
 
 const CONNECTOR_URL = "https://api.upspring.ai/mcp";
-const CONNECT_CTA_URL =
-  "https://claude.ai/customize/connectors?modal=add-custom-connector&connectorName=Upspring&connectorUrl=https%3A%2F%2Fapi.upspring.ai/mcp";
+const CONNECT_CTA_URL = "https://claude.ai/directory/connectors/upspring";
 
 const clientLogos: { src: string; alt: string; text?: string }[] = [
   { src: "/assets/clients/ridge.svg", alt: "Ridge" },
@@ -49,6 +48,11 @@ export default function Page() {
           world of knowledge.
         </h1>
 
+        <p className="official-badge">
+          <img src="/assets/claude-burst.png" alt="" />
+          Official Claude Connector
+        </p>
+
         <p className="kicker-sub">Stop burning your tokens.</p>
 
         <p className="subhead">
@@ -88,6 +92,7 @@ export default function Page() {
 
         <div className="cta">
           <a className="btn-primary" href={CONNECT_CTA_URL}>
+            <img className="btn-claude-icon" src="/assets/claude-burst.png" alt="" />
             Connect Upspring →
           </a>
         </div>
@@ -184,6 +189,25 @@ export default function Page() {
           font-style:italic;
           font-optical-sizing:auto;
           color:var(--coral-deep);
+        }
+
+        .official-badge{
+          margin-top:18px;
+          display:inline-flex;
+          align-items:center;
+          gap:7px;
+          background:rgba(240,116,92,.1);
+          color:var(--coral-deep);
+          font-size:12px;
+          font-weight:600;
+          letter-spacing:.02em;
+          padding:6px 13px;
+          border-radius:var(--radius-pill);
+        }
+        .official-badge img{
+          height:14px;
+          width:14px;
+          display:block;
         }
 
         .kicker-sub{
@@ -292,6 +316,12 @@ export default function Page() {
         .btn-primary:hover{
           transform:translateY(-1px);
           box-shadow:0 16px 28px -10px rgba(240,116,92,.6);
+        }
+        .btn-claude-icon{
+          height:20px;
+          width:20px;
+          display:block;
+          filter:brightness(0) invert(1);
         }
 
         .trust{
