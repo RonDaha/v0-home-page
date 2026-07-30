@@ -48,6 +48,11 @@ export default function Page() {
           world of knowledge.
         </h1>
 
+        <p className="official-badge">
+          <img src="/assets/claude-burst.png" alt="" />
+          Official Claude Connector
+        </p>
+
         <p className="kicker-sub">Stop burning your tokens.</p>
 
         <p className="subhead">
@@ -184,6 +189,25 @@ export default function Page() {
           font-style:italic;
           font-optical-sizing:auto;
           color:var(--coral-deep);
+        }
+
+        .official-badge{
+          margin-top:18px;
+          display:inline-flex;
+          align-items:center;
+          gap:7px;
+          background:rgba(240,116,92,.1);
+          color:var(--coral-deep);
+          font-size:12px;
+          font-weight:600;
+          letter-spacing:.02em;
+          padding:6px 13px;
+          border-radius:var(--radius-pill);
+        }
+        .official-badge img{
+          height:14px;
+          width:14px;
+          display:block;
         }
 
         .kicker-sub{
